@@ -13,9 +13,9 @@ int	main(void)
     printf ("fd : %d\n", fd);
     while ((tmp = get_next_line(fd)) != 0)
     {
-        printf("----- %d -----\n", idx);
+        printf("\n----- %d -----\n", idx);
         printf("%s", tmp);
-        printf("-------------\n");
+        printf("-------------\n\n");
         idx++;
 		free(tmp);
     }
@@ -30,7 +30,7 @@ int	main(void)
 
 // 	j = 1;
 // 	while ((line = get_next_line(0)) != 0)
-// 	{
+// 	{ß
 // 		printf("%s", line);
 // 		free(line);
 // 		j++;

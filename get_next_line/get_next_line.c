@@ -6,7 +6,7 @@
 /*   By: silee <silee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 16:38:54 by silee             #+#    #+#             */
-/*   Updated: 2022/01/13 15:57:36 by silee            ###   ########.fr       */
+/*   Updated: 2022/01/14 14:59:38 by silee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ char	*get_next_line(int fd)
 		next = buffer;
 	}
 	ret = gnl_next(&next);
-	if (next == 0 || ret == 0)
+	if (ret != 0)
+		return (ret);
+	else
 		return (0);
-	return (ret);
 }
