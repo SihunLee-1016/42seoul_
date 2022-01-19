@@ -6,7 +6,7 @@
 /*   By: silee <silee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 16:39:01 by silee             #+#    #+#             */
-/*   Updated: 2022/01/19 16:35:40 by silee            ###   ########.fr       */
+/*   Updated: 2022/01/19 17:01:48 by silee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ char *gnl_next(char *next, char **tmp, int *signal)
 			ret = ft_substr(*tmp, 0, tmp_len + idx - 1, signal);
 			if (ret == 0)
 				return(0);
+			
+			//기존 문자열 할당이 실패하면 안되니까 성공할 때 까지 반복문을 돌아야 할 것 같음.
 			*tmp = ft_substr(*tmp, tmp_len + idx - 1, ft_strlen(*tmp), signal);
 			if (*signal == -1)
 			{
