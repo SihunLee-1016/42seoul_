@@ -13,7 +13,7 @@ char	*get_next_line(int fd)
 	while (signal == 0 || signal == RREAD)
 	{
 		byte = read(fd, buffer, BUFFER_SIZE);
-		if (byte == -1 || byte == 0)
+		if ((byte == -1 || byte == 0) || str == 0)
 			return (0);
 		buffer[byte] = '\0';
 		str = ft_strjoin(str, buffer);
@@ -48,7 +48,7 @@ int	ft_strlen(char *str)
 	if (str == 0)
 		return (0);
 	len = 0;
-	while (str[len] != '\n')
+	while (str[len] != '\0')
 		len++;
 	return (len);
 }
