@@ -4,6 +4,7 @@ char	*get_next_line(int fd)
     char		buffer[BUFFER_SIZE + 1];
 	char		*ret;
 	static char	*str;
+	static int	IS_END;
 	int			signal;
     int			byte;
 	
@@ -13,38 +14,40 @@ char	*get_next_line(int fd)
 	while (signal == 0 || signal == RREAD)
 	{
 		byte = read(fd, buffer, BUFFER_SIZE);
-		if (byte == -1 || (byte == 0 && (signal == 0 ||signal == ALLFIN)))
+		if (byte == -1 || (byte == 0 && IS_END == END))
 			return (0);
-		buffer[byte] = '\0';
-		str = ft_strjoin(str, buffer);
+		str = ft_strjoin(str, buffer, byte);
 		if (str == 0)
 			return (0);
-		ret = find_out_line(&str, &signal, byte);
+		ret = find_out_line(&str, &signal, &byte);
+		if (signal == END)
+			IS_END = END;
 		if (signal == ERROR && ret == 0)
 			return (0);
 	}
 	return (ret);
 }
 
-int	loc_of_next(char *s, char c, int *signal)
+int	loc_of_next(char *s, char c, int *signal, int byte)
 {
-	int	i;
+	int	loc;
 
-	i = 0;
-	while (s[i] != '\0')
+	loc = 0;
+	//일단 반복 
+	while (s[loc] != '\0')
 	{
-		//널까지 가기 전 개행이 있다면 위치를 반환.
-		if (s[i] == c)
-			break ;
-		i++;
+		if (s[loc] == c)
+			return (loc);
+		loc++;
 	}
-	//마지막 줄의 경우 개행이 없고 널이 있기 때문에 시그널을 조작.
-	if (s[i] == '\0')
-		*signal = ALLFIN;
-	if (ft_strlen(s) == i)
+	if (byte != 0)
 		return (0);
 	else
-		return (i);
+	{
+		loc = loc_of_null(s);
+		*signal = END;
+		return (loc);
+	}
 }
 
 int loc_of_null(char *s)
