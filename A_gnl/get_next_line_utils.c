@@ -38,17 +38,24 @@ char	*ft_strcat(char *res, char *buffer)
 	return (res);
 }
 
-char    *find_out_line(char **str, int *signal)
+char    *find_out_line(char **str, int *signal, int byte)
 {
     int     loc;
     char    *ret;
 
-    loc = loc_of_next(*str, '\n');
+    loc = loc_of_next(*str, '\n',signal);
+	printf("loc = %d\n\n",loc);
     //개행의 위치가 없으므로 다시 읽어야 함.
     if (loc == 0)
     {
-        *signal = RREAD;
-        return (0);        
+		if (byte != 0 && *signal == ALLFIN)
+	        *signal = RREAD;
+		loc = loc_of_null(*str);
+		printf("signal in find out line if loc 0 : %d\n", *signal);
+		printf("null loc = %d\n\n",loc);
+
+		if (*signal == RREAD)
+	        return (0);        
     }
     //만약 아니라면. str의 처음 위치부터 개행의 위치까지 ret에 저장.
     ret = ft_substr(*str, 0, loc, signal);
@@ -68,9 +75,11 @@ char    *find_out_line(char **str, int *signal)
             free (ret);
         return (0);
     }
-
     //제대로 할당이 됐다면 ret의 주소를 반환.
-    *signal = FINISH;
+	if (*signal == ALLFIN)
+		return (ret);
+	
+	*signal = FINISH;
 	return (ret);
 }
 
@@ -81,7 +90,7 @@ char	*ft_substr(char *s, int start, int len, int *signal)
 	
     // 개행이 연달아 있는 경우?
 	//if (*signal == ERROR || start == len)
-    if (start == len)
+    if (start == len || *(s + start) == '\0')
     	return (0);
 		
 	i = 0;
