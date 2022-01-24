@@ -58,17 +58,14 @@ char	*ft_strndup(char *str, int loc_of_next)
 	return (p);
 }
 
-char	*ft_substr(char *s, int start, int str_len)
+char	*ft_substr(char *str, int start, int str_len)
 {
 	int		i;
 	char	*substr;
 	
-	if (start == str_len)
-	{
-		free (s);
-	 	return (0);
-	}
-
+	if (*(str + start) == '\0')
+		return (0);
+	
 	i = 0;
 	substr = (char *)malloc(sizeof(char) * (str_len - start + 1));
 	if (substr == 0)
@@ -76,7 +73,7 @@ char	*ft_substr(char *s, int start, int str_len)
 	
 	while (i < str_len - start)
 	{
-		*(substr + i) = *(s + start + i);
+		*(substr + i) = *(str + start + i);
 		i++;
 	}
 	*(substr + i) = '\0';
@@ -95,12 +92,10 @@ char	*ret_line(char **str)
 		return (str);
 	oneline = ft_strndup(str, loc_of_next);
 	if (oneline == 0)
-	{
-		free (str);
 		return (0);
-	}
+
 	str = ft_substr(*str, loc_of_next + 1, ft_strlen(str));	
-	if (str == 0 && loc_of_next != ft_strlen(str))
+	if (str == 0)
 	{
 		free (oneline);
 		return (0);
