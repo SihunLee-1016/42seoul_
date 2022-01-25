@@ -1,6 +1,7 @@
 #include "get_next_line.h"
 #include <stdio.h>
 #include <fcntl.h>
+#include <stdlib.h>
 
 int	main(void)
 {
@@ -20,6 +21,7 @@ int	main(void)
 		free(tmp);
     }
     close(fd);
+    //system("leaks a.out");
     return (0);
 }
 
