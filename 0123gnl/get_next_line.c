@@ -2,11 +2,14 @@
 char	*get_next_line(int fd)
 {
 	static char	*str;
+	static int	is_end;
 	char		*ret; 
-	
-    if (fd < 0 || BUFFER_SIZE <= 0)
+	 
+    if (fd < 0 || BUFFER_SIZE <= 0 || is_end == 1)
 		return (0);
-	str = txt_read(fd, str);
+	str = txt_read(fd, str, &is_end);
+	if (str == 0)
+		return (0);
 	// 반환 ㅇ -> 개행이 존재한다는 것. 혹은 eof => 확인이 필요한 자리. \0 인지 \n인지.
 	// 개행이 발견된 경우 -> 개행의 위치까지 str을 자르고 전체 str에서 앞선 반환값을 제외한 문자열을 다시 저장.
 	ret = ret_line(&str);
@@ -18,10 +21,11 @@ char	*get_next_line(int fd)
 	return (ret);
 }
 // 기존에 저장된 문자열 str이 인자로 들어옴.
-char    *txt_read(int fd,char *str)
+char    *txt_read(int fd,char *str, int *is_end)
 {
     int		byte;
     char	buffer[BUFFER_SIZE + 1];
+
 
 	byte = 1;
 	// byte가 0이 아니고 문자열 내에 개행이 있을 때 까지 반복
@@ -32,14 +36,19 @@ char    *txt_read(int fd,char *str)
 	//개행이 0번째에 위치하는 경우 다시 읽을 필요가 없다.
 	//개행이 존재할 떄 까지 반복이므로 
 	// -2 라면 개행이 없는거니까...
-	while (byte > 0 && ft_strchr(str, '\n') >= 0)
+	while (byte > 0 && ft_strchr(str, '\n') < 0)
 	{
 		byte = read(fd, buffer, BUFFER_SIZE);
-		if (byte <= 0)
+		// printf("byte = %d, buffer = %s\n",byte,buffer);
+		if (byte < 0)
 			return (0);
+		if (byte == 0)
+		{
+			*is_end = 1;
+			return (str);
+		}
 		buffer[byte] = '\0';
 		str = ft_strjoin(str, buffer);
-		// printf("%s@\n", str);
 		if (str == 0)
 			return (0);
 	}

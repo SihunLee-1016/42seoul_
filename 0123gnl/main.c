@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include <fcntl.h>
 #include <stdlib.h>
-
 int	main(void)
 {
     int     fd;
