@@ -13,6 +13,7 @@ char	*get_next_line(int fd)
 	// 반환 ㅇ -> 개행이 존재한다는 것. 혹은 eof => 확인이 필요한 자리. \0 인지 \n인지.
 	// 개행이 발견된 경우 -> 개행의 위치까지 str을 자르고 전체 str에서 앞선 반환값을 제외한 문자열을 다시 저장.
 	ret = ret_line(&str);
+	// printf("af str = %s", str);
 	if (ret == 0)
 	{
 		free (str);

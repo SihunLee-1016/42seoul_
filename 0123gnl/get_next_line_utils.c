@@ -50,8 +50,8 @@ char	*ft_strndup(char *str, int loc_of_next)
 
 	// 개행이 첫번째 위치한 경우 '\n \0' 2바이트가 필요한데
 	// 1을 더해주지 않으면 바이트 수가 부족하게 됨.
-	if (loc_of_next == 0)
-		loc_of_next += 1;
+	// if (loc_of_next == 0)
+	// 	loc_of_next += 1;
 	if (loc_of_next == -2)
 		loc_of_next = ft_strlen(str);
 	p = (char *)malloc(sizeof(char) * (loc_of_next + 1));
@@ -105,6 +105,8 @@ char	*ret_line(char **str)
 	int		loc_of_next;
 	char	*oneline;
 	
+	if (**str == 0)
+		return (0);
 	loc_of_next = ft_strchr(*str, '\n');
 	//개행이 발견되지 않음 (Return -2) -> EOF
 	// if (loc_of_next == -2)
