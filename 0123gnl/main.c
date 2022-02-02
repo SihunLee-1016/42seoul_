@@ -13,14 +13,14 @@ int	main(void)
     printf ("fd : %d\n", fd);
     while ((tmp = get_next_line(fd)) != 0)
     {
-        printf("\n----- %d -----\n", idx);
+        printf("\n----- %d -----\n", idx);                               
         printf("%s", tmp);
         printf("-------------\n\n");
         idx++;
 		free(tmp);
     }
     close(fd);
-    //system("leaks a.out");
+    // system("leaks a.out");
     return (0);
 }
 
