@@ -6,11 +6,12 @@
 /*   By: silee <silee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 15:06:59 by silee             #+#    #+#             */
-/*   Updated: 2022/02/02 15:15:26 by silee            ###   ########.fr       */
+/*   Updated: 2022/02/04 14:29:47 by silee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <stdio.h>
 char	*get_next_line(int fd)
 {
 	static char	*str;
@@ -18,7 +19,11 @@ char	*get_next_line(int fd)
 	char		*ret;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || is_end == 1)
+	{
+		if (is_end == 1)
+			is_end = 0;
 		return (0);
+	}
 	str = txt_read(fd, str, &is_end);
 	if (str == 0)
 		return (0);
@@ -40,7 +45,7 @@ char	*txt_read(int fd, char *str, int *is_end)
 	if (buffer == 0)
 		return (0);
 	byte = 1;
-	while (byte > 0 && ft_strchr(str, '\n') < 0)
+	while (byte > 0 && find_next(str, '\n') < 0)
 	{
 		byte = read(fd, buffer, BUFFER_SIZE);
 		if (byte <= 0)
@@ -60,7 +65,7 @@ char	*txt_read(int fd, char *str, int *is_end)
 	return (str);
 }
 
-int	ft_strchr(char *s, char c)
+int	find_next(char *s, char c)
 {
 	int	i;
 

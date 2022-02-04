@@ -6,7 +6,7 @@
 /*   By: silee <silee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 15:07:01 by silee             #+#    #+#             */
-/*   Updated: 2022/02/02 15:14:03 by silee            ###   ########.fr       */
+/*   Updated: 2022/02/04 14:29:48 by silee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ char	*ft_strjoin(char *str, char *buffer)
 	ft_strcat(result, buffer);
 	if (str != 0)
 		free (str);
-	str = result;
 	return (result);
 }
 
@@ -52,14 +51,16 @@ char	*ft_strcat(char *s1, char *s2)
 	return (s1);
 }
 
-char	*ft_strndup(char *str, int loc_of_next)
+char	*dup_loc(char *str, int loc_of_next)
 {
 	char	*p;
 	int		i;
-
+	
+	if (loc_of_next == -1)
+		return (0);
 	if (loc_of_next == -2)
 		loc_of_next = ft_strlen(str);
-	p = (char *)malloc(sizeof(char) * (loc_of_next + 1));
+	p = (char *)malloc(sizeof(char) * (loc_of_next + 2));
 	if (p == 0)
 		return (0);
 	i = 0;
@@ -77,7 +78,9 @@ char	*ft_substr(char *str, int start, int str_len)
 	int		i;
 	char	*substr;
 
-	if (ft_strchr(str, '\n') == -2 || str_len == 0)
+	//start 는 loc_of_next +1 이므로
+	// if (start == -1 || str_len == 0)
+	if (start == -1)
 	{
 		free (str);
 		return (0);
@@ -99,15 +102,19 @@ char	*ft_substr(char *str, int start, int str_len)
 char	*ret_line(char **str)
 {
 	int		loc_of_next;
+	int		strlen;
 	char	*oneline;
 
 	if (**str == 0)
 		return (0);
-	loc_of_next = ft_strchr(*str, '\n');
-	oneline = ft_strndup(*str, loc_of_next);
+	strlen = ft_strlen(*str);
+	loc_of_next = find_next(*str, '\n');
+	if (loc_of_next == -1)
+		return (0);
+	oneline = dup_loc(*str, loc_of_next);
 	if (oneline == 0)
 		return (0);
-	*str = ft_substr(*str, loc_of_next + 1, ft_strlen(*str));
+	*str = ft_substr(*str, loc_of_next + 1, strlen);
 	if (*str == 0 && oneline != 0 && loc_of_next != -2)
 	{
 		free (oneline);

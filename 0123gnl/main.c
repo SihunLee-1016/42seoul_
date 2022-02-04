@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <fcntl.h>
 #include <stdlib.h>
+
 int	main(void)
 {
     int     fd;
@@ -13,14 +14,16 @@ int	main(void)
     printf ("fd : %d\n", fd);
     while ((tmp = get_next_line(fd)) != 0)
     {
-        printf("\n----- %d -----\n", idx);                               
+        printf("\n----- %d -----\n", idx);
         printf("%s", tmp);
         printf("-------------\n\n");
         idx++;
 		free(tmp);
+       system("leaks a.out");
+
     }
+
     close(fd);
-    // system("leaks a.out");
     return (0);
 }
 
@@ -31,7 +34,7 @@ int	main(void)
 
 // 	j = 1;
 // 	while ((line = get_next_line(0)) != 0)
-// 	{ß
+// 	{
 // 		printf("%s", line);
 // 		free(line);
 // 		j++;
