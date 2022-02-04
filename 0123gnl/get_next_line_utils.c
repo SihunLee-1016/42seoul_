@@ -6,7 +6,7 @@
 /*   By: silee <silee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 15:07:01 by silee             #+#    #+#             */
-/*   Updated: 2022/02/04 14:29:48 by silee            ###   ########.fr       */
+/*   Updated: 2022/02/04 16:01:35 by silee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ char	*dup_loc(char *str, int loc_of_next)
 		return (0);
 	if (loc_of_next == -2)
 		loc_of_next = ft_strlen(str);
-	p = (char *)malloc(sizeof(char) * (loc_of_next + 2));
+	p = (char *)malloc(sizeof(char) * (loc_of_next + 1 + 1));
 	if (p == 0)
 		return (0);
 	i = 0;
