@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: silee <silee@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sihunlee <sihunlee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 15:07:01 by silee             #+#    #+#             */
-/*   Updated: 2022/02/04 16:01:35 by silee            ###   ########.fr       */
+/*   Updated: 2022/02/06 15:51:57 by sihunlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ char	*dup_loc(char *str, int loc_of_next)
 	if (loc_of_next == -1)
 		return (0);
 	if (loc_of_next == -2)
-		loc_of_next = ft_strlen(str);
+		loc_of_next = ft_strlen(str) - 1;
 	p = (char *)malloc(sizeof(char) * (loc_of_next + 1 + 1));
 	if (p == 0)
 		return (0);

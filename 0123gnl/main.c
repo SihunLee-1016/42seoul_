@@ -19,9 +19,8 @@ int	main(void)
         printf("-------------\n\n");
         idx++;
 		free(tmp);
-       system("leaks a.out");
-
     }
+    //system("leaks a.out");
 
     close(fd);
     return (0);
