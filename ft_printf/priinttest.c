@@ -5,6 +5,5 @@ int main(){
     int a = 0;
     str = "123abc";
 
-    a = write(1, "", 1);
-    printf("%aqwdzxcaw",a);
+    printf("%zq@!Kqwdzxcaw",a);
 }
