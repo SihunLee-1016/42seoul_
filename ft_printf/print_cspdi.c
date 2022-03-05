@@ -6,7 +6,7 @@
 /*   By: silee <silee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 17:02:50 by silee             #+#    #+#             */
-/*   Updated: 2022/02/15 17:23:17 by silee            ###   ########.fr       */
+/*   Updated: 2022/02/25 14:01:21 by silee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@ void    print_string(va_list data)
 
 void    print_address(va_list data)
 {
+    unsigned long num;
+
+    num = (unsigned long)va_arg(data, void *);
 
 }
 
