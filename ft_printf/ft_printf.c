@@ -6,7 +6,7 @@
 /*   By: silee <silee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 14:45:28 by silee             #+#    #+#             */
-/*   Updated: 2022/02/15 17:43:40 by silee            ###   ########.fr       */
+/*   Updated: 2022/03/07 19:15:14 by silee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int ft_printf(const char *str, ...)
 
     va_start (data,str);
     res = circulate_str((char *)str, data);
+    if (res == ERROR)
+        return (0);
 }
 
 int circulate_str(char *str,va_list data)
@@ -45,7 +47,6 @@ int circulate_str(char *str,va_list data)
 			write(1, str,1);
 		*str++;
     }
-	write(1, str, 1);
 	return (ret);
 }
 //출력하는 함수 하나가 있어야할 거 같음. data type은 알았으니 값과 가변인자포인터를 넘겨줌.

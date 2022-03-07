@@ -6,7 +6,7 @@
 /*   By: silee <silee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 14:45:31 by silee             #+#    #+#             */
-/*   Updated: 2022/02/15 17:23:43 by silee            ###   ########.fr       */
+/*   Updated: 2022/03/07 16:01:18 by silee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void    print_u_demical(va_list data);
 void    print_low_hexa(va_list data);
 void    print_up_hexa(va_list data);
 void    print_percent(va_list data);
+int     ft_putstr_fd(char *s, int fd);
 int	    len_of_int(int n);
 int	    plus_minus(int n);
 char	*ft_itoa(int n);
