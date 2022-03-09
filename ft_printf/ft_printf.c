@@ -6,7 +6,7 @@
 /*   By: silee <silee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 14:45:28 by silee             #+#    #+#             */
-/*   Updated: 2022/03/09 16:10:13 by silee            ###   ########.fr       */
+/*   Updated: 2022/03/09 17:50:11 by silee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,6 @@ int	check_vaild_N_print(char str, va_list data)
 	else if (str == 'X')
 		bite = print_up_hexa(data);
 	else if (str == '%')
-		bite = print_percent(data);
+		bite = write(1, "%", 1);
 	return (bite);
 }
