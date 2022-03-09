@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_print_%.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: silee <silee@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: silee <silee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/20 13:14:07 by silee             #+#    #+#             */
-/*   Updated: 2021/11/23 15:12:04 by silee            ###   ########.fr       */
+/*   Created: 2022/03/09 14:47:32 by silee             #+#    #+#             */
+/*   Updated: 2022/03/09 16:11:39 by silee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf.h"
 #include "libft.h"
-void	*ft_calloc(size_t count, size_t size)
+int	print_percent(va_list data)
 {
-	int		i;
-	char	*p;
+	char	c;
 
-	p = malloc(count * size);
-	if (p == 0)
-		return (0);
-	i = count * size;
-	ft_bzero(p, i);
-	return (p);
+	c = va_arg(data, char);
+	write(1, &c, 1);
+	return (1);
 }

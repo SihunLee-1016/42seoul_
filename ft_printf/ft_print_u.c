@@ -5,12 +5,13 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: silee <silee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/07 15:48:23 by silee             #+#    #+#             */
-/*   Updated: 2022/03/07 19:15:28 by silee            ###   ########.fr       */
+/*   Created: 2022/03/09 14:47:45 by silee             #+#    #+#             */
+/*   Updated: 2022/03/09 16:11:41 by silee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "libft.h"
 int	num_len(unsigned int num)
 {
 	int	len;
@@ -23,10 +24,11 @@ int	num_len(unsigned int num)
 	}
 	return (len);
 }
+
 char	*ft_uitoa(unsigned int n)
 {
-	unsigned int    len;
-	char    		*p;
+	unsigned int	len;
+	char			*p;
 
 	len = num_len(n);
 	p = ft_calloc(len + 1, sizeof(char));
@@ -35,24 +37,26 @@ char	*ft_uitoa(unsigned int n)
 	while (len-- > 0)
 	{
 		p[len] = n % 10 + '0';
-        n = n / 10;
+		n = n / 10;
 	}
 	return (p);
 }
 
-int ft_print_u(unsigned int num)
+int	print_u_demical(va_list data)
 {
-    int ret;
-    char *num;
+	unsigned int	num;
+	int				ret;
+	char			*num;
 
-    ret = 0;
-    if (num == 0)
-        ret = ret + write(1,"0",1);
-    num = ft_uitoa(num);
-    else
-    {
-        ret = ret + ft_putstr_fd(num,1);
-        free (num);
-    }
-    return (ret);
+	ret = 0;
+	num = va_arg(data, unsigned int);
+	if (num == 0)
+		ret = ret + write(1, "0", 1);
+	num = ft_uitoa(num);
+	else
+	{
+		ret = ret + ft_print_str_fd(num, 1);
+		free (num);
+	}
+	return (ret);
 }
