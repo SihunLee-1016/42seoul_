@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_u.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: silee <silee@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sihunlee <sihunlee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 14:47:45 by silee             #+#    #+#             */
-/*   Updated: 2022/03/09 16:11:41 by silee            ###   ########.fr       */
+/*   Updated: 2022/03/10 16:03:56 by sihunlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,17 +46,17 @@ int	print_u_demical(va_list data)
 {
 	unsigned int	num;
 	int				ret;
-	char			*num;
+	char			*str;
 
 	ret = 0;
 	num = va_arg(data, unsigned int);
 	if (num == 0)
 		ret = ret + write(1, "0", 1);
-	num = ft_uitoa(num);
 	else
 	{
-		ret = ret + ft_print_str_fd(num, 1);
-		free (num);
+		str = ft_uitoa(num);
+		ret = ret + ft_print_str_fd(str, 1);
+		free (str);
 	}
 	return (ret);
 }

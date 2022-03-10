@@ -3,28 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_p.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: silee <silee@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sihunlee <sihunlee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 14:47:38 by silee             #+#    #+#             */
-/*   Updated: 2022/03/09 16:11:40 by silee            ###   ########.fr       */
+/*   Updated: 2022/03/10 16:08:57 by sihunlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
-int	hexa_num_len(unsigned long num)
-{
-	int	len;
-
-	len = 0;
-	while (num != 0)
-	{
-		len++;
-		num = num / 16;
-	}
-	return (len);
-}
-
 void	ft_ul_2_hexa(unsigned long num, int size)
 {
 	int	i;
@@ -32,7 +19,7 @@ void	ft_ul_2_hexa(unsigned long num, int size)
 
 	str = ft_calloc(size, sizeof(int));
 	if (str == 0)
-		return (0);
+		return ;
 	i = 0;
 	while (size-- >= 0 && num != 0)
 	{
@@ -65,7 +52,7 @@ int	print_address(va_list data)
 	else
 	{
 		ft_ul_2_hexa(num, num_len(num) + 1);
-		ret = ret + ft_ptr_len(num);
+		ret = ret + hexa_num_len(num);
 	}
 	return (ret);
 }

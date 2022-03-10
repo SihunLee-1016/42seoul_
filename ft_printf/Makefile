@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: silee <silee@student.42.fr>                +#+  +:+       +#+         #
+#    By: sihunlee <sihunlee@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/09 17:32:11 by silee             #+#    #+#              #
-#    Updated: 2022/03/09 17:50:06 by silee            ###   ########.fr        #
+#    Updated: 2022/03/10 16:08:34 by sihunlee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libft.a
+NAME = libftprintf.a
 
 SRCS = ft_isdigit.c ft_memset.c ft_strjoin.c ft_strtrim.c ft_isprint.c\
 ft_putchar_fd.c ft_strlcat.c ft_substr.c ft_atoi.c ft_itoa.c ft_putendl_fd.c\
@@ -20,7 +20,7 @@ ft_memcmp.c ft_split.c ft_strncmp.c ft_isalpha.c ft_memcpy.c ft_strchr.c\
 ft_strnstr.c ft_isascii.c ft_memmove.c ft_strdup.c ft_strrchr.c ft_striteri.c\
 ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c ft_lstdelone.c\
 ft_lstiter.c ft_lstlast.c ft_lstmap.c ft_lstnew.c ft_lstsize.c\
-ft_print_csdi.c ft_print_p.c ft_print_u.c ft_printxX.c\
+ft_print_csdi.c ft_print_p.c ft_print_u.c ft_print_xX.c\
 ft_printf_utils.c ft_printf.c\
 
 OBJS = ${SRCS:.c=.o}

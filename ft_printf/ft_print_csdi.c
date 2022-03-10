@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_csdi.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: silee <silee@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sihunlee <sihunlee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 17:02:50 by silee             #+#    #+#             */
-/*   Updated: 2022/03/09 17:52:50 by silee            ###   ########.fr       */
+/*   Updated: 2022/03/10 15:50:13 by sihunlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	print_char(va_list data)
 {
     char    c;
 
-    c = va_arg(data, char);
+    c = va_arg(data, int);
 	write(1, &c, 1);
 	return (1);
 }

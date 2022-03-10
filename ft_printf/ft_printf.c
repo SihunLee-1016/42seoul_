@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: silee <silee@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sihunlee <sihunlee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 14:45:28 by silee             #+#    #+#             */
-/*   Updated: 2022/03/09 17:50:11 by silee            ###   ########.fr       */
+/*   Updated: 2022/03/10 16:04:31 by sihunlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,14 @@ int	circulate_str(char *str, va_list data)
 	{
 		if (*str == '%')
 		{
-			*str++;
+			str++;
 			ret = ret + check_vaild_N_print(*str, data);
 			if (ret == ERROR)
 				return (ERROR);
 		}
 		else
 			ret = ret + write(1, str, 1);
-		*str++;
+		str++;
 	}
 	return (ret);
 }
