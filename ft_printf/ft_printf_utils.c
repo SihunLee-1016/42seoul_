@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sihunlee <sihunlee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: silee <silee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 14:47:27 by silee             #+#    #+#             */
-/*   Updated: 2022/03/10 16:11:04 by sihunlee         ###   ########.fr       */
+/*   Updated: 2022/03/11 17:06:23 by silee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_print_str_fd(char *s, int fd)
 	return (i);
 }
 
-int	hexa_num_len(unsigned long num)
+int	hexa_num_len(unsigned int num)
 {
 	int	len;
 

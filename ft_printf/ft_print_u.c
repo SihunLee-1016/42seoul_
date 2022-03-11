@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_u.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sihunlee <sihunlee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: silee <silee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 14:47:45 by silee             #+#    #+#             */
-/*   Updated: 2022/03/10 16:03:56 by sihunlee         ###   ########.fr       */
+/*   Updated: 2022/03/11 16:37:57 by silee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	num_len(unsigned int num)
 	while (num != 0)
 	{
 		len++;
-		num = num / 16;
+		num = num / 10;
 	}
 	return (len);
 }

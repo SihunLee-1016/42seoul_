@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_csdi.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sihunlee <sihunlee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: silee <silee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 17:02:50 by silee             #+#    #+#             */
-/*   Updated: 2022/03/10 15:50:13 by sihunlee         ###   ########.fr       */
+/*   Updated: 2022/03/11 17:10:01 by silee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 #include "libft.h"
 int	print_char(va_list data)
 {
-    char    c;
+	char	c;
 
-    c = va_arg(data, int);
+	c = va_arg(data, int);
 	write(1, &c, 1);
 	return (1);
 }
@@ -24,55 +24,43 @@ int	print_char(va_list data)
 int	print_string(va_list data)
 {
 	char	*s;
+	int		ret;
 
+	ret = 0;
 	s = va_arg(data, char *);
-	while (*s != '\0')
-	{
-		write(1, s, 1);
-		s++;
-	}
-	write(1, "", 1);
-	return ((ft_strlen(s) + 1));
+	if (s == NULL)
+		ret += write(1, "(null)", 6);
+	else
+		ret += ft_print_str_fd(s, 1);
+	return (ret);
 }
 
-int	print_demical(va_list data)
+int	print_decimal(va_list data)
 {
 	int		num;
 	char	*str_num;
-    int     len;
+	int		ret;
 
-    len = 0;
 	num = va_arg(data, int);
 	str_num = ft_itoa(num);
 	if (str_num == 0)
 		return (0);
-	while (num > 0)
-	{
-		num = num / 10;
-		len++;
-	}
-	write(1, str_num, len);
-	free(str_num);
-	return (len);
+	ret = ft_print_str_fd(str_num, 1);
+	free (str_num);
+	return (ret);
 }
 
 int	print_integer(va_list data)
 {
 	int		num;
 	char	*str_num;
-    int     len;
+	int		ret;
 
-    len = 0;
 	num = va_arg(data, int);
 	str_num = ft_itoa(num);
 	if (str_num == 0)
 		return (0);
-	while (num > 0)
-	{
-		num = num / 10;
-		len++;
-	}
-	write (1, str_num, len);
+	ret = ft_print_str_fd(str_num, 1);
 	free (str_num);
-	return (len);
+	return (ret);
 }

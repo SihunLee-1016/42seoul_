@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sihunlee <sihunlee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: silee <silee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 14:45:28 by silee             #+#    #+#             */
-/*   Updated: 2022/03/10 16:04:31 by sihunlee         ###   ########.fr       */
+/*   Updated: 2022/03/11 17:10:09 by silee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	circulate_str(char *str, va_list data)
 {
 	int	ret;
 
-	ret = 1;
+	ret = 0;
 	while (*str != '\0')
 	{
 		if (*str == '%')
@@ -62,7 +62,7 @@ int	check_vaild_N_print(char str, va_list data)
 	else if (str == 'p')
 		bite = print_address(data);
 	else if (str == 'd')
-		bite = print_demical(data);
+		bite = print_decimal(data);
 	else if (str == 'i')
 		bite = print_integer(data);
 	else if (str == 'u')

@@ -3,24 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_p.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sihunlee <sihunlee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: silee <silee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 14:47:38 by silee             #+#    #+#             */
-/*   Updated: 2022/03/10 16:08:57 by sihunlee         ###   ########.fr       */
+/*   Updated: 2022/03/11 16:49:19 by silee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
-void	ft_ul_2_hexa(unsigned long num, int size)
+unsigned long	p_num_len(unsigned long num)
 {
-	int	i;
-	int	*str;
+	unsigned long	len;
 
-	str = ft_calloc(size, sizeof(int));
+	len = 0;
+	while (num != 0)
+	{
+		len++;
+		num = num / 16;
+	}
+	return (len);
+}
+
+void	ft_ul_2_hexa(unsigned long num, unsigned long size)
+{
+	unsigned long	i;
+	unsigned long	*str;
+
+	str = ft_calloc(size, sizeof(unsigned long));
 	if (str == 0)
 		return ;
-	i = 0;
+	i = size;
 	while (size-- >= 0 && num != 0)
 	{
 		if (num >= 16)
@@ -29,14 +42,15 @@ void	ft_ul_2_hexa(unsigned long num, int size)
 			str[size] = num;
 		num = num / 16;
 	}
-	while (str[i])
+	while (size + 1 < i)
 	{
-		if (str[i] >= 10 && str[i] <= 15)
-			ft_putchar_fd((str[i] - 10 + 'a'), 1);
+		if (str[size + 1] >= 10 && str[size + 1] <= 15)
+			ft_putchar_fd((str[size + 1] - 10 + 'a'), 1);
 		else
-			ft_putchar_fd((str[i] + '0'), 1);
-		i++;
+			ft_putchar_fd((str[size + 1] + '0'), 1);
+		size++;
 	}
+	free(str);
 }
 
 int	print_address(va_list data)
@@ -51,8 +65,8 @@ int	print_address(va_list data)
 		ret = ret + write(1, "0", 1);
 	else
 	{
-		ft_ul_2_hexa(num, num_len(num) + 1);
-		ret = ret + hexa_num_len(num);
+		ft_ul_2_hexa(num, (p_num_len(num)));
+		ret = ret + p_num_len(num);
 	}
 	return (ret);
 }
