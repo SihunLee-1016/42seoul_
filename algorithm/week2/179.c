@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <string.h>
 int n_of_num(int num)
 {
     if (num == 0)
@@ -13,28 +13,10 @@ int n_of_num(int num)
         len++;
     }
     return (len);
-}
-// char	*ft_itoa(int n)
-// {
-// 	int	len;
-// 	char			*p;
-
-// 	len = num_len(n);
-// 	p = calloc(len + 1, sizeof(char));
-// 	if (!p)
-// 		return (0);
-// 	while (len-- > 0)
-// 	{
-// 		p[len] = n % 10 + '0';
-// 		n = n / 10;
-// 	}
-// 	return (p);
-// }
+} //index가 아닌 값. 1부터 시작.
 
 int sum_of_num(int first, int second)
 {
-    // a + b > b + a --> 1 
-    // b + a > a+ b --> 0
     int fir_n = n_of_num(first);
     int sec_n = n_of_num(second); 
 
@@ -53,47 +35,87 @@ int sum_of_num(int first, int second)
 
 }
 
-// a+b vs b+a 값 비교. (70 5 -> 705 && 570) 7 500 7500 5007
-// 700 + 5 (1자리수이므로 70에 10을 한번 곱해줌.)
-// 500 + 70 (2자리수이므로 5에 10을 2번 곱해줌)
-// a+b 가 값이 크다면 a,b로 정렬.
-void largestNumber(int* nums, int numsSize){
-    int out = 0;
-    int in;
-    int tmp = 0;
-    int result;
-    int i = 0;
+char	*ft_itoa(int n)
+{
+	int     len;
+	char    *p;
 
-    while (out < numsSize)
+	len = n_of_num(n);
+	p =(char *)malloc(sizeof(char) * (len + 1));
+	if (!p)
+		return (0);
+    p[len] = '\0';
+    while (len-- > 0)
+	{
+		p[len] = n % 10 + '0';
+		n = n / 10;
+	}
+ 	return (p);
+}
+
+char	*ft_strjoin(char *result, char *str)
+{
+	int		sum;
+	char	*res;
+
+    sum = strlen(str);
+    if (result)
+        sum += strlen(result);
+    res = (char *)malloc(sizeof(char) * (sum + 1));
+	if (res == 0)
+		return (0);
+	*res = '\0';
+    if (result)
+    	strcat(res, result);
+	strcat(res, str);
+    free ((void *)result);
+	return (res);
+}
+
+char *array2str(int *num, int numSize)
+{
+    char    *str;
+    char    *result;
+    int     i = 0;
+
+    result = 0;
+    while (i < numSize)
     {
-        in = 0;
-        while (in < numsSize)
+        str = ft_itoa(num[i]);
+        result = ft_strjoin(result, str);
+        free (str);
+        i++;
+    }
+    return (result);
+}
+
+char *largestNumber(int *nums, int numsSize)
+{
+    int tmp = 0;
+    int i = 0;
+    char    *result;
+    
+    for (int out = 0; out < numsSize; out++)
+    {
+        for (int in = 0; in < numsSize - 1; in++)
         {
-            //0이면 in + 1이 앞으로 이동.
-            if (sum_of_num(nums[in],nums[in + 1]) == 0)
+            if ( sum_of_num(nums[in], nums[in + 1]) == 0)
             {
                 tmp = nums[in];
                 nums[in] = nums[in + 1];
                 nums[in + 1] = tmp;
             }
-            in++;
         }
-        out++;
     }
-    while (i < numsSize +1)
-    {
-        printf("%d ",nums[i]);
-        i++;
-    }
-    printf("result = %d", result);
+    result = array2str(nums, numsSize);
+	return (result);
 }
 
 int main()
 {
     int *nums;
-    int num[] ={9,4,1,2,78,4,1,2};
+    int num[] ={9, 4, 1, 2, 78, 4, 1, 2};
     nums = num;
-    largestNumber(nums,5);
+    
+    printf("%s",largestNumber(nums,8));
 }
-//버블? 퀵?
-//일단 버블로 구현.
