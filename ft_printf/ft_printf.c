@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: silee <silee@student.42.fr>                +#+  +:+       +#+        */
+/*   By: silee <silee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 14:45:28 by silee             #+#    #+#             */
-/*   Updated: 2022/03/11 17:10:09 by silee            ###   ########.fr       */
+/*   Updated: 2022/03/14 18:15:17 by silee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,9 @@ int	ft_printf(const char *str, ...)
 	}
 	va_start (data, str);
 	res = circulate_str((char *)str, data);
+	va_end (data);
 	if (res == ERROR)
-		return (0);
+		return (ERROR);
 	return (res);
 }
 
@@ -52,26 +53,26 @@ int	circulate_str(char *str, va_list data)
 
 int	check_vaild_N_print(char str, va_list data)
 {
-	int	bite;
+	int	byte;
 
-	bite = -1;
+	byte = -1;
 	if (str == 'c')
-		bite = print_char(data);
+		byte = print_char(data);
 	else if (str == 's')
-		bite = print_string(data);
+		byte = print_string(data);
 	else if (str == 'p')
-		bite = print_address(data);
+		byte = print_address(data);
 	else if (str == 'd')
-		bite = print_decimal(data);
+		byte = print_decimal(data);
 	else if (str == 'i')
-		bite = print_integer(data);
+		byte = print_integer(data);
 	else if (str == 'u')
-		bite = print_u_demical(data);
+		byte = print_u_demical(data);
 	else if (str == 'x')
-		bite = print_low_hexa(data);
+		byte = print_low_hexa(data);
 	else if (str == 'X')
-		bite = print_up_hexa(data);
+		byte = print_up_hexa(data);
 	else if (str == '%')
-		bite = write(1, "%", 1);
-	return (bite);
+		byte = write(1, "%", 1);
+	return (byte);
 }

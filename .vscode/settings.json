@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "cstddef": "c",
+        "get_next_line.h": "c",
+        "stdio.h": "c",
+        "ft_printf.h": "c",
+        "__locale": "c",
+        "ios": "c"
+    },
+    "C_Cpp.errorSquiggles": "Disabled"
+}
