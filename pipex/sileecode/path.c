@@ -6,7 +6,7 @@
 /*   By: silee <silee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/01 17:53:05 by silee             #+#    #+#             */
-/*   Updated: 2022/05/01 18:08:09 by silee            ###   ########.fr       */
+/*   Updated: 2022/05/01 18:37:58 by silee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ char	*make_path(char *tmp, char *cmd)
 
 	i = 0;
 	j = 0;
-	path = (char *)malloc(sizeof(char) * (idx_of_c(tmp, NULL) \
-		+ idx_of_c(cmd, NULL) + 2));
+	path = (char *)malloc(sizeof(char) * (idx_of_c(tmp, 0) \
+		+ idx_of_c(cmd, 0) + 2));
 	while (tmp[j] != '\0')
 	{
 		path[i] = tmp[j];
@@ -60,20 +60,20 @@ char	*find_path(char *cmd, char **envp)
 	int		i;
 
 	i = 0;
-	while (env[i] && ft_strncmp(env[i], "PATH", 5))
+	while (envp[i] && ft_strncmp(envp[i], "PATH", 5))
 		i++;
-	if (!env[i])
+	if (!envp[i])
 		return (NULL);
-	path = env[i] + 5;
-	while (path && idx_of_c(path, ":") > -1)
+	path = envp[i] + 5;
+	while (path && idx_of_c(path, ':') > -1)
 	{
-		tmp = ft_strndup(path, idx_of_c(path, ":"));
+		tmp = ft_strndup(path, idx_of_c(path, ':'));
 		ret_path = make_path(tmp, cmd);
 		free (tmp);
 		if (access(ret_path, F_OK) == 0)
 			return (ret_path);
 		free (ret_path);
-		path += idx_of_c(path, ":") + 1;
+		path += idx_of_c(path, ':') + 1;
 	}
 	return (cmd);
 }

@@ -6,13 +6,13 @@
 #    By: silee <silee@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/01 17:34:37 by silee             #+#    #+#              #
-#    Updated: 2022/05/01 17:38:13 by silee            ###   ########.fr        #
+#    Updated: 2022/05/01 19:49:15 by silee            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = pipex
 
-SRCS = path.c ft_split.c pipex.c utils.c
+SRCS = path.c ft_split.c pipex.c util.c
 
 OBJS = ${SRCS:.c=.o}
 

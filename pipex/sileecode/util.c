@@ -6,7 +6,7 @@
 /*   By: silee <silee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/01 17:58:40 by silee             #+#    #+#             */
-/*   Updated: 2022/05/01 18:00:30 by silee            ###   ########.fr       */
+/*   Updated: 2022/05/01 19:49:48 by silee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,36 @@ void	ft_putstr_fd(char *s, int fd)
 void	ft_make_exit(int status, char *message)
 {
 	if (message)
-		ft_putstr(message, status);
+		ft_putstr_fd(message, status);
 	exit(status);
+}
+void	*ft_calloc(size_t count, size_t size)
+{
+	int		i;
+	char	*p;
+
+	p = malloc(count * size);
+	if (p == 0)
+		return (0);
+	i = count * size;
+	ft_bzero(p, i);
+	return (p);
+}
+void	ft_bzero(void *s, size_t n)
+{
+	ft_memset(s, 0, n);
+}
+void	*ft_memset(void *dest, int c, size_t len)
+{
+	size_t			i;
+	unsigned char	*tmp;
+
+	tmp = (unsigned char *)dest;
+	i = 0;
+	while (i < len)
+	{
+		*(tmp + i) = (unsigned char)c;
+		i++;
+	}
+	return (tmp);
 }
