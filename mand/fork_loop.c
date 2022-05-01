@@ -6,7 +6,7 @@
 /*   By: silee <silee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 19:00:26 by heom              #+#    #+#             */
-/*   Updated: 2022/04/25 16:07:53 by silee            ###   ########.fr       */
+/*   Updated: 2022/04/27 17:41:08 by silee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ char
 	return ("Invalid command");
 }
 
-//0과 cmd1, 1과 cmd2.
+//0과 cmd1, 1과 cmd2. "자식프로세스에서 돌아가는 함수"
 void
 	do_child(int id, char *raw_cmd)
 {
@@ -112,10 +112,11 @@ void
 	i = 0;
 	while (i < all()->proc_num)
 	{
+		//파이프는 이미 만들어진 상태.
 		all()->pid[i] = fork();
 		if (all()->pid[i] == -1)
 			safe_exit(1, "fork error!\n");
-		// command 1부터 시작.
+		// "자식"프로세서에서 command 1부터 시작. 
 		if (all()->pid[i] == 0)
 			do_child(i, all()->argv[i + 2]);
 		i++;

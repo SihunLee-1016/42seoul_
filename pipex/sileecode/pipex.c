@@ -1,68 +1,87 @@
 /* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   pipex.c                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: sihunlee <sihunlee@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/26 16:38:42 by sihunlee          #+#    #+#             */
-/*   Updated: 2022/04/26 17:34:07 by sihunlee         ###   ########.fr       */
-/*                                                                            */
+/*																			*/
+/*														:::	  ::::::::   */
+/*   pipex.c											:+:	  :+:	:+:   */
+/*													+:+ +:+		 +:+	 */
+/*   By: silee <silee@student.42seoul.kr>		   +#+  +:+	   +#+		*/
+/*												+#+#+#+#+#+   +#+		   */
+/*   Created: 2022/04/26 16:38:42 by sihunlee		  #+#	#+#			 */
+/*   Updated: 2022/05/01 17:42:37 by silee			###   ########.fr	   */
+/*																			*/
 /* ************************************************************************** */
 
 #include "pipex.h"
-int main(int argc, char **argv, char **envp)
+
+int	cmd_start(char *cmd, char **envp)
 {
-    int read_fd;
-    int write_fd;
-    int cmd1_fd[2];
-    int cmd2_fd[2];
-    if (argc == 5)
-    {
-        read_fd = ft_file_1(argv[1]);
-        write_fd = ft_file_2(argv[4]);
+	char	**commands;
+	char	*path;
 
-    }
-    else
-        ft_make_exit(2,"number of Arguments are not valid");
-
+	commands = ft_split (cmd, ' ');
+	path = find_path (cmd, envp);
+	execve (path, commands, envp);
+	exit (127);
 }
 
-int ft_file_1(char *file1)
+void	pipe_n_fork(char *cmd, char **envp, int read_fd)
 {
-    if (access(file1, F_OK) == -1)
-    {
-        write(2, "No such file or directory\n",28);
-        ft_make_exit(2, "ERROR");
-    }
-    else
-        return (open(file1,O_RDONLY));
+	pid_t	pid;
+	int		pipe[2];
+	int		status;
+
+	pipe (pipe);
+	pid = fork();
+	if (pid > 0)
+	{
+		close (pipe[1]);
+		dup2 (pipe[0], STDIN_FILENO);
+		waitpid (pid, NULL, 0);
+	}
+	else if (pid == 0)
+	{
+		close (pipe[0]);
+		dup2 (pipe[1], STDOUT_FILENO);
+		cmd_start (cmd, envp);
+	}
+	else
+		return ;
 }
 
-int ft_file_2(char *file2)
+int	ft_file_1(char *file1)
 {
-    int ret;
-
-    ret = open(filename, O_CREAT | O_WRONLY | O_TRUNC, 0644);
-    if (ret == -1)
-        ft_make_exit(2, "ERROR");
-    return (ret);
+	if (access(file1, F_OK) == -1)
+	{
+		write (2, "No such file or directory\n", 28);
+		ft_make_exit (2, "ERROR");
+	}
+	else
+		return (open (file1, O_RDONLY));
 }
 
-
-void	ft_putstr_fd(char *s, int fd)
+int	ft_file_2(char *file2)
 {
-	int	i;
+	int	ret;
 
-	i = 0;
-	while (s[i] != '\0')
-		write (fd, &s[i++], 1);
-    write(fd,"\n",1);
+	ret = open(filename, O_CREAT | O_WRONLY | O_TRUNC, 0644);
+	if (ret == -1)
+		ft_make_exit (2, "ERROR");
+	return (ret);
 }
 
-void ft_make_exit(int status, char *message)
+int	main(int argc, char **argv, char **envp)
 {
-    if (message)
-        ft_putstr(message, status);
-    exit(status);
+	int	read_fd;
+	int	write_fd;
+
+	if (argc == 5)
+	{
+		read_fd = ft_file_1 (argv[1]);
+		write_fd = ft_file_2 (argv[4]);
+		dup2 (read_fd, STDIN_FILENO);
+		dup2 (write_Fd, STDOUT_FILENO);
+		pipe_n_fork (cmd, envp, read_fd);
+	}
+	else
+		ft_make_exit (2, "number of Arguments are not valid");
+	return (0);
 }
