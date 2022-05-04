@@ -6,21 +6,40 @@
 /*   By: silee <silee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/01 17:53:05 by silee             #+#    #+#             */
-/*   Updated: 2022/05/01 18:37:58 by silee            ###   ########.fr       */
+/*   Updated: 2022/05/04 20:47:18 by silee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"		
+#include "pipex.h"
 
-int	is_slash(char *commands)
+int	idx_of_c(char *s, char c)
 {
-	while (commands)
+	int	i;
+
+	i = 0;
+	while (s[i] && s[i] != c)
+		i++;
+	if (s[i] == c)
+		return (i);
+	return (-1);
+}
+
+char	*ft_strndup(char *src, int n)
+{
+	int		i;
+	char	*p;
+
+	i = 0;
+	p = (char *)malloc(sizeof(char) * (n + 1));
+	if (p == 0)
+		return (0);
+	while (*(src + i) != '\0' && i < n)
 	{
-		if (*commands == '/')
-			return (-1);
-		commands++;
+		*(p + i) = *(src + i);
+		i++;
 	}
-	return (1);
+	*(p + i) = '\0';
+	return (p);
 }
 
 char	*make_path(char *tmp, char *cmd)
@@ -29,25 +48,20 @@ char	*make_path(char *tmp, char *cmd)
 	int		i;
 	int		j;
 
+	if (tmp == 0)
+		return (0);
 	i = 0;
 	j = 0;
 	path = (char *)malloc(sizeof(char) * (idx_of_c(tmp, 0) \
-		+ idx_of_c(cmd, 0) + 2));
+	+ idx_of_c(cmd, 0) + 2));
+	if (path == 0)
+		return (0);
 	while (tmp[j] != '\0')
-	{
-		path[i] = tmp[j];
-		j++;
-		i++;
-	}
-	path[i] = '/';
-	i += 1;
+		path[i++] = tmp[j++];
+	path[i++] = '/';
 	j = 0;
 	while (cmd[j])
-	{
-		path[i] = cmd[j];
-		i++;
-		j++;
-	}
+		path[i++] = cmd[j++];
 	path[i] = '\0';
 	return (path);
 }
@@ -60,7 +74,7 @@ char	*find_path(char *cmd, char **envp)
 	int		i;
 
 	i = 0;
-	while (envp[i] && ft_strncmp(envp[i], "PATH", 5))
+	while (envp[i] && ft_strncmp(envp[i], "PATH=", 5) != 0)
 		i++;
 	if (!envp[i])
 		return (NULL);
@@ -69,11 +83,14 @@ char	*find_path(char *cmd, char **envp)
 	{
 		tmp = ft_strndup(path, idx_of_c(path, ':'));
 		ret_path = make_path(tmp, cmd);
-		free (tmp);
+		if (tmp == 0 || ret_path == 0)
+			return (0);
+		else
+			free (tmp);
 		if (access(ret_path, F_OK) == 0)
 			return (ret_path);
 		free (ret_path);
 		path += idx_of_c(path, ':') + 1;
 	}
-	return (cmd);
+	return (NULL);
 }
