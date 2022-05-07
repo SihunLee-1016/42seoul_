@@ -79,7 +79,9 @@ int	main(int argc, char **argv, char **envp)
 	{
 		read_fd = ft_file_1 (argv[1]);
 		write_fd = ft_file_2 (argv[4]);
+		//STDIN으로 읽어오면 read_fd가 가르키고 있는 파일의 내용을 읽어옴
 		dup2 (read_fd, STDIN);
+		//STDOUT으로 write하면 write_fd가 가르키고 있는 파일에 출력함.
 		dup2 (write_fd, STDOUT);
 		pipe_n_fork (argv[2], envp);
 		cmd_start(argv[3], envp);
