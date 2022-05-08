@@ -6,7 +6,7 @@
 /*   By: silee <silee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 16:51:28 by silee             #+#    #+#             */
-/*   Updated: 2022/05/07 20:00:43 by silee            ###   ########.fr       */
+/*   Updated: 2022/05/08 16:50:12 by silee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,23 @@
 int *make_sorted_array(int argc, char **argv)
 {
     int i;
+    int j;
     int *num_array;
     
-    i = 0
+    i = 1;
+    j = 0;
     num_array = (int *)malloc(sizeof(int) * (argc - 1));
     if (num_array == 0)
         return (0);
     while (argv[i])
     {
-        //atoi에서 O_F or U_F가 발생 시, exit으로 종료
-        num_array[i] = ft_atoi(argv[i]);
+        num_array[j] = ft_atoi(argv[i]);
         i++;
+        j++;
     }
-    //quicksort로 정렬
-    //qsort(num_array, argc, sizeof(int),)
+    num_array[i] = 0;
+    i = 0;
+    quick_sort(num_array, 0, argc - 2);
     return (num_array);
 }
 
@@ -36,5 +39,7 @@ int main(int argc, char **argv)
 {
     int sorted_array;
 
+    //들어온 인자들을 정렬된 채로 배열에 저장. pivot값을 지정하기 위함.
     sorted_array = make_sorted_array(argc, **argv);
+    
 }

@@ -6,7 +6,7 @@
 /*   By: silee <silee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 19:31:19 by silee             #+#    #+#             */
-/*   Updated: 2022/05/07 19:31:54 by silee            ###   ########.fr       */
+/*   Updated: 2022/05/08 16:50:25 by silee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,14 @@
 # include <fcntl.h>
 # include <string.h>
 # include <sys/wait.h>
+
+static int	ft_check_flow(long long num, int c, int minus)
+int	ft_atoi(const char *str)
+
+
+
+
+
+
 
 #endif

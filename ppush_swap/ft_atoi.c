@@ -5,31 +5,26 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: silee <silee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/07 19:33:21 by silee             #+#    #+#             */
-/*   Updated: 2022/05/07 19:54:53 by silee            ###   ########.fr       */
+/*   Created: 2022/05/08 16:16:19 by silee             #+#    #+#             */
+/*   Updated: 2022/05/08 16:16:20 by silee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-#include "push_swap.h"
-int	ft_isspace(char sstr)
+void	is_valid(char *sstr)
 {
-	if (sstr == '\t')
-		return (1);
-	else if (sstr == '\n')
-		return (1);
-	else if (sstr == '\v')
-		return (1);
-	else if (sstr == '\f')
-		return (1);
-	else if (sstr == '\r')
-		return (1);
-	else if (sstr == ' ')
-		return (1);
-	else if (sstr == '\0')
-		return (1);
-	else
-		return (0);
+    int i;
+
+    i = 0;
+    while (sstr[i])
+    {
+        if (!(sstr[i] >= '0' && sstr[i] <= '9'))
+        {
+            write (1, "ERROR", 6);
+            exit (1);
+        }
+        i++;
+    }
+    return ;
 }
 
 static int	ft_check_flow(long long num, int c, int minus)
@@ -45,7 +40,7 @@ static int	ft_check_flow(long long num, int c, int minus)
 	return (0);
 }
 
-int	ft_atoi(const char *str)
+int	ft_atoi(char *str)
 {
 	long long	num;
 	int			p_m;
@@ -54,8 +49,8 @@ int	ft_atoi(const char *str)
 	num = 0;
 	p_m = 1;
 	i = 0;
-	while ((ft_isspace(str[i]) == 1) && str[i])
-		i++;
+
+    is_valid (str);
 	if (str[i] == '-')
 		p_m = -1;
 	if (str[i] == '-' || str[i] == '+')
