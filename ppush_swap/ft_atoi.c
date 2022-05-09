@@ -6,7 +6,7 @@
 /*   By: silee <silee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 16:16:19 by silee             #+#    #+#             */
-/*   Updated: 2022/05/08 16:16:20 by silee            ###   ########.fr       */
+/*   Updated: 2022/05/09 18:00:36 by silee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,10 @@ int	ft_atoi(char *str)
 	while ((str[i] >= '0' && str[i] <= '9') && str[i])
 	{
 		if (ft_check_flow(num, str[i], p_m) != 0)
+		{
+			write (1, "ERROR", 6);
 			exit (1);
+		}
 		num = (10 * num) + str[i] - 48;
 		i++;
 	}

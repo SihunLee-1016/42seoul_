@@ -5,20 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: silee <silee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/07 19:31:19 by silee             #+#    #+#             */
-/*   Updated: 2022/05/08 16:50:25 by silee            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: silee <silee@student.42seoul.kr>           +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/01 18:05:18 by silee             #+#    #+#             */
-/*   Updated: 2022/05/04 20:43:13 by silee            ###   ########.fr       */
+/*   Created: 2022/05/09 20:08:06 by silee             #+#    #+#             */
+/*   Updated: 2022/05/09 20:08:09 by silee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +20,30 @@
 # include <string.h>
 # include <sys/wait.h>
 
-static int	ft_check_flow(long long num, int c, int minus)
-int	ft_atoi(const char *str)
+typedef struct s_node
+{
+	int				data;
+	struct s_node	*left;
+	struct s_node	*right;
+}	t_node;
 
+typedef struct s_stack
+{
+    int             noe;
+	struct s_node	*top;
+	struct s_node	*bottom;
+}	t_stack;
+
+typedef struct s_var
+{
+	int				max_size;
+	int				*sorted_array;
+	struct s_stack	*stack_a;
+	struct s_stack	*stack_b;
+	struct s_list	*list;
+	int				a_size;
+	int				b_size;
+}	t_data_list;
 
 
 
