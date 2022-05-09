@@ -6,7 +6,7 @@
 /*   By: silee <silee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 19:45:02 by silee             #+#    #+#             */
-/*   Updated: 2022/05/09 20:10:27 by silee            ###   ########.fr       */
+/*   Updated: 2022/05/09 20:26:13 by silee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,20 @@
 // 	int				b_size;
 // }	t_data_list;
 
-void list_init (t_data_list data)
+t_stack stack_init (void)
 {
-    data.stack_a = (t_stack *)malloc(sizeof(t_stack));
-    data.stack_b = (t_stack *)malloc(sizeof(t_stack));
+    t_stack *tmp_stack;
+    t_node  *tmp_node;
+
+    tmp_stack = malloc(sizeof(t_stack));
+    tmp_node = malloc(sizeof(t_node));
+
+    tmp_node->data = 0;
+    tmp_node->left = NULL;
+    tmp_node->right = NULL;
+    tmp_stack->top = tmp_node;
+    tmp_stack->noe = 0;
+    return (tmp_stack);
 }
 
 t_node  make_node(int value)
