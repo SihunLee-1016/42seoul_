@@ -6,25 +6,30 @@
 /*   By: silee <silee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 16:16:19 by silee             #+#    #+#             */
-/*   Updated: 2022/05/09 18:00:36 by silee            ###   ########.fr       */
+/*   Updated: 2022/05/10 17:04:28 by silee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	is_valid(char *sstr)
-{
-    int i;
+#include "push_swap.h"
 
-    i = 0;
-    while (sstr[i])
-    {
-        if (!(sstr[i] >= '0' && sstr[i] <= '9'))
-        {
-            write (1, "ERROR", 6);
-            exit (1);
-        }
-        i++;
-    }
-    return ;
+int	ft_isspace(char sstr)
+{
+	if (sstr == '\t')
+		return (1);
+	else if (sstr == '\n')
+		return (1);
+	else if (sstr == '\v')
+		return (1);
+	else if (sstr == '\f')
+		return (1);
+	else if (sstr == '\r')
+		return (1);
+	else if (sstr == ' ')
+		return (1);
+	else if (sstr == '\0')
+		return (1);
+	else
+		return (0);
 }
 
 static int	ft_check_flow(long long num, int c, int minus)
@@ -40,7 +45,16 @@ static int	ft_check_flow(long long num, int c, int minus)
 	return (0);
 }
 
-int	ft_atoi(char *str)
+void	check_valid(char str)
+{
+	if (!(str >= '0' && str <= '9'))
+	{
+		write (1, "ERROR", 6);
+		exit (1);
+	}
+
+}
+int	ft_atoi(char *str, int *len)
 {
 	long long	num;
 	int			p_m;
@@ -50,13 +64,13 @@ int	ft_atoi(char *str)
 	p_m = 1;
 	i = 0;
 
-    is_valid (str);
 	if (str[i] == '-')
 		p_m = -1;
 	if (str[i] == '-' || str[i] == '+')
 		i += 1;
 	while ((str[i] >= '0' && str[i] <= '9') && str[i])
 	{
+		check_valid(str[i]);
 		if (ft_check_flow(num, str[i], p_m) != 0)
 		{
 			write (1, "ERROR", 6);
@@ -65,5 +79,6 @@ int	ft_atoi(char *str)
 		num = (10 * num) + str[i] - 48;
 		i++;
 	}
+	*len = i;
 	return ((int)(p_m * num));
 }

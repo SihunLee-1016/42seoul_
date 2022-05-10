@@ -6,11 +6,11 @@
 /*   By: silee <silee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 16:48:13 by silee             #+#    #+#             */
-/*   Updated: 2022/05/08 16:48:20 by silee            ###   ########.fr       */
+/*   Updated: 2022/05/10 14:41:25 by silee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ppush_swap/push_swap.h"
+#include "push_swap.h"
 
 void swap(int *a, int *b)
 {
