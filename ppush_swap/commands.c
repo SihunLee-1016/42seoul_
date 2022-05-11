@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   commands.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: silee <silee@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: sihunlee <sihunlee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 15:55:51 by silee             #+#    #+#             */
-/*   Updated: 2022/05/11 17:31:06 by silee            ###   ########.fr       */
+/*   Updated: 2022/05/11 22:50:25 by sihunlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	ra_command(t_stack *stack_a)
 	n_node->next = NULL;
 }
 
-void	rb_command(t_stack *stack_a)
+void	rb_command(t_stack *stack_b)
 {	
 	int		f_data;
 	t_node *n_node;
@@ -97,20 +97,51 @@ void	rra_command(t_stack *stack_a)
 	t_node	*new_head;
 
 	now = stack_a->head;
+	//마지막 노드로 접근.
 	while (now->next != NULL)
 		now = now->next;
+	//마지막 노드의 data만 추출.
 	l_data = now->data;
+	//마지막 노드의 이전노드의 next를 null로 초기화.
 	now->prev->next = NULL;
-	now->prev = NULL;
+	// free.
 	free(now);
+	//bottom의 data를 새로운 노드에 할당해 맨 앞에 추가.
 	new_head = malloc(sizeof(t_node));
+	//값을 넣어주고
 	new_head->data = l_data;
+	//첫 노드가 될 것이니 이전을 가르키는건 없도록
 	new_head->prev = NULL;
+	//첫노드이므로 가르키는건 기존 첫번 째 노드.
 	new_head->next = stack_a->head;
-	
+	stack_a->head->prev = new_head;
+	stack_a->head = new_head;
 }
 
-void	rrb_command(t_stack *stack_a)
+void	rrb_command(t_stack *stack_b)
 {
+	int		l_data;
+	t_node *now;
+	t_node	*new_head;
 
+	now = stack_b->head;
+	//마지막 노드로 접근.
+	while (now->next != NULL)
+		now = now->next;
+	//마지막 노드의 data만 추출.
+	l_data = now->data;
+	//마지막 노드의 이전노드의 next를 null로 초기화.
+	now->prev->next = NULL;
+	// free.
+	free(now);
+	//bottom의 data를 새로운 노드에 할당해 맨 앞에 추가.
+	new_head = malloc(sizeof(t_node));
+	//값을 넣어주고
+	new_head->data = l_data;
+	//첫 노드가 될 것이니 이전을 가르키는건 없도록
+	new_head->prev = NULL;
+	//첫노드이므로 가르키는건 기존 첫번 째 노드.
+	new_head->next = stack_b->head;
+	stack_b->head->prev = new_head;
+	stack_b->head = new_head;
 }

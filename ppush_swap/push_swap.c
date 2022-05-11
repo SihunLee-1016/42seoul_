@@ -59,7 +59,7 @@ int main(int argc, char **argv)
 	int out = stack_a->noe;
 	printf("\nbf sa\n");
 	see_value_s(stack_a);
-	ra_command(stack_a);
+	rra_command(stack_a);
 	printf("\naf sa\n");
 	see_value_s(stack_a);
 	// while (i < out)
