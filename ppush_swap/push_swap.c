@@ -43,14 +43,33 @@ int main(int argc, char **argv)
 	t_stack *stack_b;
 	int		*nums;
 
-	//들어온 인자들을 정렬된 채로 배열에 저장. pivot값을 지정하기 위함.
 	make_stack_n_push(&stack_a, argc, argv);
 	stack_b = stack_init();
 	nums = make_num_list(stack_a);
-	int i = -1;
-	while (++i < stack_a->noe)
+	
+	int i = 0;
+	while (i < stack_a->noe)
+	{
 		printf("%d ",nums[i]);
-	// see_value_s(stack_a);
+		i++;
+	}
+	i = 0;
+	int j;
+	int poped_value;
+	int out = stack_a->noe;
+	printf("\nbf sa\n");
+	see_value_s(stack_a);
+	ra_command(stack_a);
+	printf("\naf sa\n");
+	see_value_s(stack_a);
+	// while (i < out)
+	// {
+	// 	poped_value = d_pop(stack_a);
+	// 	printf("\npoped value = %d\n", poped_value);
+	// 	printf("left stack\n");
+	// 	see_value_s(stack_a);
+	// 	i++;
+	// }
 
 }
 

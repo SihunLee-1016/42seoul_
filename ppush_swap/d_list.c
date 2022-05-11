@@ -38,7 +38,7 @@ t_stack	*stack_init(void)
 	return (tmp_stack);
 }
 
-void	insert(t_stack *list, int value)
+void	d_push (t_stack *list, int value)
 {
 	t_node	*n_node;
 
@@ -60,6 +60,28 @@ void	insert(t_stack *list, int value)
 	list->noe += 1;
 }
 
+int	d_pop (t_stack *stack)
+{
+	t_node	*tmp;
+	t_node	*now;
+	int		data;
+
+	if (stack->noe == 0)
+	{
+		printf("no more elements in stack\n");
+		exit(1);
+	}
+	now = stack->head;
+	data = now->data;
+	tmp = now->next;
+	if (stack->noe != 1)
+		tmp->prev = NULL;
+	stack->head = tmp;
+	free (now);
+	stack->noe -= 1;
+	return (data);
+}
+
 //함수 내에서 stack_init을 했을 때, 함수가 종료되면 메모리상 종료가되며 삭제됨.
 //2중포인터로 사용해서 생성.
 void	make_stack_n_push(t_stack **stack_a, int argc, char **argv)
@@ -77,7 +99,7 @@ void	make_stack_n_push(t_stack **stack_a, int argc, char **argv)
 		{
 			if ((argv[i][j] >= '0' && argv[i][j] <= '9') || argv[i][j] == '-')
 			{
-				insert(*stack_a, ft_atoi(&argv[i][j], &len));
+				d_push	(*stack_a, ft_atoi(&argv[i][j], &len));
 				j = j + len - 1;
 			}
 			else if (ft_isspace(argv[i][j]) == 0)
@@ -102,7 +124,7 @@ void	see_value_s(t_stack *stack)
 	t_node *cur = stack->head;
 	while (cur)
 	{
-		printf("2 : %d\n", cur->data);
+		printf("%d ", cur->data);
 		cur = cur->next;
 	}
 }
@@ -115,13 +137,11 @@ int	*make_num_list(t_stack *stack_a)
 
 	i = 0;
 	cur = stack_a->head;
-	printf("noe = %d\n",stack_a->noe);
 	list = (int *)malloc(sizeof(int) * stack_a->noe);
 	if (list == 0)
 		exit (1);
 	while (i < stack_a->noe)
 	{
-		printf("value = %d\n",cur->data);
 		list[i] = cur->data;
 		cur = cur->next;
 		i++;

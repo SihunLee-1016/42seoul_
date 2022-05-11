@@ -6,7 +6,7 @@
 /*   By: silee <silee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 20:08:06 by silee             #+#    #+#             */
-/*   Updated: 2022/05/11 13:54:00 by silee            ###   ########.fr       */
+/*   Updated: 2022/05/11 17:21:53 by silee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,13 @@ void	check_duplicated(int argc, int *nums);
 int *make_sorted_array(int argc, char **argv);
 
 void	make_stack_n_push(t_stack **stack_a, int argc, char **argv);
-void	insert(t_stack *list, int value);
+void	d_push	(t_stack *list, int value);
 t_stack *stack_init (void);
 t_node  *make_node(int value);
 void	see_value_f(t_stack *stack);
 void	see_value_s(t_stack *stack);
+int	d_pop (t_stack *stack);
+
 
 void	is_valid(char *str);
 int	ft_isspace(char sstr);
@@ -54,7 +56,16 @@ int	*make_num_list(t_stack *stack_a);
 void	quick_sort(int dataset[], int left, int right);
 int	partition(int dataset[], int left, int right);
 void	swap(int *a, int *b);
+void	check_duplicated(int argc, int *nums);
 
+void    pb_command(t_stack *stack_a, t_stack *stack_b);
+void    pa_command(t_stack *stack_a, t_stack *stack_b);
+void	sa_command(t_stack *stack_a);
+void	sb_command(t_stack *stack_b);
+void	ra_command(t_stack *stack_a);
+void	rb_command(t_stack *stack_b);
+void	rra_command(t_stack *stack_a);
+void	rrb_command(t_stack *stack_b);
 
 
 #endif
