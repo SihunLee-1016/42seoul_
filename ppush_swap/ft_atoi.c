@@ -6,7 +6,7 @@
 /*   By: silee <silee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 16:16:19 by silee             #+#    #+#             */
-/*   Updated: 2022/05/10 17:04:28 by silee            ###   ########.fr       */
+/*   Updated: 2022/05/11 13:29:49 by silee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ void	check_valid(char str)
 		write (1, "ERROR", 6);
 		exit (1);
 	}
-
 }
+
 int	ft_atoi(char *str, int *len)
 {
 	long long	num;
@@ -63,7 +63,6 @@ int	ft_atoi(char *str, int *len)
 	num = 0;
 	p_m = 1;
 	i = 0;
-
 	if (str[i] == '-')
 		p_m = -1;
 	if (str[i] == '-' || str[i] == '+')

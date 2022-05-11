@@ -6,7 +6,7 @@
 /*   By: silee <silee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 20:08:06 by silee             #+#    #+#             */
-/*   Updated: 2022/05/10 17:03:07 by silee            ###   ########.fr       */
+/*   Updated: 2022/05/11 13:54:00 by silee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,11 @@ static int	ft_check_flow(long long num, int c, int minus);
 int	ft_atoi(char *str, int *len);
 void	check_valid(char str);
 
+int	*make_num_list(t_stack *stack_a);
 
+void	quick_sort(int dataset[], int left, int right);
+int	partition(int dataset[], int left, int right);
+void	swap(int *a, int *b);
 
 
 

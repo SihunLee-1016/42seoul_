@@ -1,42 +1,41 @@
 /* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   d_list.c                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: silee <silee@student.42seoul.kr>           +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/09 19:45:02 by silee             #+#    #+#             */
-/*   Updated: 2022/05/10 17:04:28 by silee            ###   ########.fr       */
-/*                                                                            */
+/*																			*/
+/*														:::	  ::::::::   */
+/*   d_list.c										   :+:	  :+:	:+:   */
+/*													+:+ +:+		 +:+	 */
+/*   By: silee <silee@student.42seoul.kr>		   +#+  +:+	   +#+		*/
+/*												+#+#+#+#+#+   +#+		   */
+/*   Created: 2022/05/09 19:45:02 by silee			 #+#	#+#			 */
+/*   Updated: 2022/05/10 17:04:28 by silee			###   ########.fr	   */
+/*																			*/
 /* ************************************************************************** */
 
 #include "push_swap.h"
-t_node  *make_node(int value)
-{
-    t_node  *n_node;
 
-    n_node = (t_node *)malloc(sizeof(t_node));
-    n_node->prev = NULL;
-    n_node->next = NULL;
-    n_node->data = value;
-    return (n_node);
+t_node	*make_node(int value)
+{
+	t_node	*n_node;
+
+	n_node = (t_node *)malloc(sizeof(t_node));
+	n_node->prev = NULL;
+	n_node->next = NULL;
+	n_node->data = value;
+	return (n_node);
 }
 
-t_stack *stack_init (void)
+t_stack	*stack_init(void)
 {
-    t_stack *tmp_stack;
+	t_stack	*tmp_stack;
 	t_node	*tmp_node;
 
-    tmp_stack = malloc(sizeof(t_stack));
-    tmp_node = malloc(sizeof(t_node));
-
+	tmp_stack = malloc(sizeof(t_stack));
+	tmp_node = malloc(sizeof(t_node));
 	tmp_node->data = 0;
 	tmp_node->next = NULL;
 	tmp_node->prev = NULL;
-
 	tmp_stack->head = tmp_node;
-    tmp_stack->noe = 0;
-    return (tmp_stack);
+	tmp_stack->noe = 0;
+	return (tmp_stack);
 }
 
 void	insert(t_stack *list, int value)
@@ -70,7 +69,6 @@ void	make_stack_n_push(t_stack **stack_a, int argc, char **argv)
 	int	len;
 
 	i = 1;
-	len = 0;
 	*stack_a = stack_init();
 	while (i < argc)
 	{
@@ -80,8 +78,7 @@ void	make_stack_n_push(t_stack **stack_a, int argc, char **argv)
 			if ((argv[i][j] >= '0' && argv[i][j] <= '9') || argv[i][j] == '-')
 			{
 				insert(*stack_a, ft_atoi(&argv[i][j], &len));
-				j += len;
-				continue ;
+				j = j + len - 1;
 			}
 			else if (ft_isspace(argv[i][j]) == 0)
 			{
@@ -92,7 +89,6 @@ void	make_stack_n_push(t_stack **stack_a, int argc, char **argv)
 		}
 		i++;
 	}
-	// data->stack_b = stack_init();
 }
 
 void	see_value_f(t_stack *stack)
@@ -103,12 +99,34 @@ void	see_value_f(t_stack *stack)
 
 void	see_value_s(t_stack *stack)
 {
-	
 	t_node *cur = stack->head;
-	printf("noe = %d\n",stack->noe);
 	while (cur)
 	{
 		printf("2 : %d\n", cur->data);
 		cur = cur->next;
 	}
+}
+
+int	*make_num_list(t_stack *stack_a)
+{
+	t_node *cur;
+	int		*list;
+	int		i;
+
+	i = 0;
+	cur = stack_a->head;
+	printf("noe = %d\n",stack_a->noe);
+	list = (int *)malloc(sizeof(int) * stack_a->noe);
+	if (list == 0)
+		exit (1);
+	while (i < stack_a->noe)
+	{
+		printf("value = %d\n",cur->data);
+		list[i] = cur->data;
+		cur = cur->next;
+		i++;
+	}
+	quick_sort(list, 0, stack_a->noe - 1);
+	check_duplicated(stack_a->noe, list);
+	return (list);
 }
