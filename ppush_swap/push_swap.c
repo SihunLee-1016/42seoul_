@@ -36,7 +36,16 @@ void	check_duplicated(int noe, int *nums)
 		check_idx += 1;
 	}
 }
+
+void	atob(int noe, int *nums)
+{
+	if (noe == 1)
+		return ;
 	
+}
+
+
+
 int main(int argc, char **argv)
 {
 	t_stack *stack_a;
@@ -46,22 +55,7 @@ int main(int argc, char **argv)
 	make_stack_n_push(&stack_a, argc, argv);
 	stack_b = stack_init();
 	nums = make_num_list(stack_a);
-	
-	int i = 0;
-	while (i < stack_a->noe)
-	{
-		printf("%d ",nums[i]);
-		i++;
-	}
-	i = 0;
-	int j;
-	int poped_value;
-	int out = stack_a->noe;
-	printf("\nbf sa\n");
-	see_value_s(stack_a);
-	rra_command(stack_a);
-	printf("\naf sa\n");
-	see_value_s(stack_a);
+
 	// while (i < out)
 	// {
 	// 	poped_value = d_pop(stack_a);
@@ -72,17 +66,3 @@ int main(int argc, char **argv)
 	// }
 
 }
-
-
-// typedef struct s_node
-// {
-// 	int				data;
-// 	struct s_node	*next;
-// 	struct s_node	*prev;
-// }	t_node;
-
-// typedef struct s_stack
-// {
-//	 int			 noe;
-// 	struct s_node	*head;
-// }	t_stack;
