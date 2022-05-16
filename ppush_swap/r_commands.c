@@ -12,13 +12,14 @@
 
 #include "push_swap.h"
 
-void	ra_command(t_stack *stack_a)
+void	ra_command(t_stack *stack_a, int *cmd_ra)
 {
 	int		f_data;
 	t_node	*n_node;
 	t_node	*now;
 
 	f_data = d_pop(stack_a);
+	stack_a->noe += 1;
 	now = stack_a->head;
 	while (now->next != NULL)
 		now = now->next;
@@ -27,15 +28,17 @@ void	ra_command(t_stack *stack_a)
 	n_node->data = f_data;
 	n_node->prev = now;
 	n_node->next = NULL;
+	*cmd_ra += 1;
 }
 
-void	rb_command(t_stack *stack_b)
-{	
+void	rb_command(t_stack *stack_b, int *cmd_rb)
+{
 	int		f_data;
 	t_node	*n_node;
 	t_node	*now;
 
 	f_data = d_pop(stack_b);
+	stack_b->noe += 1;
 	now = stack_b->head;
 	while (now->next != NULL)
 		now = now->next;
@@ -44,6 +47,7 @@ void	rb_command(t_stack *stack_b)
 	n_node->data = f_data;
 	n_node->prev = now;
 	n_node->next = NULL;
+	*cmd_rb += 1;
 }
 
 void	rra_command(t_stack *stack_a)
@@ -52,6 +56,11 @@ void	rra_command(t_stack *stack_a)
 	t_node	*now;
 	t_node	*new_head;
 
+	if (stack_a->noe == 2)
+	{
+		sa_command(stack_a);
+		return ;
+	}
 	now = stack_a->head;
 	//마지막 노드로 접근.
 	while (now->next != NULL)

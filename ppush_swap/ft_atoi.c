@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sihunlee <sihunlee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: silee <silee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 16:16:19 by silee             #+#    #+#             */
-/*   Updated: 2022/05/11 22:53:29 by sihunlee         ###   ########.fr       */
+/*   Updated: 2022/05/16 10:37:43 by silee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	ft_isspace(char sstr)
 		return (0);
 }
 
-static int	ft_check_flow(long long num, int c, int minus)
+int	ft_check_flow(long long num, int c, int minus)
 {
 	num = num * minus;
 	c = c - '0';

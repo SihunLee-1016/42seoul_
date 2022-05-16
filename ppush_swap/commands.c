@@ -12,20 +12,22 @@
 
 #include "push_swap.h"
 
-void	pa_command(t_stack *stack_a, t_stack *stack_b)
+void	pa_command(t_stack *stack_a, t_stack *stack_b, int *cmd_pa)
 {
 	int	b_data;
 
 	b_data = d_pop(stack_b);
 	d_push(stack_a, b_data);
+	*cmd_pa += 1;
 }
 
-void	pb_command(t_stack *stack_a, t_stack *stack_b)
+void	pb_command(t_stack *stack_a, t_stack *stack_b, int *cmd_pb)
 {
 	int	a_data;
 
 	a_data = d_pop(stack_a);
 	d_push(stack_b, a_data);
+	*cmd_pb +=1 ;
 }
 
 void	sa_command(t_stack *stack_a)

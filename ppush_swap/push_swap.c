@@ -12,57 +12,140 @@
 
 #include "push_swap.h"
 
-void	check_duplicated(int noe, int *nums)
-{
-	int	check_idx;
-	int	rotate_idx;
 
-	check_idx = 0;
-	while (check_idx < noe)
+
+void	check_dup(t_stack *stack_a)
+{
+	t_node	*o_cur;
+	t_node	*i_cur;
+
+	o_cur = stack_a->head;
+	while (o_cur)
 	{
-		rotate_idx = 0;
-		while (rotate_idx < noe)
+		i_cur = stack_a->head;
+		while (i_cur)
 		{
-			if (nums[check_idx] == nums[rotate_idx])
+			if (o_cur != i_cur)
 			{
-				if (check_idx != rotate_idx)
+				if (o_cur->data == i_cur->data)
 				{
-					write (1, "ERROR", 6);
+					write (1, "ERROR in checkdup", 18);
 					exit (1);
 				}
 			}
-			rotate_idx +=1 ;
+			i_cur = i_cur->next;
 		}
-		check_idx += 1;
+		o_cur = o_cur->next;
 	}
 }
 
-void	atob(int noe, int *nums)
+void	set_cmd_a(t_cmd_a *cmd_a, t_stack *stack_a, int *rot)
 {
-	if (noe == 1)
-		return ;
-	
+	cmd_a->pb = 0;
+	cmd_a->ra = 0;
+	cmd_a->rra = 0;
+	cmd_a->pivot_a = find_middle_pivot(stack_a);
+	*rot = stack_a->noe;
 }
 
+void	set_cmd_b(t_cmd_b *cmd_b, t_stack *stack_b, int *rot)
+{
+	cmd_b->rb = 0;
+	cmd_b->pa = 0;
+	cmd_b->rrb = 0;
+	cmd_b->pivot_b = find_middle_pivot(stack_b);
+	*rot = stack_b->noe;
+}
 
+void	atob(t_stack *stack_a, t_stack *stack_b)
+{
+	int		i;
+	int		rotate;
+	t_node	*now;
+	t_cmd_a	cmd_a;
+ 
+	if (stack_a->noe <= 2)
+		return ;
+	set_cmd_a(&cmd_a, stack_a, &rotate);
+	now = stack_a->head;
+	i = -1;
+	printf("pivot a = %d\n",cmd_a.pivot_a);
+	while (++i < rotate && stack_a->noe >= 5)
+	{
+		if (now->data > cmd_a.pivot_a && stack_a->noe != 1)
+		{
+			now = now->next;
+			ra_command(stack_a, &cmd_a.ra);
+		}
+		else if (now->data <= cmd_a.pivot_a)
+		{
+			now = now->next;
+			pb_command(stack_a, stack_b, &cmd_a.pb);
+		}
+	}
+	i = -1;
+	while (++i < cmd_a.ra && stack_a->noe >= 2)
+		rra_command(stack_a);
+	i = -1;
+	while (++i < cmd_a.ra)
+		atob(stack_a, stack_b);	
+	i = -1;
+	while (++i < cmd_a.pb)
+		btoa(stack_a,stack_b);
+}
+
+void	btoa(t_stack *stack_a, t_stack *stack_b)
+{
+	int		i;
+	int		rotate;
+	t_node	*now;
+	t_cmd_b	cmd_b;
+
+	if (stack_b->noe <= 2)
+		return ;
+	set_cmd_b(&cmd_b, stack_b, &rotate);
+	now = stack_b->head;
+	printf("pivot b = %d\n",cmd_b.pivot_b);
+	i = -1;
+	while (++i < rotate && stack_b->noe >= 5)
+	{
+		if (now->data > cmd_b.pivot_b && stack_b->noe != 1)
+		{
+			now = now->next;
+			rb_command(stack_b, &cmd_b.rb);
+		}
+		else if (now->data <= cmd_b.pivot_b)
+		{
+			now = now->next;
+			pa_command(stack_a, stack_b, &cmd_b.pa);
+		}
+	}
+	i = -1;
+	while (++i < cmd_b.rb && stack_b->noe >= 2)
+		rrb_command(stack_a);
+
+	i = -1;
+	while (++i < cmd_b.rb)
+		atob(stack_a, stack_b);	
+	
+	i = -1;
+	while (++i < cmd_b.pa)
+		btoa(stack_a, stack_b);
+
+}
 
 int main(int argc, char **argv)
 {
 	t_stack *stack_a;
 	t_stack *stack_b;
-	int		*nums;
 
 	make_stack_n_push(&stack_a, argc, argv);
 	stack_b = stack_init();
-	nums = make_num_list(stack_a);
-
-	// while (i < out)
-	// {
-	// 	poped_value = d_pop(stack_a);
-	// 	printf("\npoped value = %d\n", poped_value);
-	// 	printf("left stack\n");
-	// 	see_value_s(stack_a);
-	// 	i++;
-	// }
-
+	//중복검사
+	check_dup(stack_a);
+	atob(stack_a, stack_b);
+	printf ("stack a :");
+	see_value_s(stack_a);
+	printf ("stack b :");
+	see_value_s(stack_b);
 }

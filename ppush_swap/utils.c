@@ -54,12 +54,16 @@ void	see_value_s(t_stack *stack)
 	printf("\n");
 }
 
-int	*make_num_list(t_stack *stack_a)
+
+int	find_middle_pivot(t_stack *stack_a)
 {
 	t_node	*cur;
 	int		*list;
 	int		i;
+	int		ret;
 
+	if (stack_a->noe == 2)
+		return (stack_a->head->data);
 	i = 0;
 	cur = stack_a->head;
 	list = (int *)malloc(sizeof(int) * stack_a->noe);
@@ -72,6 +76,7 @@ int	*make_num_list(t_stack *stack_a)
 		i++;
 	}
 	quick_sort(list, 0, stack_a->noe - 1);
-	check_duplicated(stack_a->noe, list);
-	return (list);
+	ret = list[(stack_a->noe - 1) / 2];
+	free (list);
+	return (ret);
 }
