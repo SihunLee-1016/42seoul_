@@ -18,6 +18,7 @@ void	pa_command(t_stack *stack_a, t_stack *stack_b)
 
 	b_data = d_pop(stack_b);
 	d_push(stack_a, b_data);
+	write (1, "pa\n", 3);
 }
 
 void	pb_command(t_stack *stack_a, t_stack *stack_b)
@@ -26,6 +27,7 @@ void	pb_command(t_stack *stack_a, t_stack *stack_b)
 
 	a_data = d_pop(stack_a);
 	d_push(stack_b, a_data);
+	write (1, "pb\n", 3);
 }
 
 void	sa_command(t_stack *stack_a)
@@ -37,6 +39,7 @@ void	sa_command(t_stack *stack_a)
 	s_data = stack_a->head->next->data;
 	stack_a->head->data = s_data;
 	stack_a->head->next->data = f_data;
+	write (1, "sa\n", 3);
 }
 
 void	sb_command(t_stack *stack_b)
@@ -48,4 +51,5 @@ void	sb_command(t_stack *stack_b)
 	s_data = stack_b->head->next->data;
 	stack_b->head->data = s_data;
 	stack_b->head->next->data = f_data;
+	write (1, "sb\n", 3);
 }

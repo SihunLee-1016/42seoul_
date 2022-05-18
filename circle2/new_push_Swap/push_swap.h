@@ -6,7 +6,7 @@
 /*   By: silee <silee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 20:08:06 by silee             #+#    #+#             */
-/*   Updated: 2022/05/18 17:12:25 by silee            ###   ########.fr       */
+/*   Updated: 2022/05/18 19:29:26 by silee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,10 @@ void	check_dup(t_stack *stack_a);
 
 int 	chunk_init(t_stack *stack_a);
 void    make_hourglass(t_stack *stack_a, t_stack *stack_b);
+
+void	push_a_in_seq(t_stack *stack_a, t_stack *stack_b);
+t_node	*find_max_node(t_stack *stack_b);
+
 
 
 #endif

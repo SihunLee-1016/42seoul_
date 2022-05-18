@@ -30,6 +30,7 @@ void	ra_command(t_stack *stack_a)
 	n_node->data = f_data;
 	n_node->prev = now;
 	n_node->next = NULL;
+	write(1, "ra\n", 3);
 }
 
 void	rb_command(t_stack *stack_b)
@@ -50,6 +51,7 @@ void	rb_command(t_stack *stack_b)
 	n_node->data = f_data;
 	n_node->prev = now;
 	n_node->next = NULL;
+	write(1, "rb\n", 3);
 }
 
 void	rra_command(t_stack *stack_a)
@@ -75,6 +77,7 @@ void	rra_command(t_stack *stack_a)
 	new_head->next = stack_a->head;
 	stack_a->head->prev = new_head;
 	stack_a->head = new_head;
+	write(1, "rra\n", 4);
 }
 
 void	rrb_command(t_stack *stack_b)
@@ -95,4 +98,5 @@ void	rrb_command(t_stack *stack_b)
 	new_head->next = stack_b->head;
 	stack_b->head->prev = new_head;
 	stack_b->head = new_head;
+	write(1, "rrb\n", 4);
 }
