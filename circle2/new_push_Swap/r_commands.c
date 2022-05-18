@@ -18,6 +18,8 @@ void	ra_command(t_stack *stack_a)
 	t_node	*n_node;
 	t_node	*now;
 
+	if (stack_a->noe == 1)
+		return ;
 	f_data = d_pop(stack_a);
 	stack_a->noe += 1;
 	now = stack_a->head;
@@ -36,11 +38,8 @@ void	rb_command(t_stack *stack_b)
 	t_node	*n_node;
 	t_node	*now;
 
-	if (stack_b->noe == 2)
-	{
-		sb_command(stack_b);
+	if (stack_b->noe == 1)
 		return ;
-	}
 	f_data = d_pop(stack_b);
 	stack_b->noe += 1;
 	now = stack_b->head;

@@ -6,7 +6,7 @@
 /*   By: silee <silee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 16:33:05 by silee             #+#    #+#             */
-/*   Updated: 2022/05/18 17:14:24 by silee            ###   ########.fr       */
+/*   Updated: 2022/05/18 17:49:43 by silee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,19 +28,21 @@ void    make_hourglass(t_stack *stack_a, t_stack *stack_b)
     int num;
     int i;
     int value;
+    int rotate;
     t_node *cur;
 
     i = -1;
     num = 0;
     chunk = chunk_init(stack_a);
     cur = stack_a->head;
+    rotate = stack_a->noe;
     //3개, 혹은 5개일땐 직접 처리
     if (chunk == -1)
-        chunk = 2;
+        chunk = 5;
     // 100개이상인 경우
-    while (++i < stack_a->noe && cur)
+    while (stack_a->noe != 0)
     {
-        value = cur->index;        
+        value = cur->index;
         cur = cur->next;
         if (value <= num)
         {
@@ -56,4 +58,5 @@ void    make_hourglass(t_stack *stack_a, t_stack *stack_b)
         else if (num + chunk < value)
             ra_command(stack_a);
     }
+        printf("i : %d",i);
 }

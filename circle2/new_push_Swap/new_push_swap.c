@@ -46,11 +46,13 @@ int main(int argc, char **argv)
 	stack_b = stack_init();
 	check_dup(stack_a);
     indexing_data(stack_a);
+	
+	printf("noe = %d\n\n",stack_a->noe);
+	make_hourglass(stack_a, stack_b);	
 
-    make_hourglass(stack_a, stack_b);
-    
     printf("stack a\n");
     see_value_s(stack_a);
     printf("stack b\n");
     see_value_s(stack_b);
+	// system("leaks a.out");
 }
