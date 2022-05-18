@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	ra_command(t_stack *stack_a, int *cmd_ra)
+void	ra_command(t_stack *stack_a)
 {
 	int		f_data;
 	t_node	*n_node;
@@ -28,15 +28,19 @@ void	ra_command(t_stack *stack_a, int *cmd_ra)
 	n_node->data = f_data;
 	n_node->prev = now;
 	n_node->next = NULL;
-	*cmd_ra += 1;
 }
 
-void	rb_command(t_stack *stack_b, int *cmd_rb)
+void	rb_command(t_stack *stack_b)
 {
 	int		f_data;
 	t_node	*n_node;
 	t_node	*now;
 
+	if (stack_b->noe == 2)
+	{
+		sb_command(stack_b);
+		return ;
+	}
 	f_data = d_pop(stack_b);
 	stack_b->noe += 1;
 	now = stack_b->head;
@@ -47,7 +51,6 @@ void	rb_command(t_stack *stack_b, int *cmd_rb)
 	n_node->data = f_data;
 	n_node->prev = now;
 	n_node->next = NULL;
-	*cmd_rb += 1;
 }
 
 void	rra_command(t_stack *stack_a)
@@ -62,22 +65,14 @@ void	rra_command(t_stack *stack_a)
 		return ;
 	}
 	now = stack_a->head;
-	//마지막 노드로 접근.
 	while (now->next != NULL)
 		now = now->next;
-	//마지막 노드의 data만 추출.
 	l_data = now->data;
-	//마지막 노드의 이전노드의 next를 null로 초기화.
 	now->prev->next = NULL;
-	// free.
 	free(now);
-	//bottom의 data를 새로운 노드에 할당해 맨 앞에 추가.
 	new_head = malloc(sizeof(t_node));
-	//값을 넣어주고
 	new_head->data = l_data;
-	//첫 노드가 될 것이니 이전을 가르키는건 없도록
 	new_head->prev = NULL;
-	//첫노드이므로 가르키는건 기존 첫번 째 노드.
 	new_head->next = stack_a->head;
 	stack_a->head->prev = new_head;
 	stack_a->head = new_head;
@@ -90,22 +85,14 @@ void	rrb_command(t_stack *stack_b)
 	t_node	*new_head;
 
 	now = stack_b->head;
-	//마지막 노드로 접근.
 	while (now->next != NULL)
 		now = now->next;
-	//마지막 노드의 data만 추출.
 	l_data = now->data;
-	//마지막 노드의 이전노드의 next를 null로 초기화.
 	now->prev->next = NULL;
-	// free.
 	free(now);
-	//bottom의 data를 새로운 노드에 할당해 맨 앞에 추가.
 	new_head = malloc(sizeof(t_node));
-	//값을 넣어주고
 	new_head->data = l_data;
-	//첫 노드가 될 것이니 이전을 가르키는건 없도록
 	new_head->prev = NULL;
-	//첫노드이므로 가르키는건 기존 첫번 째 노드.
 	new_head->next = stack_b->head;
 	stack_b->head->prev = new_head;
 	stack_b->head = new_head;

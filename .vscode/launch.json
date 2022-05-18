@@ -9,7 +9,7 @@
             "name": "gcc - Build and debug active file",
             "type": "lldb",
             "request": "launch",
-            "program": "//Users/silee/workspace/algorithm/week2/test",
+            "program": "/Users/silee/workspace/ppush_swap/pushswap",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",

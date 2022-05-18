@@ -59,41 +59,38 @@ void	set_cmd_b(t_cmd_b *cmd_b, t_stack *stack_b, int *rot)
 
 void	atob(t_stack *stack_a, t_stack *stack_b)
 {
+	//무조건 원소의 개수는 5개 이상인 경우에만.
 	int		i;
 	int		rotate;
+	int		value;
 	t_node	*now;
 	t_cmd_a	cmd_a;
- 
-	if (stack_a->noe <= 2)
+
+	if (stack_a->noe == 1)
 		return ;
 	set_cmd_a(&cmd_a, stack_a, &rotate);
 	now = stack_a->head;
 	i = -1;
-	printf("pivot a = %d\n",cmd_a.pivot_a);
-	while (++i < rotate && stack_a->noe >= 5)
+	while (++i < rotate)
 	{
-		if (now->data > cmd_a.pivot_a && stack_a->noe != 1)
-		{
-			now = now->next;
+		value = now->data;
+		now = now->next;
+		if (value > cmd_a.pivot_a && stack_a->noe != 1)
 			ra_command(stack_a, &cmd_a.ra);
-		}
-		else if (now->data <= cmd_a.pivot_a)
-		{
-			now = now->next;
+		else if (value <= cmd_a.pivot_a)
 			pb_command(stack_a, stack_b, &cmd_a.pb);
-		}
-	}
-	i = -1;
-	while (++i < cmd_a.ra && stack_a->noe >= 2)
-		rra_command(stack_a);
-	i = -1;
-	while (++i < cmd_a.ra)
-		atob(stack_a, stack_b);	
-	i = -1;
-	while (++i < cmd_a.pb)
-		btoa(stack_a,stack_b);
+	} 
 }
 
+	// i = -1;
+	// while (++i < cmd_a.ra)
+	// 	rra_command(stack_a);
+	// i = -1;
+	//  while (++i < cmd_a.ra)
+	// 	atob(stack_a, stack_b);	
+	// i = -1;
+	// while (++i < cmd_a.pb)
+	// 	btoa(stack_a,stack_b);
 void	btoa(t_stack *stack_a, t_stack *stack_b)
 {
 	int		i;

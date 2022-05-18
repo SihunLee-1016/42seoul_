@@ -7,15 +7,15 @@
             "args": [ 
                 "-fdiagnostics-color=always",
                 "-g",
-                "/Users/silee/workspace/algorithm/week2/215.c",
+                "/Users/silee/workspace/ppush_swap/new_push_swap.c",
                 "-o",
-                "test"
+                "pushswap"
             ],
             "options": {
                 "cwd": "${fileDirname}"
             },
             "problemMatcher": [
-                "$gcc -g fsanitize=address"
+                "$gcc"
             ],
             "group": {
                 "kind": "build",

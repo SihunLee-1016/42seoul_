@@ -48,25 +48,21 @@ void	see_value_s(t_stack *stack)
 	t_node *cur = stack->head;
 	while (cur)
 	{
-		printf("%d ", cur->data);
+		printf("%d index : %d\n", cur->data,cur->index);
 		cur = cur->next;
 	}
 	printf("\n");
 }
 
-
-int	find_middle_pivot(t_stack *stack_a)
+int	*sort_input(t_stack *stack_a)
 {
 	t_node	*cur;
 	int		*list;
-	int		i;
-	int		ret;
+	int		i = 0;
 
-	if (stack_a->noe == 2)
-		return (stack_a->head->data);
 	i = 0;
 	cur = stack_a->head;
-	list = (int *)malloc(sizeof(int) * stack_a->noe);
+	list = malloc(sizeof(int) * stack_a->noe);
 	if (list == 0)
 		exit (1);
 	while (i < stack_a->noe)
@@ -76,7 +72,29 @@ int	find_middle_pivot(t_stack *stack_a)
 		i++;
 	}
 	quick_sort(list, 0, stack_a->noe - 1);
-	ret = list[(stack_a->noe - 1) / 2];
-	free (list);
-	return (ret);
+	return (list);
+}
+
+void	indexing_data(t_stack *stack_a)
+{
+	int		*list;
+	int		i;
+	t_node	*cur;
+
+	list = sort_input(stack_a);
+	i = 0;
+	while (i < stack_a->noe)
+	{
+		cur = stack_a->head;
+		while (cur)
+		{
+			if (list[i] == cur->data)
+			{
+				cur->index = i;
+				break ;
+			}
+			cur = cur->next;
+		}
+		i++;
+	}
 }

@@ -5,7 +5,9 @@
         "stdio.h": "c",
         "ft_printf.h": "c",
         "__locale": "c",
-        "ios": "c"
+        "ios": "c",
+        "fcntl.h": "c",
+        "algorithm": "c"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }

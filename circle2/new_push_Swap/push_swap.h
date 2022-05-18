@@ -6,7 +6,7 @@
 /*   By: silee <silee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 20:08:06 by silee             #+#    #+#             */
-/*   Updated: 2022/05/16 17:03:50 by silee            ###   ########.fr       */
+/*   Updated: 2022/05/18 17:12:25 by silee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 typedef struct s_node
 {
 	int				data;
+	int				index;
 	struct s_node	*next;
 	struct s_node	*prev;
 }	t_node;
@@ -66,25 +67,27 @@ int		ft_check_flow(long long num, int c, int minus);
 int		ft_atoi(char *str, int *len);
 void	check_valid(char str);
 
-int		find_middle_pivot(t_stack *stack_a);
+int		*sort_input(t_stack *stack_a);
+void	indexing_data(t_stack *stack_a);
+
 
 void	quick_sort(int dataset[], int left, int right);
 int		partition(int dataset[], int left, int right);
 void	swap(int *a, int *b);
 
-void	pb_command(t_stack *stack_a, t_stack *stack_b, int *cmd_pb);
-void	pa_command(t_stack *stack_a, t_stack *stack_b, int *cmd_pa);
+void	pb_command(t_stack *stack_a, t_stack *stack_b);
+void	pa_command(t_stack *stack_a, t_stack *stack_b);
 void	sa_command(t_stack *stack_a);
 void	sb_command(t_stack *stack_b);
-void	ra_command(t_stack *stack_a, int *cmd_ra);
-void	rb_command(t_stack *stack_b, int *cmd_rb);
+void	ra_command(t_stack *stack_a);
+void	rb_command(t_stack *stack_b);
 void	rra_command(t_stack *stack_a);
 void	rrb_command(t_stack *stack_b);
 
 void	check_dup(t_stack *stack_a);
 
-void	set_cmd_a(t_cmd_a *cmd_a, t_stack *stack_a, int *rot);
-void	atob(t_stack *stack_a, t_stack *stack_b);
-void	btoa(t_stack *stack_a, t_stack *stack_b);
+int 	chunk_init(t_stack *stack_a);
+void    make_hourglass(t_stack *stack_a, t_stack *stack_b);
+
 
 #endif
