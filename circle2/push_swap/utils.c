@@ -12,8 +12,6 @@
 
 #include "push_swap.h"
 
-//함수 내에서 stack_init을 했을 때, 함수가 종료되면 메모리상 종료가되며 삭제됨.
-//2중포인터로 사용해서 생성.
 void	make_stack_n_push(t_stack **stack_a, int argc, char **argv)
 {
 	int	i;
@@ -29,7 +27,7 @@ void	make_stack_n_push(t_stack **stack_a, int argc, char **argv)
 		{
 			if ((argv[i][j] >= '0' && argv[i][j] <= '9') || argv[i][j] == '-')
 			{
-				d_push (*stack_a, ft_atoi (&argv[i][j], &len));
+				push_in_seq (*stack_a, ft_atoi (&argv[i][j], &len));
 				j = j + len - 1;
 			}
 			else if (ft_isspace(argv[i][j]) == 0)
@@ -48,7 +46,8 @@ void	see_value_s(t_stack *stack)
 	t_node *cur = stack->head;
 	while (cur)
 	{
-		printf("%d index : %d\n", cur->data,cur->index);
+		// printf("%d index : %d\n", cur->data,cur->index);
+		printf("%d ", cur->data);
 		cur = cur->next;
 	}
 	printf("\n");
@@ -58,7 +57,7 @@ int	*sort_input(t_stack *stack_a)
 {
 	t_node	*cur;
 	int		*list;
-	int		i = 0;
+	int		i;
 
 	i = 0;
 	cur = stack_a->head;
@@ -71,6 +70,7 @@ int	*sort_input(t_stack *stack_a)
 		cur = cur->next;
 		i++;
 	}
+
 	quick_sort(list, 0, stack_a->noe - 1);
 	return (list);
 }
@@ -80,6 +80,7 @@ void	indexing_data(t_stack *stack_a)
 	int		*list;
 	int		i;
 	t_node	*cur;
+
 
 	list = sort_input(stack_a);
 	i = 0;
@@ -97,4 +98,5 @@ void	indexing_data(t_stack *stack_a)
 		}
 		i++;
 	}
+	free (list);
 }

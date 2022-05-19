@@ -12,28 +12,11 @@
 
 #include "push_swap.h"
 
-t_node	*make_node(int value)
-{
-	t_node	*n_node;
-
-	n_node = (t_node *)malloc(sizeof(t_node));
-	n_node->prev = NULL;
-	n_node->next = NULL;
-	n_node->data = value;
-	return (n_node);
-}
-
 t_stack	*stack_init(void)
 {
 	t_stack	*tmp_stack;
-	t_node	*tmp_node;
 
 	tmp_stack = malloc(sizeof(t_stack));
-	tmp_node = malloc(sizeof(t_node));
-	tmp_node->data = 0;
-	tmp_node->next = NULL;
-	tmp_node->prev = NULL;
-	tmp_stack->head = tmp_node;
 	tmp_stack->noe = 0;
 	return (tmp_stack);
 }
@@ -60,6 +43,31 @@ void	d_push(t_stack *list, int value)
 	list->noe += 1;
 }
 
+void	push_in_seq(t_stack *stack, int value)
+{
+	t_node	*n_node;
+	t_node	*cur;
+
+	n_node = malloc(sizeof(t_node));
+	n_node->data = value;
+	cur = stack->head;
+	if (stack->noe == 0)
+	{
+		n_node->next = NULL;
+		n_node->prev = NULL;
+		stack->head = n_node;
+	}
+	else
+	{
+		while (cur->next != NULL)
+			cur = cur->next;
+		cur->next = n_node;
+		n_node->prev = cur;
+		n_node->next = NULL;
+	}
+	stack->noe += 1;
+}
+
 int	d_pop(t_stack *stack)
 {
 	t_node	*tmp;
@@ -67,10 +75,7 @@ int	d_pop(t_stack *stack)
 	int		data;
 
 	if (stack->noe == 0)
-	{
-		printf("no more elements in stack\n");
 		exit(1);
-	}
 	now = stack->head;
 	data = now->data;
 	tmp = now->next;

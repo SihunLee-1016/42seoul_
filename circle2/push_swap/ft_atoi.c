@@ -6,7 +6,7 @@
 /*   By: silee <silee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 16:16:19 by silee             #+#    #+#             */
-/*   Updated: 2022/05/16 10:37:43 by silee            ###   ########.fr       */
+/*   Updated: 2022/05/19 18:16:36 by silee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ int	ft_check_flow(long long num, int c, int minus)
 	num = num * minus;
 	c = c - '0';
 	if (minus == 1)
-		if (num * 10 + c < num)
+		if (num * 10 + c > 2147483647)
 			return (1);
 	if (minus == -1)
-		if (num * 10 - c > num)
+		if (num * 10 - c < -2147483648)
 			return (2);
 	return (0);
 }

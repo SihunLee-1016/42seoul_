@@ -28,7 +28,6 @@ void	ra_command(t_stack *stack_a)
 	while (now->next != NULL)
 		now = now->next;
 	n_node = malloc(sizeof(t_node));
-
 	now->next = n_node;
 	n_node->data = f_data;
 	n_node->prev = now;
@@ -57,7 +56,6 @@ void	rb_command(t_stack *stack_b)
 	n_node->data = f_data;
 	n_node->prev = now;
 	n_node->index = f_idx;
-
 	n_node->next = NULL;
 	write(1, "rb\n", 3);
 }
@@ -65,6 +63,7 @@ void	rb_command(t_stack *stack_b)
 void	rra_command(t_stack *stack_a)
 {
 	int		l_data;
+	int		l_idx;
 	t_node	*now;
 	t_node	*new_head;
 
@@ -77,10 +76,12 @@ void	rra_command(t_stack *stack_a)
 	while (now->next != NULL)
 		now = now->next;
 	l_data = now->data;
+	l_idx = now->index;
 	now->prev->next = NULL;
 	free(now);
 	new_head = malloc(sizeof(t_node));
 	new_head->data = l_data;
+	new_head->index = l_idx;
 	new_head->prev = NULL;
 	new_head->next = stack_a->head;
 	stack_a->head->prev = new_head;
@@ -91,6 +92,7 @@ void	rra_command(t_stack *stack_a)
 void	rrb_command(t_stack *stack_b)
 {
 	int		l_data;
+	int		l_idx;
 	t_node	*now;
 	t_node	*new_head;
 
@@ -98,10 +100,12 @@ void	rrb_command(t_stack *stack_b)
 	while (now->next != NULL)
 		now = now->next;
 	l_data = now->data;
+	l_idx = now->index;
 	now->prev->next = NULL;
 	free(now);
 	new_head = malloc(sizeof(t_node));
 	new_head->data = l_data;
+	new_head->index = l_idx;
 	new_head->prev = NULL;
 	new_head->next = stack_b->head;
 	stack_b->head->prev = new_head;
