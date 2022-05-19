@@ -41,18 +41,6 @@ void	make_stack_n_push(t_stack **stack_a, int argc, char **argv)
 	}
 }
 
-void	see_value_s(t_stack *stack)
-{
-	t_node *cur = stack->head;
-	while (cur)
-	{
-		// printf("%d index : %d\n", cur->data,cur->index);
-		printf("%d ", cur->data);
-		cur = cur->next;
-	}
-	printf("\n");
-}
-
 int	*sort_input(t_stack *stack_a)
 {
 	t_node	*cur;
@@ -70,8 +58,7 @@ int	*sort_input(t_stack *stack_a)
 		cur = cur->next;
 		i++;
 	}
-
-	quick_sort(list, 0, stack_a->noe - 1);
+	quick_sort (list, 0, stack_a->noe - 1);
 	return (list);
 }
 
@@ -80,7 +67,6 @@ void	indexing_data(t_stack *stack_a)
 	int		*list;
 	int		i;
 	t_node	*cur;
-
 
 	list = sort_input(stack_a);
 	i = 0;

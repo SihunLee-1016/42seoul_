@@ -19,7 +19,8 @@ int	chunk_init(t_stack *stack_a)
 	else if (stack_a->noe == 500)
 		return (30);
 	else
-		return (0.000000053 * stack_a->noe * stack_a->noe +  0.03 * stack_a->noe + 14.5);
+		return (0.000000053 * stack_a->noe * stack_a->noe + \
+			0.03 * stack_a->noe + 14.5);
 }
 
 void	init_data(t_stack *stack_a, int *num, int *chunk, t_node **cur)

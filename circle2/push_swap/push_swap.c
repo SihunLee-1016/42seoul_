@@ -1,17 +1,16 @@
 /* ************************************************************************** */
-/*																			*/
-/*														:::	  ::::::::   */
-/*   push_swap.c										:+:	  :+:	:+:   */
-/*													+:+ +:+		 +:+	 */
-/*   By: silee <silee@student.42seoul.kr>		   +#+  +:+	   +#+		*/
-/*												+#+#+#+#+#+   +#+		   */
-/*   Created: 2022/05/07 16:51:28 by silee			 #+#	#+#			 */
-/*   Updated: 2022/05/11 13:21:05 by silee			###   ########.fr	   */
-/*																			*/
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: silee <silee@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/19 20:51:17 by silee             #+#    #+#             */
+/*   Updated: 2022/05/19 20:59:36 by silee            ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 int	main(int argc, char **argv)
 {
@@ -32,5 +31,4 @@ int	main(int argc, char **argv)
 		make_hourglass (stack_a, stack_b);
 		push_a_in_seq (stack_a, stack_b);
 	}
-	see_value_s(stack_a);
 }

@@ -1,13 +1,13 @@
 /* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: silee <silee@student.42seoul.kr>           +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/09 20:08:06 by silee             #+#    #+#             */
-/*   Updated: 2022/05/19 20:16:47 by silee            ###   ########.fr       */
-/*                                                                            */
+/*																			*/
+/*														:::	  ::::::::   */
+/*   push_swap.h										:+:	  :+:	:+:   */
+/*													+:+ +:+		 +:+	 */
+/*   By: silee <silee@student.42seoul.kr>		   +#+  +:+	   +#+		*/
+/*												+#+#+#+#+#+   +#+		   */
+/*   Created: 2022/05/09 20:08:06 by silee			 #+#	#+#			 */
+/*   Updated: 2022/05/19 20:57:36 by silee			###   ########.fr	   */
+/*																			*/
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
@@ -30,21 +30,15 @@ typedef struct s_node
 
 typedef struct s_stack
 {
-    int             noe;
+	int				noe;
 	struct s_node	*head;
 }	t_stack;
 
-
-// int		*make_sorted_array(int argc, char **argv);
-// void	push_in_seq(t_stack *stack, int value);
-
-void	see_value_s(t_stack *stack);
-
 //=================d_list.c===================
-t_stack	*stack_init (void);
-void	d_push	(t_stack *list, int value);
+t_stack	*stack_init(void);
+void	d_push(t_stack *list, int value);
 void	push_in_seq(t_stack *stack, int value);
-int		d_pop (t_stack *stack);
+int		d_pop(t_stack *stack);
 
 //=================ft_atoi.c==================
 void	is_valid(char *str);
@@ -80,23 +74,15 @@ void	check_dup(t_stack *stack_a);
 void	check_already_sort(t_stack *stack_a);
 
 //=================make_hourglass_n_return.c===================
-int 	chunk_init(t_stack *stack_a);
+int		chunk_init(t_stack *stack_a);
 void	init_data(t_stack *stack_a, int *num, int *chunk, t_node **cur);
-void    make_hourglass(t_stack *stack_a, t_stack *stack_b);
+void	make_hourglass(t_stack *stack_a, t_stack *stack_b);
 int		find_max_pos(t_stack *stack_b);
 void	push_a_in_seq(t_stack *stack_a, t_stack *stack_b);
 
 //=================three_or_five.c===================
-void    in_case_of_three(t_stack *stack_a);
-void    in_case_of_five(t_stack *stack_a, t_stack *stack_b);
-void    three_or_five(t_stack *stack_a, t_stack *stack_b);
-void    sort_anb(t_stack *stack_a, t_stack *stack_b);
-
-
-
-
-
-
-
-
+void	in_case_of_three(t_stack *stack_a);
+void	in_case_of_five(t_stack *stack_a, t_stack *stack_b);
+void	three_or_five(t_stack *stack_a, t_stack *stack_b);
+void	sort_anb(t_stack *stack_a, t_stack *stack_b);
 #endif
