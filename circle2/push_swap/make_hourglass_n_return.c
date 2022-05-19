@@ -56,7 +56,6 @@ void	make_hourglass(t_stack *stack_a, t_stack *stack_b)
 		else
 			ra_command(stack_a);
 	}
-	see_value_s(stack_b);
 }
 
 int	find_max_pos(t_stack *stack_b)
