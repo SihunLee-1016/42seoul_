@@ -6,7 +6,7 @@
 /*   By: silee <silee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 18:35:51 by silee             #+#    #+#             */
-/*   Updated: 2022/05/19 20:59:48 by silee            ###   ########.fr       */
+/*   Updated: 2022/05/23 12:10:15 by silee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	check_dup(t_stack *stack_a)
 			{
 				if (o_cur->data == i_cur->data)
 				{
-					write (1, "ERROR in checkdup", 18);
+					write (2, "ERROR\n", 7);
 					exit (1);
 				}
 			}
@@ -53,8 +53,5 @@ void	check_already_sort(t_stack *stack_a)
 		now = now->next;
 	}
 	if (cnt == stack_a->noe - 1)
-	{
-		write (1, "already sorted", 15);
 		exit (1);
-	}
 }

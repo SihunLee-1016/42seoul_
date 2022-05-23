@@ -32,7 +32,7 @@ void	make_stack_n_push(t_stack **stack_a, int argc, char **argv)
 			}
 			else if (ft_isspace(argv[i][j]) == 0)
 			{
-				write (1, "ERROR", 6);
+				write (2, "ERROR\n", 7);
 				exit (1);
 			}
 			j++;

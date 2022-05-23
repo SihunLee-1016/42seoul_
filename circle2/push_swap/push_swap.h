@@ -85,4 +85,6 @@ void	in_case_of_three(t_stack *stack_a);
 void	in_case_of_five(t_stack *stack_a, t_stack *stack_b);
 void	three_or_five(t_stack *stack_a, t_stack *stack_b);
 void	sort_anb(t_stack *stack_a, t_stack *stack_b);
+void	in_case_of_four(t_stack *stack_a, t_stack *stack_b);
+
 #endif
