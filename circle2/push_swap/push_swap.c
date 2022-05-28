@@ -6,7 +6,7 @@
 /*   By: silee <silee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 20:51:17 by silee             #+#    #+#             */
-/*   Updated: 2022/05/23 14:30:10 by silee            ###   ########.fr       */
+/*   Updated: 2022/05/26 12:17:18 by silee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,8 @@ int	main(int argc, char **argv)
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 
-	// if (argc == 2)
-	// 	exit (1);
-	make_stack_n_push (&stack_a, argc, argv);
+	stack_a = stack_init();
+	make_stack_n_push (stack_a, argc, argv);
 	if (stack_a->noe == 1)
 		exit (1);
 	check_dup (stack_a);

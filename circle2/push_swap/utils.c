@@ -12,22 +12,22 @@
 
 #include "push_swap.h"
 
-void	make_stack_n_push(t_stack **stack_a, int argc, char **argv)
+void	make_stack_n_push(t_stack *stack_a, int argc, char **argv)
 {
 	int	i;
 	int	j;
 	int	len;
 
 	i = 1;
-	*stack_a = stack_init();
 	while (i < argc)
 	{
 		j = 0;
 		while (argv[i][j] != '\0')
 		{
-			if ((argv[i][j] >= '0' && argv[i][j] <= '9') || argv[i][j] == '-')
+			if ((argv[i][j] >= '0' && argv[i][j] <= '9') \
+				|| argv[i][j] == '-' || argv[i][j] == '+')
 			{
-				push_in_seq (*stack_a, ft_atoi (&argv[i][j], &len));
+				push_in_seq (stack_a, ft_atoi (&argv[i][j], &len));
 				j = j + len - 1;
 			}
 			else if (ft_isspace(argv[i][j]) == 0)

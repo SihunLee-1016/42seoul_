@@ -9,13 +9,13 @@
                 "-g",
                 "/Users/silee/workspace/ppush_swap/new_push_swap.c",
                 "-o",
-                "pushswap"
+                "push_swap"
             ],
             "options": {
                 "cwd": "${fileDirname}"
             },
             "problemMatcher": [
-                "$gcc"
+                "$gcc -g -fsanitize=address"
             ],
             "group": {
                 "kind": "build",

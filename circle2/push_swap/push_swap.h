@@ -14,11 +14,7 @@
 # define PUSH_SWAP_H
 
 # include <stdlib.h>
-# include <stdio.h>
 # include <unistd.h>
-# include <fcntl.h>
-# include <string.h>
-# include <sys/wait.h>
 
 typedef struct s_node
 {
@@ -48,7 +44,7 @@ int		ft_atoi(char *str, int *len);
 void	check_valid(char str);
 
 //=================utils.c===================
-void	make_stack_n_push(t_stack **stack_a, int argc, char **argv);
+void	make_stack_n_push(t_stack *stack_a, int argc, char **argv);
 int		*sort_input(t_stack *stack_a);
 void	indexing_data(t_stack *stack_a);
 
