@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*																			*/
 /*														:::	  ::::::::   */
-/*   map_check.c										:+:	  :+:	:+:   */
+/*   check.c										:+:	  :+:	:+:   */
 /*													+:+ +:+		 +:+	 */
 /*   By: silee <silee@student.42seoul.kr>		   +#+  +:+	   +#+		*/
 /*												+#+#+#+#+#+   +#+		   */
@@ -10,98 +10,82 @@
 /*																			*/
 /* ************************************************************************** */
 
-#include "so_long.h"	
-#include <stdio.h>
-void	map_2_array(t_data *g_data,char *file)
+#include "so_long.h"
+
+void	map_2_array(t_data *g_data, char *file)
 {
 	char	*line;
 	int		fd;
 
 	fd = open (file, O_RDONLY);
+	if (fd < 0)
+		error_exit (2);
 	line = get_next_line(fd);
-	g_data->map_width = ft_strlen(line) - 1;
-	g_data->map_height = 0;
-	g_data->map_line = ft_strdup_without_nl(line);
+	g_data->width = ft_strlen(line) - 1;
+	g_data->height = 0;
+	g_data->line = ft_strdup_without_nl(line);
 	free(line);
 	while (line)
 	{
 		line = get_next_line(fd);
-		g_data->map_height += 1;
+		g_data->height += 1;
 		if (line == 0)
 			break ;
 		if (line)
-			g_data->map_line = ft_join_without_nl(g_data->map_line, line);
+			g_data->line = ft_join_without_nl(g_data->line, line);
 	}
-	printf("\nresult = %s\n",g_data->map_line);
 	close (fd);
-}
-
-void	error_exit(void)
-{
-	write (2, "ERROR\n", 7);
-	exit (1);
 }
 
 void	is_wall(t_data *g_data, int flag)
 {
 	int		i;
-	char	*line;
 
 	i = -1;
-	line = g_data->map_line;
 	if (flag == 1)
 	{
-		while (++i < g_data->map_width)
-			if (line[i] != '1')
-			{
-				printf("first\n");
-				error_exit ();
-			}
+		while (++i < g_data->width)
+			if (g_data->line[i] != '1')
+				error_exit(4);
 	}
-	else if (flag == g_data->map_height)
+	else if (flag == g_data->height)
 	{
-		i = (g_data->map_height - 1) * g_data->map_width;
-		while (++i <= (g_data->map_height - 1) * g_data->map_width + \
-			g_data->map_width -1)
-			if (line[i] != '1')
-			{
-				printf("last\n");
-				printf("error index = %d",i);
-				error_exit();
-			}
+		i = (g_data->height - 1) * g_data->width;
+		while (++i <= (g_data->height - 1) * g_data->width + g_data->width -1)
+			if (g_data->line[i] != '1')
+				error_exit(4);
 	}
 	else
 	{
 		i = 1;
-		while (++i < g_data->map_height - 1)
-			if (line[g_data->map_width * i] != '1' \
-				|| line[g_data->map_width * i + g_data->map_width - 1] != '1')
-				{
-					printf("middle\n");
-				error_exit();
-				}
+		while (++i < g_data->height - 1)
+			if (g_data->line[g_data->width * i] != '1' \
+				|| g_data->line[g_data->width * i + g_data->width - 1] != '1')
+				error_exit(4);
 	}
 }
 
 t_cnt	*count_init(void)
 {
-	t_cnt *count;
+	t_cnt	*count;
 
 	count = malloc(sizeof(t_cnt));
+	if (count == 0)
+		error_exit (0);
 	count->coin = 0;
 	count->exit = 0;
 	count->start = 0;
 	return (count);
 }
 
-void	map_parameter_check(t_cnt *count)
+void	parameter_check(t_cnt *count)
 {
 	if (count->coin < 1)
-		error_exit ();
+		error_exit (5);
 	if (count->exit == 0)
-		error_exit ();
+		error_exit (6);
 	if (count->start != 1)
-		error_exit ();
+		error_exit (7);
 }
 
 void	check_valid_map(t_data *g_data, char *file)
@@ -111,25 +95,22 @@ void	check_valid_map(t_data *g_data, char *file)
 
 	i = 0;
 	count = count_init();
-	map_2_array(g_data,file);
-	if (g_data->map_height * g_data->map_width != ft_strlen (g_data->map_line))
-	{
-		printf("hei : %d wid : %d\nstrlen : %d",g_data->map_height,g_data->map_width,ft_strlen(g_data->map_line));
-		printf("map_check\n");
-		error_exit ();
-	}
-	while (++i <= g_data->map_height)
+	map_2_array (g_data, file);
+	if (g_data->height * g_data->width != ft_strlen (g_data->line))
+		error_exit (3);
+	while (++i <= g_data->height)
 		is_wall (g_data, i);
 	i = -1;
-	while (++i <= g_data->map_height * g_data->map_width - 1)
+	while (++i <= g_data->height * g_data->width - 1)
 	{
-		if (g_data->map_line[i] == 'C')
+		if (g_data->line[i] == 'C')
 			count->coin += 1;
-		else if (g_data->map_line[i] == 'E')
+		else if (g_data->line[i] == 'E')
 			count->exit += 1;
-		else if (g_data->map_line[i] == 'P')
+		else if (g_data->line[i] == 'P')
 			count->start += 1;
-		}
-	map_parameter_check(count);
-	printf("coin %d\nexit %d\nstart %d\n",count->coin,count->exit,count->start);
+	}
+	parameter_check(count);
+	g_data->noc = count->coin;
+	free (count);
 }

@@ -6,7 +6,7 @@
 /*   By: silee <silee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 19:13:44 by silee             #+#    #+#             */
-/*   Updated: 2022/06/01 16:18:24 by silee            ###   ########.fr       */
+/*   Updated: 2022/06/02 18:50:18 by silee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char	*ft_join_without_nl(char *s1, char *s2)
 		sum += 1;
 	result = (char *)malloc(sizeof(char) * sum + 1);
 	if (result == 0)
-		return (0);
+		error_exit(0);
 	i = 0;
 	*result = '\0';
 	ft_strcat(result, s1);

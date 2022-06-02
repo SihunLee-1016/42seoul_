@@ -1,9 +1,8 @@
 NAME = so_long
-
-SRCS = test.c \
+SRCS = so_long.c \
 	ft_join_without_nl.c ft_strdup_without_nl.c \
 	get_next_line.c get_next_line_utils.c \
-	map_check.c map_draw.c
+	map_check.c map_draw.c key.c utils.c
 
 OBJS = ${SRCS:.c=.o}
 
@@ -13,7 +12,7 @@ CC		= gcc
 
 RM		= rm -f
 
-CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror
 
 all:	${NAME} 
 

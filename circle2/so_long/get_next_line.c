@@ -6,11 +6,12 @@
 /*   By: silee <silee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 15:06:59 by silee             #+#    #+#             */
-/*   Updated: 2022/05/30 19:03:36 by silee            ###   ########.fr       */
+/*   Updated: 2022/06/02 20:05:13 by silee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
 char	*get_next_line(int fd)
 {
 	static char	*str;
@@ -25,12 +26,12 @@ char	*get_next_line(int fd)
 	}
 	str = txt_read(fd, str, &is_end);
 	if (str == 0)
-		return (0);
+		error_exit(0);
 	ret = ret_line(&str);
 	if (ret == 0)
 	{
 		free (str);
-		return (0);
+		error_exit(0);
 	}
 	return (ret);
 }

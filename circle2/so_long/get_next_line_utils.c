@@ -6,11 +6,12 @@
 /*   By: silee <silee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 15:07:01 by silee             #+#    #+#             */
-/*   Updated: 2022/05/30 19:01:33 by silee            ###   ########.fr       */
+/*   Updated: 2022/06/02 18:49:08 by silee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
 char	*ft_strjoin(char *str, char *buffer)
 {
 	int		sum;
@@ -55,7 +56,7 @@ char	*dup_loc(char *str, int loc_of_next)
 {
 	char	*p;
 	int		i;
-	
+
 	if (loc_of_next == -1)
 		return (0);
 	if (loc_of_next == -2)
@@ -78,8 +79,6 @@ char	*ft_substr(char *str, int start, int str_len)
 	int		i;
 	char	*substr;
 
-	//start 는 loc_of_next +1 이므로
-	// if (start == -1 || str_len == 0)
 	if (start == -1)
 	{
 		free (str);
