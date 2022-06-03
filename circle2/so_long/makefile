@@ -18,7 +18,8 @@ all:	${NAME}
 
 
 $(NAME): ${OBJS}
-		$(CC) $(CFLAGS) -o ${NAME} ${OBJS} -L./mlx/ -lmlx -framework OpenGL -framework AppKit
+		arch -x86_64 gcc *.c -I. -Lmlx -lmlx -framework OpenGL -framework Appkit
+
 
 %.o: %.c
 		${CC} ${CFLAGS} -c $< -o $@

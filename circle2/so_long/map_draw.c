@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_draw.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: silee <silee@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: sihunlee <sihunlee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 18:01:12 by silee             #+#    #+#             */
-/*   Updated: 2022/06/02 18:13:08 by silee            ###   ########.fr       */
+/*   Updated: 2022/06/03 18:15:40 by sihunlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ t_img	img_input(void *mlx)
 	tmp.player = mlx_xpm_file_to_image(mlx, "./img/player.xpm", &wid, &hei);
 	tmp.wall = mlx_xpm_file_to_image(mlx, "./img/wall.xpm", &wid, &hei);
 	tmp.exit = mlx_xpm_file_to_image(mlx, "./img/exit.xpm", &wid, &hei);
+	tmp.monster = mlx_xpm_file_to_image(mlx, "./img/monster.xpm", &wid, &hei);
 	return (tmp);
 }
 
@@ -36,6 +37,8 @@ void	img_2_window(t_data *g, int w, int h)
 		mlx_put_image_to_window(g->mlx, g->win, g->img.player, w * 64, h * 64);
 	else if (g->line[h * g->width + w] == 'E')
 		mlx_put_image_to_window(g->mlx, g->win, g->img.exit, w * 64, h * 64);
+	else if (g->line[h * g->width + w] == 'M')
+		mlx_put_image_to_window(g->mlx, g->win, g->img.monster, w * 64, h * 64);
 	else
 		mlx_put_image_to_window(g->mlx, g->win, g->img.ground, w * 64, h * 64);
 }

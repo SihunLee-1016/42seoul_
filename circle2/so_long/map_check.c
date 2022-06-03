@@ -12,6 +12,17 @@
 
 #include "so_long.h"
 
+int	ft_strlen_wo_nl(char *str)
+{
+	int	len;
+
+	if (str == 0)
+		return (0);
+	len = 0;
+	while (str[len] != '\n' && str[len] != '\0')
+		len++;
+	return (len);
+}
 void	map_2_array(t_data *g_data, char *file)
 {
 	char	*line;
@@ -21,7 +32,7 @@ void	map_2_array(t_data *g_data, char *file)
 	if (fd < 0)
 		error_exit (2);
 	line = get_next_line(fd);
-	g_data->width = ft_strlen(line) - 1;
+	g_data->width = ft_strlen_wo_nl(line);
 	g_data->height = 0;
 	g_data->line = ft_strdup_without_nl(line);
 	free(line);
@@ -31,6 +42,8 @@ void	map_2_array(t_data *g_data, char *file)
 		g_data->height += 1;
 		if (line == 0)
 			break ;
+		if (g_data->width != ft_strlen_wo_nl(line))
+			error_exit(3);
 		if (line)
 			g_data->line = ft_join_without_nl(g_data->line, line);
 	}
@@ -77,7 +90,6 @@ t_cnt	*count_init(void)
 	count->start = 0;
 	return (count);
 }
-
 void	parameter_check(t_cnt *count)
 {
 	if (count->coin < 1)
