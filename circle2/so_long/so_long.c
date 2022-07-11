@@ -21,6 +21,7 @@ int	destroy_game(t_data *g_data)
 
 int	key_press(int key, t_data *g_data)
 {
+	printf("address %p ", g_data);
 	if (key == KEY_ESC)
 		game_exit (g_data);
 	if (key == KEY_W)

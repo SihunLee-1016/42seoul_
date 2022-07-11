@@ -12,17 +12,6 @@
 
 #include "so_long.h"
 
-int	ft_strlen_wo_nl(char *str)
-{
-	int	len;
-
-	if (str == 0)
-		return (0);
-	len = 0;
-	while (str[len] != '\n' && str[len] != '\0')
-		len++;
-	return (len);
-}
 void	map_2_array(t_data *g_data, char *file)
 {
 	char	*line;
@@ -90,6 +79,7 @@ t_cnt	*count_init(void)
 	count->start = 0;
 	return (count);
 }
+
 void	parameter_check(t_cnt *count)
 {
 	if (count->coin < 1)

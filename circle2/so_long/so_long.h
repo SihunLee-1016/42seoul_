@@ -81,7 +81,6 @@ void	is_wall(t_data *g_data, int flag);
 t_cnt	*count_init(void);
 void	parameter_check(t_cnt *count);
 void	check_valid_map(t_data *g_data, char *file);
-int	ft_strlen_wo_nl(char *str);
 //map_draw.c
 t_img	img_input(void *mlx);
 void	img_2_window(t_data *g, int w, int h);
@@ -93,7 +92,8 @@ void	key_a(t_data *g_data);
 void	key_s(t_data *g_data);
 void	key_d(t_data *g_data);
 //utils.c
-void	error_exit(int  flag);
+void	error_exit(int flag);
+int		ft_strlen_wo_nl(char *str);
 //so_long.c
 int		destroy_game(t_data *g_data);
 int		key_press(int key, t_data *g_data);

@@ -8,7 +8,10 @@
         "ios": "c",
         "fcntl.h": "c",
         "algorithm": "c",
-        "push_swap.h": "c"
+        "push_swap.h": "c",
+        "so_long.h": "c",
+        "signal.h": "c",
+        "stdlib.h": "c"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }

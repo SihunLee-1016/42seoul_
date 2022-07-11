@@ -30,7 +30,8 @@ void	key_w(t_data *g_data)
 			break ;
 	if (g_data->line[i - g_data->width] == 'C')
 		g_data->noc -= 1;
-	if (g_data->line[i - g_data->width] == 'M' || (g_data->line[i - g_data->width] == 'E' && g_data->noc == 0))
+	if (g_data->line[i - g_data->width] == 'M' || \
+		(g_data->line[i - g_data->width] == 'E' && g_data->noc == 0))
 		game_exit(g_data);
 	else if (g_data->line[i - g_data->width] != '1' && \
 		g_data->line[i - g_data->width] != 'E')
@@ -53,7 +54,8 @@ void	key_a(t_data *g_data)
 			break ;
 	if (g_data->line[i - 1] == 'C')
 		g_data->noc -= 1;
-	if (g_data->line[i - 1] == 'M' || (g_data->line[i - 1] == 'E' && g_data->noc == 0))
+	if (g_data->line[i - 1] == 'M' || \
+		(g_data->line[i - 1] == 'E' && g_data->noc == 0))
 		game_exit (g_data);
 	else if (g_data->line[i - 1] != '1' && g_data->line[i - 1] != 'E')
 	{
@@ -75,7 +77,8 @@ void	key_s(t_data *g_data)
 			break ;
 	if (g_data->line[i + g_data->width] == 'C')
 		g_data->noc -= 1;
-	if (g_data->line[i + g_data->width] == 'M' || (g_data->line[i + g_data->width] == 'E' && g_data->noc == 0))
+	if (g_data->line[i + g_data->width] == 'M' || \
+		(g_data->line[i + g_data->width] == 'E' && g_data->noc == 0))
 		game_exit(g_data);
 	else if (g_data->line[i + g_data->width] != '1' \
 		&& g_data->line[i + g_data->width] != 'E')
@@ -98,7 +101,8 @@ void	key_d(t_data *g_data)
 			break ;
 	if (g_data->line[i + 1] == 'C')
 		g_data->noc -= 1;
-	if (g_data->line[i + 1] == 'M' || (g_data->line[i + 1] == 'E' && g_data->noc == 0))
+	if (g_data->line[i + 1] == 'M' || \
+		(g_data->line[i + 1] == 'E' && g_data->noc == 0))
 		game_exit (g_data);
 	else if (g_data->line[i + 1] != '1' && g_data->line[i + 1] != 'E')
 	{
