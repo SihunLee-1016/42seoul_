@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: silee <silee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/14 21:02:02 by silee             #+#    #+#             */
-/*   Updated: 2022/07/14 21:02:40 by silee            ###   ########.fr       */
+/*   Created: 2022/07/14 19:32:43 by silee             #+#    #+#             */
+/*   Updated: 2022/07/14 20:41:52 by silee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	main(int argc, char **argv)
+void	*ft_calloc(size_t count, size_t size)
 {
-	t_all	all;
+	int		i;
+	char	*p;
 
-	if (argc < 5 || argc > 6)
-		return (1); // error msg
-	if (ft_data_allocate (&all, argv) == 1)
-		return (1); //error msg
-	ft_philo_start(&all);
-	ft_detach(&all);
-	if (ft_is_live(&all) == 1)
+	p = malloc(count * size);
+	if (p == 0)
 		return (0);
+	i = count * size;
+	ft_bzero(p, i);
+	return (p);
 }

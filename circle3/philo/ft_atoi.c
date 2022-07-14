@@ -6,11 +6,12 @@
 /*   By: silee <silee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 19:31:02 by silee             #+#    #+#             */
-/*   Updated: 2022/07/13 14:58:49 by silee            ###   ########.fr       */
+/*   Updated: 2022/07/14 20:41:27 by silee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
 int	ft_isspace(char sstr)
 {
 	if (sstr == '\t')
