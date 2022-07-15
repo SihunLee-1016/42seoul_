@@ -6,51 +6,27 @@
 /*   By: silee <silee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 21:01:33 by silee             #+#    #+#             */
-/*   Updated: 2022/07/14 21:01:38 by silee            ###   ########.fr       */
+/*   Updated: 2022/07/15 15:49:26 by silee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	ft_putstr_fd(char *s, int fd)
+void	ft_print(t_data *data, int n_time, int idx_of_p, char *str)
 {
-	int	i;
-
-	i = 0;
-	if (s == 0)
-		return ;
-	while (s[i] != '\0')
-		write (fd, &s[i++], 1);
+	pthread_mutex_lock(&data->msg);
+	printf("%d %d %s", n_time, idx_of_p, str);
+	pthread_mutex_unlock(&data->msg);
 }
-
-void	ft_detach(t_all *all)
-{
-	int	i;
-
-	i = 0;
-	while (i < all->data->nop)
-	{
-		pthread_detach(all->philo[i].thr_id);
-		i++;
-	}
-}	
 
 void	ft_philo_print(t_philo *philo, t_data *data, char *str)
 {
 	long long	n_time;
-	char		*time;
-	char		*idx_of_p;
 
 	n_time = get_time() - data->start_time;
-	time = ft_itoa((int)n_time);
-	idx_of_p = ft_itoa(philo->idx);
-	pthread_mutex_lock(&data->msg);
-	ft_putstr_fd(time, 1);
-	write(1, " ", 1);
-	ft_putstr_fd(idx_of_p, 1);
-	write(1, " ", 1);
-	ft_putstr_fd(str, 1);
-	pthread_mutex_unlock(&data->msg);
+	usleep(100);
+	ft_print(data, n_time, philo->idx, str);
+	usleep(100);
 }
 
 void	*ft_memset(void *dest, int c, size_t len)

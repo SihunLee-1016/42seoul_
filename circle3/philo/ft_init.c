@@ -62,6 +62,7 @@ int	ft_data_allocate(t_all *all, char **argv)
 	else
 		all->data->nome = INT_MAX;
 	all->data->start_time = 0;
+	all->data->die_flag = 0;
 	if (all->data->nop < 0 || all->data->die_t < 0 || all->data->eat_t < 0 || \
 	all->data->nap_t < 0 || all->data->nome < 0)
 		return (1);
