@@ -16,6 +16,8 @@ int main(int ac, char **argv)
 {
     int i = -1;
 
+    if (ac != 3)
+        return (0);
     while (argv[1][++i])
     {
         if (ft_check_dup(argv[1], argv[1][i], i) == 0)
@@ -30,5 +32,4 @@ int main(int ac, char **argv)
                 printf("%c", argv[2][i]);
         }
     }
-    printf("%d", (int)strlen(argv[1]));
 }
