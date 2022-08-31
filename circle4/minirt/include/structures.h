@@ -11,10 +11,9 @@ typedef struct s_camera t_camera;
 typedef struct s_canvas t_canvas;
 
 # include <stdio.h>
-# include "structures.h"
+# include "trace.h"
 # include "print.h"
 # include "scene.h"
-# include "trace.h"
 # include "utils.h"
 
 struct s_vec3

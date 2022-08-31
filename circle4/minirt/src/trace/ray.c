@@ -1,5 +1,5 @@
-#include "trace.h"
-#include "structures.h"
+#include "../../include/trace.h"
+#include "../../include/structures.h"
 
 //ray 생성자(정규화 된 ray)
 t_ray       ray(t_point3 orig, t_vec3 dir)

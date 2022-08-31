@@ -1,4 +1,4 @@
-#include "scene.h"
+#include "../../include/scene.h"
 
 t_canvas    canvas(int  width, int height)
 {
