@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_philo.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: silee <silee@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: sihunlee <sihunlee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 21:00:55 by silee             #+#    #+#             */
-/*   Updated: 2022/07/15 16:01:36 by silee            ###   ########.fr       */
+/*   Updated: 2022/08/17 23:44:14 by sihunlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,9 @@ void	ft_try_2_eat(t_philo *philo, t_data *data)
 		pthread_mutex_unlock(philo->right_f);
 		return ;
 	}
+	
+	if (data->die_flag == 1)
+		return ;
 	ft_philo_print(philo, data, "has taken a fork\n");
 	ft_philo_print(philo, data, "is eating\n");
 	ft_eat_time(data);
@@ -57,6 +60,8 @@ void	ft_try_2_eat(t_philo *philo, t_data *data)
 	if (data->die_flag == 1)
 		return ;
 	ft_philo_print(philo, data, "is sleeping\n");
+	if (data->die_flag == 1)
+		return ;
 	ft_nap_time(data);
 	philo->eat_cnt += 1;
 }
@@ -116,6 +121,7 @@ int	ft_is_live(t_all *all)
 			n_time = get_time();
 			if (n_time - all->philo[i].last_meal_time >= all->data->die_t)
 			{
+				// pthread_mutex_lock(&all->data->msg);
 				ft_philo_print(all->philo, all->data, "is died\n");
 				all->data->die_flag = 1;
 			}
@@ -125,6 +131,7 @@ int	ft_is_live(t_all *all)
 		}
 		if (min >= all->data->nome || all->data->die_flag == 1)
 			all->data->die_flag = 1;
+		usleep(100);
 	}
 	return (0);
 }

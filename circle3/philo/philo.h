@@ -83,4 +83,7 @@ void		ft_detach(t_all *all);
 void		*ft_memset(void *dest, int c, size_t len);
 void		ft_bzero(void *s, size_t n);
 
+int	ft_strncmp(const char *s1, const char *s2, unsigned int n);
+
+
 #endif
