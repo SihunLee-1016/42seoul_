@@ -6,13 +6,14 @@
 #    By: silee <silee@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/01 17:34:37 by silee             #+#    #+#              #
-#    Updated: 2022/08/31 15:58:12 by silee            ###   ########.fr        #
+#    Updated: 2022/09/01 16:45:49 by silee            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = test
 
-SRCS = src/print/print.c src/scene/canvas.c src/trace/ray.c src/utils/vec3_utils.c main.c
+SRCS = src/print/print.c src/scene/canvas.c src/trace/ray.c src/utils/vec3_utils.c  \
+		src/scene/create.c src/trace/hit_sphere.c main.c
 
 OBJS = ${SRCS:.c=.o}
 
