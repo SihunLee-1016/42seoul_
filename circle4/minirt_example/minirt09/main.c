@@ -21,8 +21,11 @@ t_scene *scene_init(void)
     world = object(SP, sphere(point3(-2, 0, -5), 2), color3(0.5, 0, 0)); // world 에 구1 추가
     oadd(&world, object(SP, sphere(point3(0, -1000, 0), 995), color3(1, 1, 1))); // world 에 구3 추가
 
+    oadd(&world, object(SP, sphere(point3(0, -1.5, -2), 1), color3(0.5, 0.5, 0))); // world 에 구3 추가
+
     oadd(&world, object(SP, sphere(point3(2, 0, -5), 2), color3(0, 0.5, 0))); // world 에 구2 추가
-    oadd(&world, object(SP, sphere(point3(0, -1000, 0), 999), color3(1, 1, 1))); // world 에 구3 추가
+    
+    oadd(&world, object(SP, sphere(point3(0, -1000, 0), 998), color3(1, 1, 1))); // world 에 구3 추가
     scene->world = world;
     // lights = object(LIGHT_POINT, light_point(point3(0, 5, 0), color3(1, 1, 1), 0.5), color3(0, 0, 0)); // 더미 albedo
     lights = object(LIGHT_POINT, light_point(point3(0, 20, 0), color3(1, 1, 1), 0.5), color3(0, 0, 0)); // 더미 albedo

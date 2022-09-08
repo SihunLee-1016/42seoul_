@@ -36,6 +36,7 @@ t_color3        point_light_get(t_scene *scene, t_light *light)
     double      brightness;
 
     light_dir = vunit(vminus(light->origin, scene->rec.p)); //교점에서 출발하여 광원을 향하는 벡터(정규화 됨)
+    //hit point로부터 광원의 원점까지의 거리.
     light_len = vlength(light_dir);
     light_ray = ray(vplus(scene->rec.p, vmult(scene->rec.normal, EPSILON)), light_dir);
     if (in_shadow(scene->world, light_ray, light_len))
@@ -63,6 +64,9 @@ t_vec3          reflect(t_vec3 v, t_vec3 n)
     return (vminus(v, vmult(n, vdot(v, n) * 2)));
 }
 
+
+//그림자의경우, 카메라에서 t값을 구한 것 처럼 hit_point에서 광원의 원점까지 ray를 발사하고
+// 그 ray가 실근이 존재하는지 여부로 그림자의 존재 여부를 확인한다.
 t_bool          in_shadow(t_object *objs, t_ray light_ray, double light_len)
 {
     t_hit_record rec;

@@ -34,9 +34,14 @@ t_ray       ray_primary(t_camera *cam, double u, double v)
 t_color3    ray_color(t_ray *ray, t_sphere *sphere)
 {
     double  t;
+    t_vec3  n;
 
-    if (hit_sphere(sphere, ray))
-        return (color3(1, 0, 0));
+    t = hit_sphere(sphere, ray);
+    if (t > 0.0)
+    {
+        n = vunit(vminus(ray_at(ray, t), sphere->center));
+        return (vmult(color3(n.x + 1, n.y + 1, n.z + 1), 0.5));
+    }
     else
     {
         //ray의 방향벡터의 y 값을 기준으로 그라데이션을 주기 위한 계수.
@@ -44,5 +49,4 @@ t_color3    ray_color(t_ray *ray, t_sphere *sphere)
         // (1-t) * 흰색 + t * 하늘색
         return (vplus(vmult(color3(1, 1, 1), 1.0 - t), vmult(color3(0.5, 0.7, 1.0),     t)));
     }
-/* * * * 수정 끝 * * * */
 }
