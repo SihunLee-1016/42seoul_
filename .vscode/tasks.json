@@ -7,15 +7,18 @@
             "args": [ 
                 "-fdiagnostics-color=always",
                 "-g",
-                "/Users/silee/workspace/ppush_swap/new_push_swap.c",
+                "/Users/silee/workspace/circle3/philo/main.c",
                 "-o",
-                "push_swap"
+                "a.out"
             ],
             "options": {
-                "cwd": "${fileDirname}"
+                "cwd": "/usr/bin",
+                "env": {
+                    "DEBUG": "true"
+                  }          
             },
             "problemMatcher": [
-                "$gcc -g -fsanitize=address"
+                "$gcc"
             ],
             "group": {
                 "kind": "build",
