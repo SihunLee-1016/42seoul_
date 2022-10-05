@@ -59,8 +59,8 @@ int main(int arc, char **arv, char **env)
 				}
 				if (pid[pp] == 0)
 				{
-					dup2(in, 0);
-					dup2(out, 1);
+					dup2(in, STDIN_FILENO);
+					dup2(out, STDOUT_FILENO);
 					if (p_in != 0)
 						close(p_in);
 					if (in != 0)
