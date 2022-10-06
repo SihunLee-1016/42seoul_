@@ -52,7 +52,7 @@ char *get_next_line(int fd)
         if (buf[0] == '\n')
             break ;
         byte = read(fd, &buf, 1);
-        buf[byte ] = '\0';
+        buf[byte] = '\0';
     }
     if (byte <= 0 && i == 0)
         return (0);

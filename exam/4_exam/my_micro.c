@@ -43,7 +43,7 @@ int	main(int ac, char **av, char **ev)
 		}
 		if (cc == 0)
 			continue ;
-		if (i < ac && !strcmp(av[i], "|"))
+		if (i < ac && strcmp(av[i], "|") == 0)
 		{
 			if (pipe(fd) < 0)
 			{
@@ -53,7 +53,7 @@ int	main(int ac, char **av, char **ev)
 			prev_in = fd[0];
 			out = fd[1];
 		}
-		if (!strcmp(cmd[0], "cd"))
+		if (strcmp(cmd[0], "cd") == 0)
 		{
 			if  ((cc != 2))
 				write(2, CB, ft_strlen(CB));
@@ -78,10 +78,10 @@ int	main(int ac, char **av, char **ev)
 				dup2(out, 1); // = dup2(out, STDOUT_FILENO). stdout_fileno 가 out에 쓰이도록 연결
 				if (in != 0)
 					close(in);
-				if (prev_in != 0)
-					close(prev_in);
 				if (out != 1)
 					close(out);
+				if (prev_in != 0)
+					close(prev_in);
 				execve(cmd[0], cmd, ev);
 				write(2, EX, ft_strlen(EX));
 				write(2, cmd[0], ft_strlen(cmd[0]));
@@ -97,7 +97,7 @@ int	main(int ac, char **av, char **ev)
 				in = prev_in; // 기존의 데이터가 쓰여진 fd값을 in에 저장.
 				pc++;
 			}
-			if (i >= ac || (i < ac && !strcmp(av[i], ";")))
+			if (i >= ac || (i < ac && strcmp(av[i], ";") == 0))
 			{
 				while(pc)
 				{

@@ -1,4 +1,4 @@
-gcc test.c -o microshell -Wall -Wextra -Werror
+gcc sample.c -o microshell -Wall -Wextra -Werror
 # ./microshell /bin/ls
 # ./microshell /bin/cat microsh.c
 # ./microshell /bin/ls microsh.c
