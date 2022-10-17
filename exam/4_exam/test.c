@@ -1,8 +1,9 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
-#include <signal.h>
+
 #include <sys/wait.h>
+#include <signal.h>
 #include <string.h>
 
 #define CB "error: cd: bad arguments\n"
