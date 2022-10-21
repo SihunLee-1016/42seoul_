@@ -6,7 +6,7 @@
 #    By: silee <silee@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/06 17:27:40 by silee             #+#    #+#              #
-#    Updated: 2022/10/17 16:41:49 by silee            ###   ########.fr        #
+#    Updated: 2022/10/21 17:47:29 by silee            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ CC		= clang++
 
 RM		= rm -f
 
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+# -g3 -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -std=c++98 
 
 all:	${NAME}
 
