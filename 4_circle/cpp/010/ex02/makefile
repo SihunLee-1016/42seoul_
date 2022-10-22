@@ -6,13 +6,13 @@
 #    By: silee <silee@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/06 17:27:40 by silee             #+#    #+#              #
-#    Updated: 2022/10/22 21:48:10 by silee            ###   ########.fr        #
+#    Updated: 2022/10/22 21:47:12 by silee            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = phonebook
+NAME = ref
 
-SRCS = ./phone_book.cpp ./contact.cpp
+SRCS = ./main.cpp
 
 OBJS = ${SRCS:.cpp=.o}
 
@@ -21,7 +21,7 @@ CXX		= clang++
 RM		= rm -f
 
 # -g3 -fsanitize=address
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g -fsanitize=address
 
 all:	${NAME}
 

@@ -6,7 +6,7 @@
 #    By: silee <silee@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/06 17:27:40 by silee             #+#    #+#              #
-#    Updated: 2022/10/06 17:38:31 by silee            ###   ########.fr        #
+#    Updated: 2022/10/22 21:48:25 by silee            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,19 +16,19 @@ SRCS = ./megaphone.cpp
 
 OBJS = ${SRCS:.cpp=.o}
 
-CC		= clang++
+CXX		= clang++
 
 RM		= rm -f
 
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 all:	${NAME}
 
 $(NAME): ${OBJS}
-		$(CC) $(CFLAGS) -o ${NAME} ${OBJS}
+		$(CXX) $(CXXFLAGS) -o ${NAME} ${OBJS}
 
 %.o: %.c
-		${CC} ${CFLAGS} -c $< -o $@
+		${CXX} ${CXXFLAGS} -c $< -o $@
 
 clean:
 		${RM} ${OBJS} ${OBJSBONUS}
