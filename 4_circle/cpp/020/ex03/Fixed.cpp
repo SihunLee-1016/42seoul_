@@ -120,10 +120,13 @@ const Fixed& Fixed::getmax(Fixed const &a, Fixed const &b)
 }
 
 
+
 Fixed::Fixed(void)
 {
 	this->fixed = 0;
 }
+
+
 
 Fixed::Fixed(int num)
 {
