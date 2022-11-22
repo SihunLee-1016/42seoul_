@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: silee <silee@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: silee <silee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 10:31:56 by silee             #+#    #+#             */
-/*   Updated: 2022/09/24 10:33:55 by silee            ###   ########.fr       */
+/*   Updated: 2022/11/13 17:41:36 by silee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,7 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		err_exit("check your input again");
 	parse_main(&info, argv[1]);
-	system("leaks miniRT");
 	info_init(&info);
-	system("leaks miniRT");
 	mlx_hook(info.mlx.win, X_EVENT_DESTROY, 0, minirt_end, &info);
 	mlx_hook(info.mlx.win, X_EVENT_KEY_PRESS, 0, press_key, &info);
 	mlx_loop_hook(info.mlx.mlx, rt_loop_hook, &info);
