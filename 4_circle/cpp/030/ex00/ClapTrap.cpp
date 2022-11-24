@@ -1,12 +1,34 @@
 #include"ClapTrap.hpp"
-
+ClapTrap::ClapTrap(void)
+{
+    this->Hit_points = 10;
+    this->Energy_points = 10;
+    this->attack_dmg = 1;
+    std::cout << this->name << "initialized" << std::endl;
+}
 ClapTrap::ClapTrap(std::string str)
 {
     this->name = str;
     this->Hit_points = 10;
 	this->Energy_points = 10;
-	this->Attak_dmg = 1;
-    std::cout << this->name << "initialized" << std::endl;
+	this->attack_dmg = 1;
+    std::cout << this->name << "initialized.w.name" << std::endl;
+}
+
+ClapTrap::ClapTrap(const ClapTrap &obj)
+{
+    this->name = obj.name;
+    this->Hit_points = obj.Hit_points;
+    this->Energy_points = obj.Energy_points;
+    this->attack_dmg = obj.attack_dmg;
+}
+
+ClapTrap& ClapTrap::operator=(const ClapTrap &obj)
+{
+    this->name = obj.name;
+    this->Hit_points = obj.Hit_points;
+    this->Energy_points = obj.Energy_points;
+    this->attack_dmg = obj.attack_dmg;
 }
 
 ClapTrap::~ClapTrap()

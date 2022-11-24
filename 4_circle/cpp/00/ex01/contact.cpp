@@ -38,7 +38,7 @@ void	contact::data_print(int	i)
 	k = 0;
 	std::cout << " Last name	|";
 	std::cout << std::setw(10);
-	while (i <= 9 && this->last[k])
+	while (k <= 9 && this->last[k])
 	{
 		std::cout << this->last[k];
 		k++;

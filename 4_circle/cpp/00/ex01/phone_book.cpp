@@ -4,12 +4,12 @@ void    phone_book::cnt_Add(void)
 {
 	if (this->idx <= 7)
 	{
-		this->contacts[this->idx % 8].data_Add();
+		this->contacts[this->idx].data_Add();
 		this->idx++;
 	}
 	else if (this->idx > 7)
 	{
-		this->contacts [7].data_Add();
+		this->contacts[this->idx % 8].data_Add();
 		this->idx++;
 	}
 }
@@ -26,6 +26,11 @@ void    phone_book::cnt_Search(void)
 	}
 	std::cout << "Which one u wanna search? : ";
 	std::cin >> s_idx;
+	if (s_idx == "exit")
+	{
+		std::cout << "EXIT" << std::endl;
+		exit(0);
+	}
 	std::cout << std::endl;
 	s_idx -= 1;
 	if (s_idx > 7 || s_idx < 0)
@@ -58,8 +63,6 @@ int main(void)
 {
 	std::string cmd;
 	phone_book  data;
-	int     idx = 0;
-	int     i = 0;
 
 	while (!std::cin.eof())
 	{
