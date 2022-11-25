@@ -26,11 +26,6 @@ void    phone_book::cnt_Search(void)
 	}
 	std::cout << "Which one u wanna search? : ";
 	std::cin >> s_idx;
-	if (s_idx == "exit")
-	{
-		std::cout << "EXIT" << std::endl;
-		exit(0);
-	}
 	std::cout << std::endl;
 	s_idx -= 1;
 	if (s_idx > 7 || s_idx < 0)

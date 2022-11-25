@@ -54,5 +54,5 @@ float	Fixed::toFloat(void) const
 
 int		Fixed::toInt(void) const
 {
-	return (this->fixed >> this ->fract);
+	return (this->fixed >> this->fract);
 }

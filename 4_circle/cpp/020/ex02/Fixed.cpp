@@ -1,5 +1,4 @@
 #include "Fixed.hpp"
-
 Fixed& Fixed::operator=(const Fixed &a)
 {
     this->fixed = a.getRawBits();
