@@ -6,13 +6,13 @@
 #    By: silee <silee@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/06 17:27:40 by silee             #+#    #+#              #
-#    Updated: 2022/10/22 21:48:10 by silee            ###   ########.fr        #
+#    Updated: 2022/11/29 14:01:05 by silee            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = phonebook
 
-SRCS = ./phone_book.cpp ./contact.cpp
+SRCS = ./Phonebook.cpp ./Contact.cpp
 
 OBJS = ${SRCS:.cpp=.o}
 

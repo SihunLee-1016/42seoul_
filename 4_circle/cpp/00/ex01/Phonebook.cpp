@@ -1,6 +1,6 @@
-#include "phone_book.hpp"
+#include "Phonebook.hpp"
 
-void    phone_book::cnt_Add(void)
+void    Phonebook::cnt_Add(void)
 {
 	if (this->idx <= 7)
 	{
@@ -15,9 +15,10 @@ void    phone_book::cnt_Add(void)
 }
 
 
-void    phone_book::cnt_Search(void)
+void    Phonebook::cnt_Search(void)
 {
 	int s_idx;
+	std::string input;
 
 	if (this->idx == 0)
 	{
@@ -25,7 +26,31 @@ void    phone_book::cnt_Search(void)
 		return ;
 	}
 	std::cout << "Which one u wanna search? : ";
-	std::cin >> s_idx;
+	std::getline(std::cin, input);
+	if (std::cin.eof())
+		exit(0);
+
+	if (input.compare("1") == 0)
+		s_idx = 1;
+	else if (input.compare("2") == 0)
+		s_idx = 2;
+	else if (input.compare("3") == 0)
+		s_idx = 3;
+	else if (input.compare("4") == 0)
+		s_idx = 4;
+	else if (input.compare("5") == 0)
+		s_idx = 5;
+	else if (input.compare("6") == 0)
+		s_idx = 6;
+	else if (input.compare("7") == 0)
+		s_idx = 7;
+	else if (input.compare("8") == 0)
+		s_idx = 8;
+	else
+	{
+		std::cout << "Wrong input" << std::endl;
+		return ;
+	}
 	std::cout << std::endl;
 	s_idx -= 1;
 	if (s_idx > 7 || s_idx < 0)
@@ -42,7 +67,7 @@ void    phone_book::cnt_Search(void)
 }
 
 
-void	phone_book::print_all(void)
+void	Phonebook::print_all(void)
 {
 	int	i = 0;
 
@@ -57,12 +82,15 @@ void	phone_book::print_all(void)
 int main(void)
 {
 	std::string cmd;
-	phone_book  data;
+	Phonebook  data;
 
-	while (!std::cin.eof())
+	// while (!std::cin.eof())
+	while (1)
 	{
+		if (std::cin.eof())
+			exit(0);
 		std::cout << "Command (add, search, exit) : ";
-		std::cin >> cmd;
+		std::getline(std::cin, cmd);
 		if (cmd == "add")
 			data.cnt_Add();
 		else if (cmd == "search")
@@ -74,8 +102,6 @@ int main(void)
 		{
 			exit(0);
 		}            
-		else
-			std::cout << "cmd not found" << std::endl;
 	}
 	return (0);
 }

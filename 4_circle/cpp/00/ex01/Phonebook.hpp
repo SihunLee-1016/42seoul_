@@ -1,14 +1,14 @@
 #include <iostream>
 #include <iomanip>
 #include <string.h>
-#include "contact.hpp"
-class phone_book
+#include "Contact.hpp"
+class Phonebook
 {
 	private :
-		contact contacts[8];
+		Contact contacts[8];
 		int     idx;
 	public :
-		phone_book(void) {
+		Phonebook(void) {
 			this->idx = 0;
 		}
 		void    cnt_Add(void);

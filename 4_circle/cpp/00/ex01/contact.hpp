@@ -1,7 +1,7 @@
 #include <iostream>
 #include <iomanip>
 #include <string.h>
-class contact
+class Contact
 {
 	private:
 		std::string idx;
@@ -14,4 +14,6 @@ class contact
 		void    data_Add(void);
 		void    data_Search(int	idx);
 		void	data_print(int i);
+		void	data_specific_print(int	i);
+
 };
