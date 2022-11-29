@@ -11,24 +11,5 @@ class Animal
         ~Animal();
         Animal& operator=(const Animal &obj);
         virtual void    makesound(void);
-        std::string    gettype();
+        virtual std::string const gettype();
 };
-
-Animal::Animal(/* args */)
-{
-    this->type = 0;
-}
-
-Animal::~Animal()
-{
-}
-
-virtual void    Animal::makesound(void)
-{
-    std::cout << "From Animal class" << std::endl;
-}
-
-std::string Animal::gettype()
-{
-    return (this->type);
-}
