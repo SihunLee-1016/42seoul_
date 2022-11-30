@@ -1,3 +1,6 @@
+#ifndef DOG_HPP
+#define DOG_HPP
+#include "Animal.hpp"
 class Dog : public Animal
 {
     private:
@@ -6,6 +9,8 @@ class Dog : public Animal
         Dog(const Dog &obj);
         Dog& operator=(const Dog &obj);
         ~Dog();
-        virtual void    makesound(void);
-        virtual std::string    gettype();
+        virtual void    makesound(void) const;
+        virtual std::string    gettype() const;
 };
+
+#endif

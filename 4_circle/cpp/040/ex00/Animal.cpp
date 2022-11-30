@@ -1,19 +1,20 @@
 #include "Animal.hpp"
-Animal::Animal(/* args */)
+Animal::Animal()
 {
-    this->type = 0;
+    // this->type = 0;
 }
 
 Animal::~Animal()
 {
+    std::cout << "Animal destructor activated" << std::endl;
 }
 
-virtual void    Animal::makesound(void)
+void    Animal::makesound(void) const
 {
     std::cout << "From Animal class" << std::endl;
 }
 
-std::string Animal::gettype()
+std::string Animal::gettype() const
 {
-    return (this->type);
+    return (type);
 }

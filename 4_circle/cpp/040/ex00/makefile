@@ -6,13 +6,13 @@
 #    By: silee <silee@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/06 17:27:40 by silee             #+#    #+#              #
-#    Updated: 2022/11/29 12:09:15 by silee            ###   ########.fr        #
+#    Updated: 2022/11/30 15:16:01 by silee            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = ex00
 
-SRCS = ./main.cpp ./Dog.cpp ./Cat.cpp ./Animal.cpp
+SRCS = ./main.cpp ./Dog.cpp ./Cat.cpp ./Animal.cpp ./Wronganimal.cpp ./Wrongcat.cpp
 
 OBJS = ${SRCS:.cpp=.o}
 
