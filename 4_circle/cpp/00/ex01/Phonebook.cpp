@@ -71,10 +71,22 @@ void	Phonebook::print_all(void)
 {
 	int	i = 0;
 
+	std::cout << std::right;
+	std::cout << std::setw(11);
+	std::cout << "INDEX |";
+	std::cout << std::setw(11);
+	std::cout << "F_name |";
+	std::cout << std::setw(11);
+	std::cout << "L_name |";
+	std::cout << std::setw(11);
+	std::cout << "N_name |" << std::endl;
+	std::cout << "--------------------------------------------"<<std::endl;
 	while (i < this->idx && i < 8)
 	{
+
 		this->contacts[i].data_print(i);
 		std::cout << std::endl;
+		std::cout << "--------------------------------------------"<<std::endl;
 		i++;
 	}
 }
