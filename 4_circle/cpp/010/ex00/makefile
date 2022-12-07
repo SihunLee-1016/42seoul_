@@ -6,13 +6,13 @@
 #    By: silee <silee@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/06 17:27:40 by silee             #+#    #+#              #
-#    Updated: 2022/10/22 21:47:55 by silee            ###   ########.fr        #
+#    Updated: 2022/12/07 19:59:35 by silee            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = zombie
 
-SRCS = ./main.cpp ./Zombie.cpp ./newZombie.cpp
+SRCS = ./main.cpp ./Zombie.cpp ./randomChunp.cpp
 
 OBJS = ${SRCS:.cpp=.o}
 
@@ -21,7 +21,8 @@ CXX		= clang++
 RM		= rm -f
 
 # -g3 -fsanitize=address
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address
+# CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 all:	${NAME}
 

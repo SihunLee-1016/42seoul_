@@ -7,13 +7,11 @@ void    Zombie::announce(void)
 
 void Zombie::makeZombie( std::string str)
 {
-    int len = str.size();
     name = new std::string(str);
 }
 
 void Zombie::randomChump( std::string str )
 {
-    int len = str.size();
     name = new std::string(str);
     this->announce();
 }

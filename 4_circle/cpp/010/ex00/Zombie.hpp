@@ -1,13 +1,17 @@
 #include <iostream>
-#include <string.h>
+#include <string>
 #include <iomanip>
 
 class Zombie
 {
+    private:
+        std::string name;
     public :
-        ~Zombie()
-        {
-            std::cout <<"Destroyed" << std::endl;
-        }
+        Zombie(std::string str);
+        ~Zombie();
         void    announce(void);
+        static Zombie *newZombie(std::string str);
+        // void    randomChump(std::string str);
 };
+
+void randomChump(std::string str);
