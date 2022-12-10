@@ -24,11 +24,16 @@ public :
 		public :
 			const char* what(void) const throw();
 	};
-
 	Form(const std::string str, const int sign, const int exe);
 	Form(const Form &obj);
 	Form& operator=(const Form &obj);
+
 	~Form();
-	void	besigned(const Bureaucrat obj);
+	void	besigned(const Bureaucrat &obj);
+	std::string getname() const;
+	int	get_sign_g() const;
+	int	get_exe_g() const;
+	int get_signed();
 };
+std::ostream& operator<<(std::ostream& o, const Form& f);
 #endif

@@ -35,12 +35,12 @@ void    Bureaucrat::grade2low()
 	std::cout << "Grade Too Low" << std::endl;   
 }
 
-const std::string Bureaucrat::getname()
+const std::string Bureaucrat::getname() const
 {
 	return (this->name);
 }
 
-int Bureaucrat::getgrade()
+int Bureaucrat::getgrade() const
 {
 	return (this->grade);
 }
@@ -59,4 +59,19 @@ void Bureaucrat::grade_down()
 		std::cout << "Grade up Faile (its already lowest" << std::endl;
 	else
 		this->grade += 1;		
+}
+
+void	Bureaucrat::signForm(const Form &f) const
+{
+	try
+	{
+    (*const_cast<Form*>(&f)).besigned(*this);
+		std::cout << "<" << this->name << "> signs <"
+			<< f.getname() << ">" << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << "<" << this->name << "> cannot sign <"
+			<< f.getname() << "> becasue <" << e.what() << " >" << std::endl;
+	}
 }

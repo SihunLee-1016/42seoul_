@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include <stdexcept>
+#include "Form.hpp"
 class Bureaucrat
 {
     private:
@@ -14,9 +15,10 @@ class Bureaucrat
         ~Bureaucrat();
         void    grade2high();
         void    grade2low();
-        const std::string getname();
-        int getgrade();
+        const std::string getname() const;
+        int getgrade() const;
         void    grade_up();
         void    grade_down();
+        void	signForm(const Form &f) const;
 };
 #endif

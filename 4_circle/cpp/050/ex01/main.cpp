@@ -9,34 +9,24 @@ std::ostream& operator<<(std::ostream &obj, Bureaucrat& data)
 
 int main()
 {
-    Bureaucrat A("AA", 1);
-    Bureaucrat B("BB", 150);
-    Bureaucrat C("CC", 50);
-    Bureaucrat D("DD", -1);
-    Bureaucrat E("EE", 151);
+   Bureaucrat  j("Jseo", 1);
+  Bureaucrat  h("Hyson", 75);
+  Form  f1("f1", 30, 30);
+  Form  f2(f1);
+  Form  f3("f3", 75, 50);
 
-    std::cout << A;
-    std::cout << B;
-    std::cout << C;
-    
-    C.grade_down();
-    C.grade_down();
-    C.grade_down();
-
-    std::cout << C;
-    
-    C.grade_up();
-    C.grade_up();
-    C.grade_up();
-    C.grade_up();
-    C.grade_up();    
-    std::cout << C;
-
-
-    A.grade_up();
-    std::cout << A;
-
-    B.grade_down();
-    std::cout << B;
+  std::cout << f1 << std::endl
+    << f2 << std::endl
+    << f3 << std::endl;
+  std::cout << std::endl;
+  h.signForm(f1);
+  j.signForm(f2);
+  h.signForm(f3);
+  std::cout << std::endl;
+  std::cout << f1 << std::endl
+    << f2 << std::endl
+    << f3 << std::endl;
+  std::cout << std::endl;
+  return 0;
 
 }
