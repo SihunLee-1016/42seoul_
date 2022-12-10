@@ -1,4 +1,5 @@
 #include "Form.hpp"
+#include "Bureaucrat.hpp"
 const char* Form::Grade2HighException::what(void) const throw()
 {
 	return "Grade Too High";
@@ -60,7 +61,7 @@ int Form::get_exe_g() const
 	return (this->exe_g);
 }
 
-int Form::get_signed()
+int Form::get_signed() const
 {
 	return (this->sign);
 }
@@ -69,5 +70,5 @@ std::ostream& operator<<(std::ostream& o, const Form& f) {
   return o << "<" << f.getname() << ">, sign grade <"
           << f.get_sign_g() << ">, exec grade <"
           << f.get_exe_g() << ">, signed <"
-          << std::boolalpha << f.get_signed() << ">";
+          << f.get_signed() << ">";
 }

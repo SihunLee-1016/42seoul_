@@ -1,5 +1,5 @@
 #include "Bureaucrat.hpp"
-
+#include "Form.hpp"
 std::ostream& operator<<(std::ostream &obj, Bureaucrat& data)
 {
     	obj	<< data.getname() << ", bureaucrat of grade "
