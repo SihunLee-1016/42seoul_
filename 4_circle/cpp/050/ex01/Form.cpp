@@ -16,8 +16,8 @@ Form::Form(const std::string str, const int sign, const int exe) : _name(str), s
 }
 
 Form::Form(const Form &obj) 
-	: _name(this->_name), sign(this->sign),
-		sign_g(this->sign_g), exe_g(this->exe_g)
+	: _name(obj.getname()), sign(obj.get_signed()),
+		sign_g(obj.get_sign_g()), exe_g(obj.get_exe_g())
 {
 	if (sign_g > 150 || exe_g > 150)
 		throw Grade2LowException();
@@ -31,6 +31,7 @@ Form& Form::operator=(const Form &obj)
 	*(const_cast<int*>(&sign_g)) = obj.get_sign_g();
 	*(const_cast<int*>(&exe_g)) = obj.get_exe_g();
 	sign = obj.sign;
+	return (*this);
 }
 
 Form::~Form()

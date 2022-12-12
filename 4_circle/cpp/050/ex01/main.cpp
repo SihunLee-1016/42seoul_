@@ -9,8 +9,8 @@ std::ostream& operator<<(std::ostream &obj, Bureaucrat& data)
 
 int main()
 {
-   Bureaucrat  j("Jseo", 1);
-  Bureaucrat  h("Hyson", 75);
+   Bureaucrat  j("s", 1);
+  Bureaucrat  h("j", 75);
   Form  f1("f1", 30, 30);
   Form  f2(f1);
   Form  f3("f3", 75, 50);

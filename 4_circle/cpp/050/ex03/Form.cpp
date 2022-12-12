@@ -15,6 +15,7 @@ const char* Form::FileNotWorkingException::what(void) const throw()
 	return "File Not Working";
 }
 
+
 Form::Form(void) : sign_g(0), exe_g(0)
 {
 	set_type("Form");
@@ -82,6 +83,11 @@ int Form::get_signed() const
 	return (this->sign);
 }
 
+std::string Form::get_target() const
+{
+	return (this->target);
+}
+
 void	Form::set_type(const std::string str)
 {
 	*(const_cast<std::string*>(&this->_type)) = str;
@@ -105,6 +111,11 @@ void	Form::set_eg(const int num)
 void	Form::set_signed(bool num)
 {
 	this->sign = num;
+}
+
+void	Form::set_target(const std::string str)
+{
+	*(const_cast<std::string*>(&this->target)) = str;
 }
 
 std::ostream& operator<<(std::ostream& o, const Form& f) {
