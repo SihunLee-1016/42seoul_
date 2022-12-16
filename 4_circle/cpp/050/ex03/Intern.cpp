@@ -14,6 +14,16 @@ Intern::~Intern()
 
 }
 
+Intern::Intern(const Intern &obj)
+{
+
+}
+
+Intern& Intern::operator=(const Intern &obj)
+{
+
+}
+
 Form * Intern::makeForm(const std::string nof, const std::string tg_name)
 {
 

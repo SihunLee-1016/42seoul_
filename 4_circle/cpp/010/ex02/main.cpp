@@ -7,10 +7,11 @@ int main()
 	std::string& stringREF = str;
 	std::string	*stringPTR = &str;
 
-	std::cout << "text address : " << &str << std::endl;
+	std::cout << "text address : " << &str << std::endl << std::endl;
 	std::cout << "stringREF address : " << &stringREF << std::endl;
 	std::cout << "stringPTR address : " << &stringPTR << std::endl << std::endl;
 
+	std::cout << "string variable : " << str << std::endl << std::endl;
 	std::cout << "using stringPTR : " << *stringPTR << std::endl;
 	std::cout << "using stringREF : " << stringREF << std::endl;
 

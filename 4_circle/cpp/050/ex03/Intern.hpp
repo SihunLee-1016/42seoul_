@@ -13,6 +13,8 @@ class Intern
 			const char* what(void) const throw();
 	};
     Intern();
+    Intern(const Intern &obj);
+    Intern& operator=(const Intern &obj);
     ~Intern();
     Form *makeForm(const std::string nof, const std::string tg_name);
 };

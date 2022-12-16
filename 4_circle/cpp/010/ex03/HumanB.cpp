@@ -6,10 +6,10 @@ HumanB::HumanB(std::string name)
 
 void    HumanB::attack(void)
 {
-	std::cout << _name << " attacks with his " << _weapon_type << std::endl;
+	std::cout << _name << " attacks with his " << this->B_w->getType() << std::endl;
 }
 
-void    HumanB::setWeapon(Weapon w_type)
+void    HumanB::setWeapon(Weapon *w_type)
 {
-	_weapon_type = w_type.getType();
+	B_w = w_type;
 }

@@ -9,12 +9,16 @@ int main (int ac, char **av)
 	
 	std::ofstream   write;
 	std::ifstream   read;
+
 	std::string		outfile;
 	std::string		contents;
+	
 	std::string		str1;
 	std::string		str2;
+	
 	int				str1_len = 0;
 	int				str2_len = 0;
+	
 	size_t			position = 0;
 
 	read.open(av[1]);
@@ -36,6 +40,7 @@ int main (int ac, char **av)
 		std::cout << "error" << std::endl;
 		return (1);
 	}
+	
 	while (1)
 	{
 		std::getline(read, contents);
@@ -58,3 +63,7 @@ int main (int ac, char **av)
 	}
 	return (0);
 }
+//std::getline function returns line of file, once at one line.
+
+//std::string::npos : if std::string's find function failed to find specific string, 
+// find function returns std::string::npos. 

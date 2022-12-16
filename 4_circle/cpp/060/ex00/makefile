@@ -5,14 +5,14 @@
 #                                                     +:+ +:+         +:+      #
 #    By: silee <silee@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/10/06 17:27:40 by silee             #+#    #+#              #
-#    Updated: 2022/12/16 19:22:56 by silee            ###   ########.fr        #
+#    Created: 2022/12/08 12:46:24 by silee             #+#    #+#              #
+#    Updated: 2022/12/16 20:19:14 by silee            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = harlFilter
+NAME = ex00
 
-SRCS = ./main.cpp ./Harl.cpp
+SRCS = ./main.cpp
 
 OBJS = ${SRCS:.cpp=.o}
 

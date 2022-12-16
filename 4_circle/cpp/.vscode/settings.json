@@ -63,6 +63,9 @@
         "iomanip": "cpp",
         "deque": "cpp",
         "fstream": "cpp",
-        "stack": "cpp"
-    }
+        "stack": "cpp",
+        "numeric": "cpp",
+        "random": "cpp"
+    },
+    "C_Cpp.errorSquiggles": "disabled"
 }
