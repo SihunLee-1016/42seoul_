@@ -2,7 +2,6 @@
 HumanA::HumanA(std::string name, Weapon& type) : A_w(type)
 {
     _name = name;
-    A_w = type;
 }
 
 void    HumanA::attack(void)
