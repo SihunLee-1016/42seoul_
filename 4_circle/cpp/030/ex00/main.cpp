@@ -15,6 +15,10 @@ int main()
     a.attack("Tom");
     a.attack("Tom");
     a.attack("Tom");
+    a.attack("Tom");
+    a.attack("Tom");
+    a.attack("Tom");
+    a.attack("Tom");
     a.beRepaired(1);
     a.status();
 }

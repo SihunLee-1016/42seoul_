@@ -27,13 +27,13 @@ class Fixed
 		
 		Fixed& operator++ (void);
 		Fixed& operator-- (void);
-		Fixed operator++ (int i);
-		Fixed operator-- (int i);
+		Fixed operator++ (int);
+		Fixed operator-- (int);
 
-		Fixed& getmin(Fixed &a, Fixed &b);
-		const Fixed& getmin(Fixed const &a, Fixed const &b);
-		Fixed& getmax(Fixed &a, Fixed &b);
-		const Fixed& getmax(Fixed const &a, Fixed const &b);
+		static Fixed& getmin(Fixed &a, Fixed &b);
+		static const Fixed& getmin(Fixed const &a, Fixed const &b);
+		static Fixed& getmax(Fixed &a, Fixed &b);
+		static const Fixed& getmax(Fixed const &a, Fixed const &b);
 
 		int		getRawBits(void) const;
 		void	setRawBits(int const raw);

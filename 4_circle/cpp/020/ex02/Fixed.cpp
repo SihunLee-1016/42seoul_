@@ -57,31 +57,29 @@ Fixed Fixed::operator / (const Fixed &a)
 
 Fixed& Fixed::operator++ (void)
 {
-	this->fixed++;
+	++this->fixed;
 	return (*this);
 }
 
 Fixed& Fixed::operator-- (void)
 {
-	this->fixed--;
+	--this->fixed;
 	return (*this);
 }
 
-Fixed Fixed::operator++ (int i)
+Fixed Fixed::operator++ (int)
 {
 	Fixed tmp(*this);
 
-	(void) i;
-	this->fixed++;
+	++this->fixed;
 	return (tmp);
 }
 
-Fixed Fixed::operator-- (int i)
+Fixed Fixed::operator-- (int)
 {
 	Fixed tmp(*this);
 
-	(void) i;
-	this->fixed--;
+	++this->fixed;
 	return (tmp);
 }
 
@@ -161,5 +159,5 @@ float	Fixed::toFloat(void) const
 
 int		Fixed::toInt(void) const
 {
-	return (this->fixed >> this ->fract);
+	return (this->fixed >> this->fract);
 }

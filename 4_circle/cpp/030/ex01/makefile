@@ -6,11 +6,11 @@
 #    By: silee <silee@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/06 17:27:40 by silee             #+#    #+#              #
-#    Updated: 2022/11/22 12:10:05 by silee            ###   ########.fr        #
+#    Updated: 2022/12/21 13:58:30 by silee            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ex00
+NAME = ex01
 
 SRCS = ./main.cpp ./ClapTrap.cpp ./ScavTrap.cpp
 

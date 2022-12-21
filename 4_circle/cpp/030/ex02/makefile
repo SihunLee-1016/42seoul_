@@ -6,13 +6,13 @@
 #    By: silee <silee@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/06 17:27:40 by silee             #+#    #+#              #
-#    Updated: 2022/11/22 12:10:05 by silee            ###   ########.fr        #
+#    Updated: 2022/12/21 19:54:15 by silee            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ex00
+NAME = ex02
 
-SRCS = ./main.cpp ./ClapTrap.cpp ./ScavTrap.cpp
+SRCS = ./main.cpp ./ClapTrap.cpp ./ScavTrap.cpp ./FragTrap.cpp
 
 OBJS = ${SRCS:.cpp=.o}
 
