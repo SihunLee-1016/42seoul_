@@ -1,10 +1,8 @@
 #ifndef ARRAY_HPP
 # define ARRAY_HPP
-#include <cstddef>
 
 #include <exception>
 #include <iostream>
-
 template <typename T>
 class Array
 {
@@ -19,19 +17,19 @@ class Array
             const char* what(void) const throw() {
                 return "out of Bound";
             }
-        }
+        };
 
         Array(void) : size(0), data(NULL){
         }
         
-        Array(unsigned int n){
+        Array(unsigned int n) : size(n){
             data = new T[n];
         }
 
         Array(const Array &obj) : size(obj.getsize()),data(NULL){
             if (size)
                 data = new T[size];
-            for(unsigned int i = 0; i < size; i++)
+            for(unsigned int i = 0; i < size; ++i)
                 data[i] = obj[i];
         }
 
@@ -42,9 +40,10 @@ class Array
             }
             for(unsigned int i = 0; i < size; i++)
                 data[i] = obj[i];
+            return *this;
         }
 
-        Array & operator [](unsigned int i){
+        T & operator [](unsigned int i) const {
             if (i >= size)
                 throw OutofBound();
             return data[i];
@@ -57,7 +56,7 @@ class Array
                 // size = 0;
         }
         
-        unsigned int getsize(){
+        unsigned int getsize() const {
             return (size);
         }
 };
