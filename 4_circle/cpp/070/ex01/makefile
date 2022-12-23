@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: silee <silee@student.42.fr>                +#+  +:+       +#+         #
+#    By: sihunlee <sihunlee@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/08 12:46:24 by silee             #+#    #+#              #
-#    Updated: 2022/12/08 13:35:32 by silee            ###   ########.fr        #
+#    Updated: 2022/12/22 16:11:46 by sihunlee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = ex01
 
-SRCS = ./main.cpp ./Bureaucrat.cpp ./Form.cpp
+SRCS = ./main.cpp
 
 OBJS = ${SRCS:.cpp=.o}
 
