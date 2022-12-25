@@ -11,9 +11,11 @@ class Dog : public Animal
         Dog(const Dog &obj);
         ~Dog();
         Dog& operator=(const Dog &obj);
-        virtual void    makesound(void) const;
+        virtual void    makesound() const;
         virtual std::string    gettype() const;
-        Brain *getBrain() const;
+        Brain *get_brain() const;
+        void    check_brain();
+
 };
 
 #endif

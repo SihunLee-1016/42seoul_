@@ -14,6 +14,8 @@ class Animal
         virtual Animal& operator=(const Animal &obj);
         virtual void    makesound(void) const;
         virtual std::string gettype() const;
+        virtual void    check_brain();
+
 };
 
 #endif

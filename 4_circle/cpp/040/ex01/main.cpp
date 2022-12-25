@@ -25,6 +25,7 @@ int main()
     {
         std::cout << "idx : " << i << "  " ;
         array[i]->makesound();
+        array[i]->check_brain();
         i++;
     }
 

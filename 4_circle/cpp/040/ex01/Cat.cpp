@@ -16,20 +16,27 @@ Cat::Cat(const Cat &obj) : _brain(NULL)
 {
     std::cout << "Cat constructor2 activated" << std::endl;
     type = obj.gettype();
-    _brain = new Brain(*obj.getBrain());
+    _brain = new Brain(*obj.get_brain());
 }
 
 Cat& Cat::operator=(const Cat &obj)
 {
     std::cout << "Cat operator activated" << std::endl;
     type = obj.gettype();
-    *_brain = *obj.getBrain();
+    *_brain = *obj.get_brain();
     return *this;
 }
 
-void    Cat::makesound(void) const
+void    Cat::makesound() const
 {
     std::cout << "Meow" << std::endl;
+}
+
+void    Cat::check_brain()
+{
+    for(int i = 0; i < 100; i++)
+        std::cout << this->_brain->getIdea(i) << " ";
+    std::cout << std::endl;
 }
 
 std::string    Cat::gettype() const
@@ -37,7 +44,7 @@ std::string    Cat::gettype() const
     return(this->type);   
 }
 
-Brain* Cat::getBrain() const
+Brain* Cat::get_brain() const
 {
     if (_brain)
         return _brain;

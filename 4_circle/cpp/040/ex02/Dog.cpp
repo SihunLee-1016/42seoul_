@@ -29,7 +29,7 @@ Dog& Dog::operator=(const Dog &obj)
 
 void    Dog::makesound(void) const
 {
-    std::cout << "Meow" << std::endl;
+    std::cout << "Bark" << std::endl;
 }
 
 std::string    Dog::gettype() const

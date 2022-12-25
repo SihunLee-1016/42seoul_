@@ -21,6 +21,11 @@ void    Animal::makesound(void) const
     std::cout << "From Animal class" << std::endl;
 }
 
+void    Animal::check_brain()
+{
+    std::cout << "Base class does not have brain attribute" << std::endl;
+}
+
 std::string Animal::gettype() const
 {
     return (type);
