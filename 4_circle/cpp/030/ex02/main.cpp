@@ -8,12 +8,22 @@ int main()
 
     b.highFivesGuys();
 
+    std::cout << std::endl;
+    std::cout << std::endl;
 
-    b.attack("Steve");
-    b.attack("Steve");
-    b.attack("Steve");
-    b.attack("Steve");
-    b.attack("Steve");
+
+    b.attack("TOM");
     b.beRepaired(5);
+    b.attack("TOM");
+    b.attack("TOM");
+    b.attack("TOM");
+    b.attack("TOM");
+    b.attack("TOM");
+    std::cout << std::endl;
+    std::cout << std::endl;
+    b.highFivesGuys();
+    b.status();
+    std::cout << std::endl;
+    std::cout << std::endl;
 
 }

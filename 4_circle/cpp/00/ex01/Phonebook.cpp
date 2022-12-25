@@ -96,11 +96,11 @@ int main(void)
 	std::string cmd;
 	Phonebook  data;
 
-	// while (!std::cin.eof())
-	while (1)
+	while (!std::cin.eof())
+	// while (1)
 	{
-		if (std::cin.eof())
-			exit(0);
+		// if (std::cin.eof())
+		// 	exit(0);
 		std::cout << "Command (add, search, exit) : ";
 		std::getline(std::cin, cmd);
 		if (cmd == "add")

@@ -1,7 +1,14 @@
 #include "Animal.hpp"
-Animal::Animal()
+Animal::Animal() : type("animal"){
+}
+
+Animal::Animal(const Animal &obj) : type(obj.gettype()) {
+}
+
+Animal& Animal::operator=(const Animal &obj)
 {
-    // this->type = 0;
+    type = obj.gettype();
+    return *this;
 }
 
 Animal::~Animal()

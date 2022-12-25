@@ -1,19 +1,22 @@
 #include "Dog.hpp"
 Dog::Dog()
 {
-    this->type = "Dog";
+    type = "Dog";
     std::cout << "Dog constructor activated" << std::endl;
 }
 
-/*Dog::Dog(const Dog &obj)
+Dog::Dog(const Dog &obj)
 {
     std::cout << "Dog constructor2 activated" << std::endl;
+    type = obj.gettype();
 }
 
-Dog& operator=(const Dog &obj)
+Dog& Dog::operator=(const Dog &obj)
 {
     std::cout << "Dog operator activated" << std::endl;
-}*/
+    this->type = obj.gettype();
+    return *this;
+}
 
 Dog::~Dog()
 {

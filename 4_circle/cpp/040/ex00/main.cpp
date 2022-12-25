@@ -3,7 +3,7 @@
 #include "Dog.hpp"
 #include "Wronganimal.hpp"
 #include "Wrongcat.hpp"
-
+// #include <sys/wait.h>
 int main()
 {
     const Animal* meta = new Animal();
@@ -15,7 +15,6 @@ int main()
     std::cout << j->gettype() << " " << std::endl;
     std::cout << i->gettype() << " " << std::endl;
     std::cout << k->gettype() << " " << std::endl;
-    std::cout << "get_type end" << std::endl;
 
 
     i->makesound(); //will output the cat sound!
@@ -31,7 +30,6 @@ int main()
     std::cout << std::endl;
 
 
-    std::cout << "end start" << std::endl<< std::endl;
     delete meta;
     std::cout << std::endl;
 
@@ -42,8 +40,9 @@ int main()
     std::cout << std::endl;
 
     delete k;
-    std::cout << std::endl;
 
     std::cout << "end end" << std::endl<< std::endl;
+
+    // system("leaks ex00");
     return 0;   
 }

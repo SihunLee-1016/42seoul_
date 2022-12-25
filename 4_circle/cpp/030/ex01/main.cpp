@@ -28,7 +28,7 @@ int main()
     std::cout << std::endl;
     c.attack("TOM");
     c.attack("TOM");
-    c.ClapTrap::status();
+    c.status();
     std::cout << std::endl;
     std::cout << std::endl;
     c.guardGate();

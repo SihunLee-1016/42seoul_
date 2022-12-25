@@ -8,6 +8,8 @@ class Brain
     public:
         Brain();
         ~Brain();
+        Brain(const Brain & obj);
+        Brain& operator=(const Brain &obj);
 };
 
 #endif
