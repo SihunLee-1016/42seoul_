@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: silee <silee@student.42.fr>                +#+  +:+       +#+         #
+#    By: sihunlee <sihunlee@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/06 17:27:40 by silee             #+#    #+#              #
-#    Updated: 2022/12/06 19:43:17 by silee            ###   ########.fr        #
+#    Updated: 2022/12/25 16:13:07 by sihunlee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ex01
+NAME = ex02
 
 SRCS = ./main.cpp ./Dog.cpp ./Cat.cpp ./Animal.cpp ./Wronganimal.cpp ./Wrongcat.cpp ./Brain.cpp
 

@@ -7,8 +7,8 @@ class Wrongcat : public Wronganimal
         /* data */
     public:
         Wrongcat();
-        Wrongcat(const Wrongcat &obj);
         ~Wrongcat();
+        Wrongcat(const Wrongcat &obj);
         Wrongcat& operator=(const Wrongcat &obj);
         virtual void    makesound(void) const;
         virtual std::string    gettype()const;

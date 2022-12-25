@@ -5,7 +5,7 @@
 class Cat : public Animal
 {
     private:
-        Brain *cat_brain;
+        Brain *_brain;
     public:
         Cat();
         Cat(const Cat &obj);
@@ -13,6 +13,7 @@ class Cat : public Animal
         Cat& operator=(const Cat &obj);
         virtual void    makesound(void) const;
         virtual std::string    gettype()const;
-        void    make_brain(void);
+        Brain *getBrain() const;
 };
+
 #endif

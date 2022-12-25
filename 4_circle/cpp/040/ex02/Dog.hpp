@@ -5,7 +5,7 @@
 class Dog : public Animal
 {
     private:
-        Brain *dog_brain;
+        Brain *_brain;
     public:
         Dog();
         Dog(const Dog &obj);
@@ -13,7 +13,7 @@ class Dog : public Animal
         Dog& operator=(const Dog &obj);
         virtual void    makesound(void) const;
         virtual std::string    gettype() const;
-        void    make_brain(void);
+        Brain *getBrain() const;
 };
 
 #endif
