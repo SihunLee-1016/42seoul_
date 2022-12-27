@@ -1,5 +1,6 @@
 #include "Form.hpp"
 #include "Bureaucrat.hpp"
+
 const char* Form::Grade2HighException::what(void) const throw()
 {
 	return "Grade Too High";
@@ -25,6 +26,13 @@ Form::Form(const Form &obj)
 		throw Grade2HighException();
 }
 
+//const_cast can used in 3 cases.
+// 1. @@ Pointer that declared in const @@
+// 2. if its not const pointer, const_cast cannot used.
+
+// in operator=, Form's member variable are declared in const.
+// in this case, 'this' pointer is non-const value so this pointer cannot call const function.
+// so to use const function, we have to const_cast to pointer type (see first condition)
 Form& Form::operator=(const Form &obj)
 {
 	*(const_cast<std::string*>(&_name)) = obj.getname();

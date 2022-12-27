@@ -1,5 +1,15 @@
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+
+const char* Bureaucrat::Grade2HighException::what(void) const throw()
+{
+	return "Grade Too High";
+}
+
+const char* Bureaucrat::Grade2LowException::what(void) const throw()
+{
+	return "Grade Too Low";
+}
+
 Bureaucrat::Bureaucrat()
 {
 }
@@ -8,16 +18,16 @@ Bureaucrat::Bureaucrat(const std::string &str, int grade) : name(str)
 {
 	try
 	{
-		if (!(grade >= 1 && grade <= 150))
-			throw grade;
+		if (grade < 1)
+			throw Grade2HighException();
+		else if (grade > 150)
+			throw Grade2LowException();
 		this->grade = grade;
+		std::cout << "Bureaucrat constructor activated. grade : " << grade << std::endl;
 	}
-	catch(int expn)
+	catch(std::exception &e)
 	{
-		if (expn < 1)
-			grade2high();
-		else if (expn > 150)
-			grade2low();
+		std::cout << e.what() << std::endl;
 	}
 }
 
@@ -26,17 +36,7 @@ Bureaucrat::~Bureaucrat()
 	std::cout << "Destructor activated" << std::endl;
 }
 
-void    Bureaucrat::grade2high()
-{
-	std::cout << "Grade Too High" << std::endl;   
-}
-
-void    Bureaucrat::grade2low()
-{
-	std::cout << "Grade Too Low" << std::endl;   
-}
-
-const std::string Bureaucrat::getname() const
+const std::string Bureaucrat::getname()
 {
 	return (this->name);
 }
@@ -48,18 +48,30 @@ int Bureaucrat::getgrade() const
 
 void Bureaucrat::grade_up()
 {
-	if (this->grade == 1)
-		std::cout << "Grade up Faile (its already highest" << std::endl;
-	else
+	try
+	{
+		if (this->grade == 1)
+			throw Grade2HighException();
 		this->grade -= 1;
+	}
+	catch(std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
 }
 
 void Bureaucrat::grade_down()
 {
-	if (this->grade == 150)
-		std::cout << "Grade up Faile (its already lowest" << std::endl;
-	else
-		this->grade += 1;		
+	try
+	{
+		if (this->grade == 150)
+			throw Grade2LowException();
+		this->grade += 1;
+	}
+	catch(std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
 }
 
 void	Bureaucrat::signForm(const Form &f) const
@@ -82,11 +94,11 @@ void    Bureaucrat::executeForm(Form const & f)
 	  try {
     f.execute(*this);
     std::cout << "<" << name << "> executes <"
-      << f.gettype() << " : " << f.getname() << ">" << std::endl;
+      << f.gettype() << " : " << f.getname() << ">" << std::endl << std::endl;
   } catch (std::exception& e) {
     std::cerr << "<" << name << "> cannot execute <"
-      << f.gettype() << " : " << f.getname() << "> because <"
-      << f.gettype() << " : " << e.what() << ">" << std::endl;
+      << f.gettype() << " : " << f.getname() << ">" << std::endl << "##because <"
+      << f.gettype() << " : " << e.what() << "> ##" << std::endl << std::endl;
   }
 
 }

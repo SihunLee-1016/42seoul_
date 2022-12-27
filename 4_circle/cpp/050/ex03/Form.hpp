@@ -43,6 +43,11 @@ public :
       const char* what(void) const throw();
   };
 
+	class NotSignedException
+    : public std::exception {
+   public:
+      const char* what(void) const throw();
+  };
 
 	Form(void);
 	Form(const std::string str1, const int sg, const int eg);

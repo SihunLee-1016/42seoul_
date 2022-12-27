@@ -15,6 +15,11 @@ const char* Form::FileNotWorkingException::what(void) const throw()
 	return "File Not Working";
 }
 
+const char* Form::NotSignedException::what(void) const throw()
+{
+	return "Not signed!";
+}
+
 
 Form::Form(void) : sign_g(0), exe_g(0)
 {
@@ -31,9 +36,9 @@ Form::Form(const Form &obj)
 		sign_g(obj.get_sign_g()), exe_g(obj.get_exe_g())
 {
 	if (sign_g > 150 || exe_g > 150)
-		throw Grade2LowException();
+		throw Form::Grade2LowException();
 	else if (sign_g < 1 || exe_g < 1)
-		throw Grade2HighException();
+		throw Form::Grade2HighException();
 }
 
 Form& Form::operator=(const Form &obj)
@@ -55,7 +60,7 @@ void	Form::besigned(const Bureaucrat &obj)
 	if (obj.getgrade() <= this->sign_g)
 		this->sign = true;
 	else
-		throw Grade2LowException();
+		throw Form::Grade2LowException();
 }
 
 std::string Form::getname() const

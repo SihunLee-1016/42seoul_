@@ -36,7 +36,7 @@ Bureaucrat::~Bureaucrat()
 	std::cout << "Destructor activated" << std::endl;
 }
 
-const std::string Bureaucrat::getname()
+const std::string Bureaucrat::getname() const
 {
 	return (this->name);
 }
@@ -74,6 +74,9 @@ void Bureaucrat::grade_down()
 	}
 }
 
+
+//non-const method can not call const object.
+// also const method cannot call non-const object
 void	Bureaucrat::signForm(const Form &f) const
 {
 	try

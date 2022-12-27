@@ -15,6 +15,11 @@ const char* Form::FileNotWorkingException::what(void) const throw()
 	return "File Not Working";
 }
 
+const char* Form::NotSignedException::what(void) const throw()
+{
+	return "Not signed!";
+}
+
 Form::Form(void) : sign_g(0), exe_g(0)
 {
 	set_type("Form");

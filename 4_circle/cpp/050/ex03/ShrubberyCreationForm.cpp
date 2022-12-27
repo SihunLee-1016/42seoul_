@@ -17,13 +17,17 @@ ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& s) : F
   this->set_type("Shrubberry");
 }
 
+// good -> stream has not encountered an error
 void ShrubberyCreationForm::execute(Bureaucrat const & b) const {
   if (b.getgrade() > 137)
-    throw Grade2LowException();
+    throw Form::Grade2LowException();
+  if(this->get_signed() != 1)
+    throw Form::NotSignedException();
+
   std::ofstream out("<" + getname() + ">_shrubbery",
                     std::ofstream::out | std::ofstream::trunc);
   if (!out.good())
-    throw FileNotWorkingException();
+    throw Form::FileNotWorkingException();
   std::string shrubbery = "               ,@@@@@@@,\n"
                           "       ,,,.   ,@@@@@@/@@,  .oo8888o.\n"
                           "    ,&%%&%&&%,@@@@@/@@@@@@,8888\\88/8o\n"

@@ -36,12 +36,12 @@ Bureaucrat::~Bureaucrat()
 	std::cout << "Destructor activated" << std::endl;
 }
 
-const std::string Bureaucrat::getname()
+const std::string Bureaucrat::getname() const
 {
 	return (this->name);
 }
 
-int Bureaucrat::getgrade()
+int Bureaucrat::getgrade() const
 {
 	return (this->grade);
 }

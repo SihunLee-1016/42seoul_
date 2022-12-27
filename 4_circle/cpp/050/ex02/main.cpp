@@ -11,18 +11,16 @@ std::ostream& operator<<(std::ostream &obj, Bureaucrat& data)
 int main()
 {
   Bureaucrat b1("Admin", 1);
-  Bureaucrat b2("Jseo", 1);
-  Bureaucrat b3("Dohykim", 70);
-  Bureaucrat b4("Hyson", 1);
+  Bureaucrat b2("master", 1);
+  Bureaucrat b3("silee", 100);
 
   Form*f1 = new PresidentialPardonForm("Presidential");
   Form*f2 = new RobotomyRequestForm("Robotomy");
   Form*f3 = new ShrubberyCreationForm("Shrubberry");
-  std::cout << b1 << std::endl
-
-    << b2 << std::endl
-    << b3 << std::endl
-    << b4 << std::endl;
+  // std::cout << b1 << std::endl
+  //   << b2 << std::endl
+  //   << b3 << std::endl;
+    
   std::cout << std::endl;
   
   std::cout << *f1 << std::endl
@@ -31,13 +29,12 @@ int main()
   
   std::cout << std::endl;
   b2.signForm(*f1);
-  b3.signForm(*f2);
-  b4.signForm(*f3);
+  // b3.signForm(*f2);
   
   std::cout << std::endl;
   b2.executeForm(*f1);
+  std::cout << std::endl;
   b3.executeForm(*f2);
-  b4.executeForm(*f3);
 
   std::cout << std::endl;
   b1.executeForm(*f1);

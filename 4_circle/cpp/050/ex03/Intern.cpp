@@ -16,21 +16,25 @@ Intern::~Intern()
 
 Intern::Intern(const Intern &obj)
 {
-
+  (void)obj;
 }
 
 Intern& Intern::operator=(const Intern &obj)
 {
-
+  (void)obj;
+  return (*this);
 }
 
 Form * Intern::makeForm(const std::string nof, const std::string tg_name)
 {
-
+  int i;
   std::string types[3] = {"shrubbery", "robotomy", "presidential"};
-  
+
   try {
-    for (int i = 0; i < 3; i++)
+    for (i = 0; i < 3; i++){
+      types[i] = nof;
+      break;
+    }
     {
       switch(i)
       {
@@ -51,9 +55,8 @@ Form * Intern::makeForm(const std::string nof, const std::string tg_name)
           return new ShrubberyCreationForm(tg_name);
         }
       }
-
     }
-    }
+  }
   catch (std::exception &e)
   {
     throw TargetDoseNotExistException();
