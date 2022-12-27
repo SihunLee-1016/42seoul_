@@ -15,9 +15,15 @@ int main()
     Bureaucrat D("DD", -1);
     Bureaucrat E("EE", 151);
 
+    std::cout << std::endl;
+    std::cout << std::endl;
+
     std::cout << A;
     std::cout << B;
     std::cout << C;
+    
+    std::cout << std::endl;
+    std::cout << std::endl;
     
     C.grade_down();
     C.grade_down();
@@ -25,6 +31,9 @@ int main()
 
     std::cout << C;
     
+    std::cout << std::endl;
+    std::cout << std::endl;
+
     C.grade_up();
     C.grade_up();
     C.grade_up();
@@ -32,10 +41,15 @@ int main()
     C.grade_up();    
     std::cout << C;
 
+    std::cout << std::endl;
+    std::cout << std::endl;
 
     A.grade_up();
     std::cout << A;
 
+    std::cout << std::endl;
+    std::cout << std::endl;
+    
     B.grade_down();
     std::cout << B;
 

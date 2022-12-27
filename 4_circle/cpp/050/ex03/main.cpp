@@ -15,4 +15,8 @@ int main()
   Form* rrf;
   
   rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+
+  std::cout << rrf->getname() << std::endl;
+
+  delete rrf;
 }
