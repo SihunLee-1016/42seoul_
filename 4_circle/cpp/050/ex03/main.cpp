@@ -15,8 +15,12 @@ int main()
   Intern someRandomIntern;
   Form* rrf;
   
-  rrf = someRandomIntern.makeForm("shrubberry", "silee");
-
+  
+  //"shrubbery", "robotomy", "presidential"
+  rrf = someRandomIntern.makeForm("presidential", "silee");
+  if (rrf == NULL){
+    return 0;
+  }
   std::cout << rrf->getname() << std::endl;
 
   delete rrf;

@@ -20,10 +20,15 @@ Form::Form(const Form &obj)
 	: _name(obj.getname()), sign(obj.get_signed()),
 		sign_g(obj.get_sign_g()), exe_g(obj.get_exe_g())
 {
-	if (sign_g > 150 || exe_g > 150)
-		throw Grade2LowException();
-	else if (sign_g < 1 || exe_g < 1)
-		throw Grade2HighException();
+	try{
+		if (sign_g > 150 || exe_g > 150)
+			throw Grade2LowException();
+		else if (sign_g < 1 || exe_g <1)
+			throw Grade2HighException();
+	}
+	catch(std::exception &e) {
+		std::cerr << e.what() << std::endl;
+	}
 }
 
 //const_cast can used in 3 cases.
@@ -35,6 +40,7 @@ Form::Form(const Form &obj)
 // so to use const function, we have to const_cast to pointer type (see first condition)
 Form& Form::operator=(const Form &obj)
 {
+	// _name = obj.getname();
 	*(const_cast<std::string*>(&_name)) = obj.getname();
 	*(const_cast<int*>(&sign_g)) = obj.get_sign_g();
 	*(const_cast<int*>(&exe_g)) = obj.get_exe_g();
@@ -49,10 +55,15 @@ Form::~Form()
 
 void	Form::besigned(const Bureaucrat &obj)
 {
+	try {
 	if (obj.getgrade() <= this->sign_g)
 		this->sign = true;
 	else
 		throw Grade2LowException();
+		}
+	catch (std::exception &e) {
+		std::cerr << e.what() << std::endl;
+	}
 }
 
 std::string Form::getname() const

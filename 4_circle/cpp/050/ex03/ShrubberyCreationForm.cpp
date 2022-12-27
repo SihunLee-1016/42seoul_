@@ -19,27 +19,33 @@ ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& s) : F
 
 // good -> stream has not encountered an error
 void ShrubberyCreationForm::execute(Bureaucrat const & b) const {
-  if (b.getgrade() > 137)
-    throw Form::Grade2LowException();
-  if(this->get_signed() != 1)
-    throw Form::NotSignedException();
 
-  std::ofstream out("<" + getname() + ">_shrubbery",
-                    std::ofstream::out | std::ofstream::trunc);
-  if (!out.good())
-    throw Form::FileNotWorkingException();
-  std::string shrubbery = "               ,@@@@@@@,\n"
-                          "       ,,,.   ,@@@@@@/@@,  .oo8888o.\n"
-                          "    ,&%%&%&&%,@@@@@/@@@@@@,8888\\88/8o\n"
-                          "   ,%&\\%&&%&&%,@@@\\@@@/@@@88\\88888/88'\n"
-                          "   %&&%&%&/%&&%@@\\@@/ /@@@88888\\88888'\n"
-                          "   %&&%/ %&%%&&@@\\ V /@@' `88\\8 `/88'\n"
-                          "   `&%\\ ` /%&'    |.|        \\ '|8'\n"
-                          "       |o|        | |         | |\n"
-                          "       |.|        | |         | |\n"
-                          "    \\\\/ ._\\//_/__/  ,\\_//__\\\\/.  \\_//__/_";
-  out << shrubbery;
-  out.close();
+  try {
+    if (b.getgrade() > 137)
+      throw Form::Grade2LowException();
+    if(this->get_signed() != 1)
+      throw Form::NotSignedException();
+
+    std::ofstream out("<" + getname() + ">_shrubbery",
+                      std::ofstream::out | std::ofstream::trunc);
+    if (!out.good())
+      throw Form::FileNotWorkingException();
+    std::string shrubbery = "               ,@@@@@@@,\n"
+                            "       ,,,.   ,@@@@@@/@@,  .oo8888o.\n"
+                            "    ,&%%&%&&%,@@@@@/@@@@@@,8888\\88/8o\n"
+                            "   ,%&\\%&&%&&%,@@@\\@@@/@@@88\\88888/88'\n"
+                            "   %&&%&%&/%&&%@@\\@@/ /@@@88888\\88888'\n"
+                            "   %&&%/ %&%%&&@@\\ V /@@' `88\\8 `/88'\n"
+                            "   `&%\\ ` /%&'    |.|        \\ '|8'\n"
+                            "       |o|        | |         | |\n"
+                            "       |.|        | |         | |\n"
+                            "    \\\\/ ._\\//_/__/  ,\\_//__\\\\/.  \\_//__/_";
+    out << shrubbery;
+    out.close();
+  }
+  catch (std::exception &e) {
+    std::cerr << e.what() << std::endl;
+  }
 }
 
 

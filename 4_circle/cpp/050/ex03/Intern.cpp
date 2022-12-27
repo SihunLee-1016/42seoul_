@@ -27,39 +27,50 @@ Intern& Intern::operator=(const Intern &obj)
 
 Form * Intern::makeForm(const std::string nof, const std::string tg_name)
 {
-  int i;
   std::string types[3] = {"shrubbery", "robotomy", "presidential"};
+  int i;
 
-  try {
-    for (i = 0; i < 3; i++){
-      types[i] = nof;
-      break;
-    }
-    {
-      switch(i)
-      {
-        case 0 : // s 72, e 45
-        {
-          std::cout << "Intern Creates <" << nof << ">"<< std::endl;
-          return new RobotomyRequestForm(tg_name);
-        }
-        case 1 : // s 25 e 5
-        {
-          std::cout << "Intern Creates <" << nof << ">" << std::endl;
-          return new PresidentialPardonForm(tg_name);
-        }
+  for (i = 0; i < 3 && (nof != types[i]); i++)
+    ;
 
-        case 2 : // s 145 e 137
-        {
-          std::cout << "Intern Creates <" << nof << ">" << std::endl;
+  try{
+    switch(i) {
+      case 0 :
+        std::cout << "Intern Creates <" << nof << ">" << std::endl;
           return new ShrubberyCreationForm(tg_name);
-        }
-      }
+      case 1 :
+        std::cout << "Intern Creates <" << nof << ">"<< std::endl;
+          return new RobotomyRequestForm(tg_name);
+
+      case 2 :
+        std::cout << "Intern Creates <" << nof << ">" << std::endl;
+          return new PresidentialPardonForm(tg_name);
+      default :
+        throw TargetDoseNotExistException();
     }
   }
-  catch (std::exception &e)
-  {
-    throw TargetDoseNotExistException();
+  catch (std::exception &e){
+    std::cerr << e.what() << std::endl;
+    return NULL;
   }
-  return NULL;
+    // try{
+    //   if (nof == "shrubbery") {
+    //     std::cout << "Intern Creates <" << nof << ">" << std::endl;
+    //     return new ShrubberyCreationForm(tg_name);
+    //   }
+    //   else if (nof == "robotomy") {
+    //     std::cout << "Intern Creates <" << nof << ">"<< std::endl;
+    //     return new RobotomyRequestForm(tg_name);
+    //   }
+    //   else if (nof == "presidential") {
+    //     std::cout << "Intern Creates <" << nof << ">" << std::endl;
+    //     return new PresidentialPardonForm(tg_name);
+    //   }
+    //   else
+    //     throw TargetDoseNotExistException();
+    // }
+    // catch (std::exception &e) {
+    //   std::cerr << e.what() << std::endl;
+    //   return NULL;
+    // }
 }

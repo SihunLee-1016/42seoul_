@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sihunlee <sihunlee@student.42.fr>          +#+  +:+       +#+         #
+#    By: silee <silee@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/08 12:46:24 by silee             #+#    #+#              #
-#    Updated: 2022/12/26 17:53:16 by sihunlee         ###   ########.fr        #
+#    Updated: 2022/12/27 20:43:58 by silee            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ all:	${NAME}
 $(NAME): ${OBJS}
 		$(CXX) $(CXXFLAGS) -o ${NAME} ${OBJS}
 
-%.o: %.c
+%.o: %.cpp
 		${CXX} ${CXXFLAGS} -c $< -o $@
 
 clean:

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sihunlee <sihunlee@student.42.fr>          +#+  +:+       +#+         #
+#    By: silee <silee@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/08 12:46:24 by silee             #+#    #+#              #
-#    Updated: 2022/12/26 15:48:12 by sihunlee         ###   ########.fr        #
+#    Updated: 2022/12/27 20:50:59 by silee            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,14 +20,14 @@ CXX		= clang++
 
 RM		= rm -f
 
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g -fsanitize=undefined -pedantic
 
 all:	${NAME}
 
 $(NAME): ${OBJS}
 		$(CXX) $(CXXFLAGS) -o ${NAME} ${OBJS}
 
-%.o: %.c
+%.o: %.cpp
 		${CXX} ${CXXFLAGS} -c $< -o $@
 
 clean:

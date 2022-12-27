@@ -19,10 +19,17 @@ RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& s) : Form(s)
 }
 
 void RobotomyRequestForm::execute(Bureaucrat const & b) const {
-  if (b.getgrade() > 45)
-    throw Form::Grade2LowException();
-  if(this->get_signed() != 1)
-    throw Form::NotSignedException();
+  
+  try {
+    if (b.getgrade() > 45)
+      throw Form::Grade2LowException();
+    if(this->get_signed() != 1)
+      throw Form::NotSignedException();
+		}
+	catch (std::exception &e) {
+		std::cerr << e.what() << std::endl;
+	}
+
   srand((unsigned int)time(NULL));
   if (rand() % 2 == 0)
   {

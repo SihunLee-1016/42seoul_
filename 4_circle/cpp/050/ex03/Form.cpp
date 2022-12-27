@@ -35,10 +35,15 @@ Form::Form(const Form &obj)
 	: _name(obj.getname()), sign(obj.get_signed()),
 		sign_g(obj.get_sign_g()), exe_g(obj.get_exe_g())
 {
-	if (sign_g > 150 || exe_g > 150)
-		throw Form::Grade2LowException();
-	else if (sign_g < 1 || exe_g < 1)
-		throw Form::Grade2HighException();
+	try {
+		if (sign_g > 150 || exe_g > 150)
+			throw Form::Grade2LowException();
+		else if (sign_g < 1 || exe_g < 1)
+			throw Form::Grade2HighException();
+	}
+	catch (std::exception &e) {
+			std::cerr << e.what() << std::endl;
+	}
 }
 
 Form& Form::operator=(const Form &obj)
@@ -57,10 +62,15 @@ Form::~Form()
 
 void	Form::besigned(const Bureaucrat &obj)
 {
+	try {
 	if (obj.getgrade() <= this->sign_g)
 		this->sign = true;
 	else
 		throw Form::Grade2LowException();
+	}
+	catch (std::exception &e) {
+		std::cerr << e.what() << std::endl;
+	}
 }
 
 std::string Form::getname() const
