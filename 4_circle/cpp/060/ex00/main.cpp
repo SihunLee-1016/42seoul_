@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include <cstdlib>
-#include <limits>
+#include <climits>
 int main (int ac, char **av)
 {
 	if (ac == 1)
@@ -24,14 +24,14 @@ int main (int ac, char **av)
 	std::cout << std::fixed;
 	std::cout.precision(1);
 
-	if (__FLT_MIN__ <= d && d <= __FLT_MAX__)
+	if (-__FLT_MAX__ <= d && d <= __FLT_MAX__)
 		std::cout << "float : " << static_cast<float>(d) << "f"<< std::endl;
 	else if (strcmp(av[1], "nan") == 0)
 		std:: cout << "float : nanf" << std::endl;
 	else
 		std::cout << "float : impossible" << std::endl;
 
-	if (__DBL_MIN__ <= d && d <= __DBL_MAX__ )
+	if (-__DBL_MAX__ <= d && d <= __DBL_MAX__)
 		std::cout << "double : " << d << std::endl;
 	else if (strcmp(av[1], "nan") == 0)
 		std:: cout << "double : nan" << std::endl;

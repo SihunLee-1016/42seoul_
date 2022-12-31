@@ -30,7 +30,7 @@ void RobotomyRequestForm::execute(Bureaucrat const & b) const {
 		std::cerr << e.what() << std::endl;
 	}
 
-  srand((unsigned int)time(NULL));
+  srand((unsigned int)std::time(NULL));
   if (rand() % 2 == 0)
   {
     std::cout << "Success in Robotomy" << std::endl;

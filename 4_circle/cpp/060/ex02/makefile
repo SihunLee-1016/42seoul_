@@ -6,7 +6,7 @@
 #    By: silee <silee@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/08 12:46:24 by silee             #+#    #+#              #
-#    Updated: 2022/12/20 18:39:38 by silee            ###   ########.fr        #
+#    Updated: 2022/12/30 13:01:03 by silee            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ SRCS = ./main.cpp ./A.cpp ./B.cpp ./C.cpp ./Base.cpp
 
 OBJS = ${SRCS:.cpp=.o}
 
-CXX		= clang++
+CXX		= c++
 
 RM		= rm -f
 

@@ -35,6 +35,7 @@ class Array
 
         Array & operator=(const Array &obj){
             if (size != 0){
+                delete []data;
                 size = obj.getsize();
                 data = new T[size];
             }

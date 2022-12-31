@@ -6,7 +6,7 @@
 #    By: silee <silee@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/08 12:46:24 by silee             #+#    #+#              #
-#    Updated: 2022/12/27 20:50:59 by silee            ###   ########.fr        #
+#    Updated: 2022/12/30 13:01:03 by silee            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,11 +16,11 @@ SRCS = ./main.cpp ./Bureaucrat.cpp ./Form.cpp
 
 OBJS = ${SRCS:.cpp=.o}
 
-CXX		= clang++
+CXX		= c++
 
 RM		= rm -f
-
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g -fsanitize=undefined -pedantic
+# -fsanitize=undefined -pedantic
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g 
 
 all:	${NAME}
 

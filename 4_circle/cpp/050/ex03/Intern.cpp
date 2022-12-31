@@ -51,7 +51,7 @@ Form * Intern::makeForm(const std::string nof, const std::string tg_name)
   }
   catch (std::exception &e){
     std::cerr << e.what() << std::endl;
-    return NULL;
+    throw e;
   }
     // try{
     //   if (nof == "shrubbery") {

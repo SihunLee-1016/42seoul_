@@ -17,10 +17,13 @@ int main()
   
   
   //"shrubbery", "robotomy", "presidential"
-  rrf = someRandomIntern.makeForm("presidential", "silee");
-  if (rrf == NULL){
+  try {
+    rrf = someRandomIntern.makeForm("presidential", "silee");
+  } catch (std::exception& e) {
+    std::cerr << e.what() << std::endl;
     return 0;
   }
+
   std::cout << rrf->getname() << std::endl;
 
   delete rrf;
