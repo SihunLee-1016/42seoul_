@@ -11,5 +11,5 @@ int main()
   vec.push_back(50);
   vec.push_back(60);
 
-  easyfind(vec, 30);
+  easyfind(vec, 70);
 }

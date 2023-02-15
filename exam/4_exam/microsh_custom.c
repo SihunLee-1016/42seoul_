@@ -55,7 +55,7 @@ int	main(int ac, char **av, char **ev)
 			continue ;
 	
 		// Pipe ( | ) 문자열 내 존재한다면. 첫번째부터 입력되진 않을듯
-		if (i < ac && !strcmp(av[i], "|"))
+		if (i < ac && strcmp(av[i], "|") == 0)
 		{
 			if (pipe(fd) < 0)
 			{
@@ -67,7 +67,7 @@ int	main(int ac, char **av, char **ev)
 			out = fd[1];
 		}
 		//cd인 경우
-		if (!strcmp(cmd[0], "cd"))
+		if (strcmp(cmd[0], "cd") == 0)
 		{
 			if  ((cc != 2))
 				write(2, CB, ft_strlen(CB));
@@ -123,7 +123,7 @@ int	main(int ac, char **av, char **ev)
 				in = prev_in; // 기존의 데이터가 쓰여진 fd값을 in에 저장.
 				pc++;
 			}
-			if (i >= ac || (i < ac && !strcmp(av[i], ";")))
+			if (i >= ac || (i < ac && strcmp(av[i], ";") == 0))
 			{
 				while(pc)
 				{

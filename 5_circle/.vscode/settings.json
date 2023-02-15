@@ -1,0 +1,13 @@
+{
+    "files.associations": {
+        "type_traits": "cpp",
+        "__config": "cpp",
+        "__tuple": "cpp",
+        "bit": "cpp",
+        "functional": "cpp",
+        "iterator": "cpp",
+        "limits": "cpp",
+        "memory": "cpp",
+        "new": "cpp"
+    }
+}

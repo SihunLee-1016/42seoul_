@@ -29,6 +29,7 @@ class Span
     int   shortestSpan();
     int   longestSpan();
     void  print();
+    void  make_num();
 };
 
 template <typename T>

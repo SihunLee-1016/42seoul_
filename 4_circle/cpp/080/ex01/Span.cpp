@@ -24,7 +24,7 @@ const char * Span::NumberofElementOver::what() const throw() {
 }
 
 const char * Span::CanNotCheckSpan::what() const throw(){
-  return "now noe is under 1 so Can not Check Span."
+  return "now noe is under 1 so Can not Check Span.";
 }
 
 
@@ -87,4 +87,14 @@ int   Span::longestSpan()
 void  Span::print(){ 
   for(std::vector<int>::iterator iter = vec.begin(); iter != vec.end(); ++iter)
     std::cout << *iter << std::endl;
+}
+
+void  Span::make_num() {
+  int r_num;
+
+  srand(time(NULL));
+  for (unsigned int i = 0; i < max_noe; i++) {
+    r_num = rand();
+    addNumber(r_num);
+  }
 }

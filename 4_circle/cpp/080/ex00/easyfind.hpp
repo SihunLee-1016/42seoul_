@@ -9,5 +9,6 @@ void  easyfind(T vec, int num) {
       return ;
     }
   }
+  std::cout << "valud Not found" << std::endl;
   
 }
