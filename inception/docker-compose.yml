@@ -44,9 +44,10 @@ services:
     container_name: mariadb
     image: mariadb:${USER}
     volumes:
-      - type: bind
-        source: /home/${USER}/data # edit path /home/${USER}/data
-        target: /var/lib/mysql
+      - mariadb-volume:/var/lib/mysql
+      # - type: bind
+      #   source: /home/${USER}/data # edit path /home/${USER}/data
+      #   target: /var/lib/mysql
     build:
       context: ./requirements/mariadb
       dockerfile: Dockerfile
@@ -69,12 +70,5 @@ volumes:
       o: bind
       type: volume
     name: mariadb-volume
-  wordpress-volume:
-    driver: local
-    driver_opts:
-      device: ${VOLPATH}/wordpress
-      o: bind
-      type: volume
-    name: wordpress-volume
 networks: 
   docker-network:
