@@ -30,9 +30,8 @@ up	:
 .PHONY	:	down
 down :
 	$(DOCKER_COMPOSE) down
-.PHONY	:	clear
-clear:
+.PHONY	:	clean
+clean:
 	docker volume rm $$(docker volume ls -q)
-	docker rmi $$(docker images ls -q)
-	docker network rm $$(docker network ls -q) 2>/dev/nul
+	docker rmi $$(docker images -qa)
 
