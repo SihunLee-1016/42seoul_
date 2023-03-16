@@ -1,6 +1,6 @@
 NAME = btc
 
-SRCS = ./BitcoinExchange.cpp
+SRCS = ./BitcoinExchange.cpp ./main.cpp
 
 OBJS = ${SRCS:.cpp=.o}
 
@@ -8,7 +8,7 @@ CXX		= c++
 
 RM		= rm -f
 
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g3 -fsanitize=address
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 all:	${NAME}
 

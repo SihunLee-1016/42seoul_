@@ -2,6 +2,7 @@
 #define BITCOINEXCHANGE_HPP
 
 #include <fstream>
+#include <iomanip>
 #include <iostream>
 #include <map>
 #include <sstream>
@@ -24,5 +25,9 @@ class BitcoinExchange {
   void read_input(std::string str);
 };
 
+std::string tostr(int num);
+void separateDate(const std::string& dateString, Date& date);
+void modifi_date(Date& prev);
+void RemoveTabSpace(std::string& str);
 int validate_input_date(Date& tmp);
 #endif
