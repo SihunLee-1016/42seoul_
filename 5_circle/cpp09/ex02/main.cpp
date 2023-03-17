@@ -1,12 +1,16 @@
 #include "PmergeMe.hpp"
 
-int main() {}
 
-// int형 값들 사용.
-// 병합정렬 사용
-// 에러 시, standard output으로 에러 출력..
+int main(int argc, char** argv) {
+    if (argc < 2)
+        return 1;
 
-// 첫줄은 입력값 출력.
-//  둘째줄은 정렬된 값 출력
-//  셋째줄과 넷째줄은 서로 다른 컨테이너 (벡터랑 덱이겠지)를 사용했을 때 걸린
-//  시간을 나타내야함,
+    PmergeMe pm;
+
+    pm.check_data(argc, argv);
+    pm.print_before_data();
+    pm.print_after_data();
+    pm.sort_vector();
+    pm.sort_deque();
+    return 0;
+}
