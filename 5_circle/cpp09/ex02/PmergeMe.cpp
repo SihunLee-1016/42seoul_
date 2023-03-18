@@ -4,7 +4,11 @@ PmergeMe::PmergeMe(void) {}
 
 PmergeMe::~PmergeMe(void) {}
 PmergeMe::PmergeMe(PmergeMe const& tmp) { (void)tmp; }
-PmergeMe& PmergeMe::operator=(PmergeMe const& tmp) { (void)tmp; }
+PmergeMe& PmergeMe::operator=(PmergeMe const& tmp) {
+  PmergeMe* p = NULL;
+  (void)tmp;
+  return *p;
+}
 
 void PmergeMe::print_after_data() {
   std::set<int>::iterator iter;
@@ -57,7 +61,7 @@ void PmergeMe::sort_vector() {
   double sortTime = (runSec * 1000000L) + (runNSec / 1000);
   std::cout << "Time to process a range of " << _set.size()
             << " elements with std::"
-            << "vecor"
+            << "vecotr"
             << " : " << sortTime << " us" << std::endl;
 }
 
@@ -72,6 +76,6 @@ void PmergeMe::sort_deque() {
   double sortTime = (runSec * 1000000L) + (runNSec / 1000);
   std::cout << "Time to process a range of " << _set.size()
             << " elements with std::"
-            << "vecor"
+            << "deque"
             << " : " << sortTime << " us" << std::endl;
 }
