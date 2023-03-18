@@ -8,7 +8,34 @@ std::string tostr(int num) {
   return (str);
 }
 
-void separateDate(const std::string& dateString, Date& date) {
+float my_stof(const std::string& str) {
+  float result;
+  std::stringstream ss(str);
+  if (!(ss >> result) || !ss.eof()) return -1;
+  return result;
+}
+
+BitcoinExchange::BitcoinExchange(const BitcoinExchange& tmp) { (void)tmp; }
+
+BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& tmp) {
+  BitcoinExchange* b = NULL;
+  (void)tmp;
+
+  return *b;
+}
+
+BitcoinExchange::BitcoinExchange(void) {}
+
+BitcoinExchange::BitcoinExchange(std::map<std::string, float> tmp) {
+  data = tmp;
+}
+
+void separateDate(const std::string& dateString, Date& date, int flag) {
+  if (flag == 0 && dateString.size() != 10) {
+    date.year = 0;
+    return;
+  }
+
   std::string yearString = dateString.substr(0, 4);
 
   date.year = 0;
@@ -64,7 +91,7 @@ void modifi_date(Date& prev) {
 int validate_input_date(Date& tmp) {
   if (tmp.year < 2009 || tmp.year > 2022) return 1;
   if (tmp.month > 12 || tmp.month < 1) return 1;
-  if (tmp.day < 1) return 1;
+  if (tmp.day < 1 || tmp.day > 31) return 1;
 
   if (tmp.month == 1 || tmp.month == 3 || tmp.month == 5 || tmp.month == 7 ||
       tmp.month == 8 || tmp.month == 10 || tmp.month == 12) {
@@ -92,29 +119,34 @@ void RemoveTabSpace(std::string& str) {
   }
 }
 
-BitcoinExchange::BitcoinExchange(void) {}
-BitcoinExchange::BitcoinExchange(std::map<std::string, float> tmp) {
-  data = tmp;
-}
-
 BitcoinExchange::~BitcoinExchange(void) {}
 
 void BitcoinExchange::read_input(std::string str) {
   if (str == "date | value") return;
   Date tmp;
-  std::stringstream ss(str);
   std::string date_str;
+  std::string value_str;
   float value;
 
-  getline(ss, date_str, '|');
-  ss >> value;
-  // std::cout << "@" << date_str << "|" << value << std::endl;
-  separateDate(date_str, tmp);
+  RemoveTabSpace(str);
+
+  size_t pos = str.find("|");
+  if (pos == std::string::npos) {
+    std::cout << "Error : invalid format" << std::endl;
+    return;
+  }
+
+  date_str = str.substr(0, pos);
+  value_str = str.substr(pos + 1, str.length());
+
+  separateDate(date_str, tmp, 0);
   if (validate_input_date(tmp) == 1) {
     std::cout << "Error : invalid date => " << date_str << std::endl;
     return;
   }
-  if (value < 0 || value > 1000) {
+  value = my_stof(value_str);
+
+  if (value < 1 || value > 999) {
     std::cout << "Error : Out of Range." << std::endl;
     return;
   }

@@ -20,7 +20,7 @@ int main(int ac, char** av) {
     ss >> exchange_rate;
     data[date_str] = exchange_rate;
     Date prev;
-    separateDate(date_str, prev);
+    separateDate(date_str, prev, 1);
     for (int i = 0; i < 2; ++i) {
       std::string new_date;
       modifi_date(prev);
@@ -34,12 +34,6 @@ int main(int ac, char** av) {
     }
   }
   file.close();
-
-  // for (std::map<std::string, float>::iterator it = data.begin();
-  //      it != data.end(); it++) {
-  //   std::cout << it->first << ": " << std::fixed << std::setprecision(2)
-  //             << it->second << std::endl;
-  // }
 
   std::ifstream input(av[1]);
   if (input.fail()) {

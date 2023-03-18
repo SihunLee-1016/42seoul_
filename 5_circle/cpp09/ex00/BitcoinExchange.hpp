@@ -17,6 +17,8 @@ struct Date {
 class BitcoinExchange {
  private:
   std::map<std::string, float> data;
+  BitcoinExchange(BitcoinExchange const& tmp);
+  BitcoinExchange& operator=(BitcoinExchange const& tmp);
 
  public:
   BitcoinExchange(void);
@@ -26,7 +28,8 @@ class BitcoinExchange {
 };
 
 std::string tostr(int num);
-void separateDate(const std::string& dateString, Date& date);
+float my_stof(const std::string& str);
+void separateDate(const std::string& dateString, Date& date, int flag);
 void modifi_date(Date& prev);
 void RemoveTabSpace(std::string& str);
 int validate_input_date(Date& tmp);
