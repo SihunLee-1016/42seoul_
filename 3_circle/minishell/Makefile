@@ -27,8 +27,8 @@ OBJS_DIR		= obj
 
 INCS_DIR		:= include
 INCS_DIR		+= libft
-INCS_DIR		+= $(HOME)/.brew/opt/readline/include
-#INCS_DIR		+= /opt/homebrew/opt/readline/include
+# INCS_DIR		+= $(HOME)/.brew/opt/readline/include
+INCS_DIR		+= /opt/homebrew/opt/readline/include
 
 # All the subdirectories used in the project
 # to organise source files (Can be changed).
@@ -154,8 +154,8 @@ OBJS_BONUS		= $(SRCS_BONUS:.c=.o)
 # Linked libraries at compile time (Can be changed).
 
 LIBS			:= -L$(LFT_DIR) -lft
-LIBS			+= -L$(HOME)/.brew/opt/readline/lib -lreadline
-#LIBS			+= -L/opt/homebrew/opt/readline/lib -lreadline
+# LIBS			+= -L$(HOME)/.brew/opt/readline/lib -lreadline
+LIBS			+= -L/opt/homebrew/opt/readline/lib -lreadline
 
 # Compilation flags (Can be changed).
 

@@ -13,10 +13,12 @@ int main(int ac, char **av) {
              av[1][i] == '/')
       e_cnt += 1;
   }
+
   if (n_cnt != e_cnt + 1) {
     std::cout << "Invalid expression" << std::endl;
     return 1;
   }
+
   int i = 0;
   while (av[1][i]) {
     if (av[1][i] == ' ') {
