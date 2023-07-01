@@ -12,7 +12,9 @@ int main(int ac, char** av) {
   atexit(CheckLeaks);
 #endif
   try {
-    if (ac > 2) {
+    if (ac > 2) 
+    
+    {
       throw std::runtime_error("[Config Error] few argument");
     }
     main_process(ac, av);

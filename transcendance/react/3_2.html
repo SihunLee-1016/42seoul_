@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+    <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js">
+</script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js">
+</script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel">
+
+    //State는 기본적으로 데이터가 저장되는 곳이다.
+    const root = document.getElementById("root");
+    const span = React.createElement("span");
+    // function countUp() {
+    //     counter += 1;
+    //     //render();
+    //     modifier(counter + 1);
+    // }
+    function render() {
+    }
+    function Container() {
+
+        const [counter, modifier] = React.useState(0);
+        const onClick = () => {
+            modifier(counter + 1);
+        }
+        return (<div>
+            <h3>
+                Total click: {counter}
+            </h3>
+            <button onClick={onClick}>
+                click me
+            </button>
+        </div>);
+    }
+
+    ReactDOM.render(<Container />, root);
+</script>
+
+</html>

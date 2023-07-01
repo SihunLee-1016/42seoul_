@@ -30,7 +30,8 @@ std::string decode(std::string encoded_string) {
     buf[j] = c;
   }
   std::string decoded_string;
-  for (int i = 0; i < buf_len; ++i) decoded_string.push_back(buf[i]);
+  for (int i = 0; i < buf_len; ++i)
+    decoded_string.push_back(buf[i]);
 
   delete[] buf;
   return decoded_string;

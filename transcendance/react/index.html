@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+    <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js">
+</script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js">
+</script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel">
+    const root = document.getElementById("root");
+    /* JSX는 js 문법 확장. react요소를 만들게 해주는데, html문법과 유사한다. 2.5강
+    */
+
+    /*
+    arg 1 : HTML 태그
+    arg2 : Property가 포함된 Object. id, class명 변경 가능 색상 및 등등
+            일반적인 HTML tag의 Property로부터 어떤것이든 바꿀 수 있다.
+            중요한건 EventListener에 있다. 상호작용을 하기 위해 리액트가 만들어졌으므로.
+    arg3 : content.
+    */
+    //h3, 등 선언한 요소를 jsx로 대체
+    // props는 태그 안에 담긴다.
+
+    const Title = () => (<h3 id="title" onMouseEnter={() => console.log("mouse enter")}>
+        Title!
+    </h3>)
+
+
+    // 선언한 jsx를 arrow function으로 만드는것은 아래와 같이 
+    // function으로 선언하는것과 동일하다.
+
+    // function title() {
+    //     return (<h3 id="title" onMousEnter={ () => console.log("mouse enter") } >
+    //         Title!
+    //     </h3>
+    //     );
+    // }
+
+    const Btn = () => (<button style={{ backgroundcolor: "tomato", }}
+        onClick={() => console.log("clicked!")}>
+        click me
+    </button >)
+
+    /*const h3 = React.createElement(
+        "h3",
+        {id: "title", onMouseEnter: () => console.log("mouse enter"), },
+        "hello im a title"
+        );
+
+        const btn = React.createElement(
+        "button",
+        {
+            onClick: () => console.log("im clicked"),
+        style: {
+            backgroundColor: "tomato",
+            },
+        },
+        "click me"
+        );*/
+    const span = React.createElement("span");
+    // const container = React.createElement("div", null, [title, btn])
+
+    const Container = () => (<div>
+        <Title />
+        <Btn />
+    </div>)
+    //react element들을 root div 안에서 보여주라는 뜻.
+    // 리액트 엘리먼트를 가져다 HTML로 바꾸는 역할을 한다.
+
+    //rendering 할 component의 첫 글자는 반드시 대문자여야 한다.
+
+    ReactDOM.render(<Container />, root);
+</script>
+
+</html>
