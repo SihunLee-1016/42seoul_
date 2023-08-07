@@ -17,6 +17,7 @@ struct Date {
 class BitcoinExchange {
  private:
   std::map<std::string, float> data;
+  
   BitcoinExchange(BitcoinExchange const& tmp);
   BitcoinExchange& operator=(BitcoinExchange const& tmp);
 

@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+    <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js">
+</script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js">
+</script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel">
+
+//prop은 부모 컴포넌트에서 자식 컴포넌트에 데이터를 보낼 수 있게 하는 방법이다.
+//부모로부터 자식으로 데이터를 보낼 것.    
+
+//컴포넌트 재사용?
+
+//컴포넌트는 () 안에 매개변수를 받는다. ()안의 내용은 각자 정하면 되는데, 보통 이를 prop이라 부름
+
+//옵션은 자유롭게 정하면 됨.    <Btn btnstyle="Save Change"/>
+// 식으로, btnstyle은 내가 정한것. 여러개의 인자를 props로 보낼 수 있다.
+
+//4_1 onclick 함수를 넣을 때, 컴포넌트 내의 state를 변경할것임.
+
+//함수를 버튼의 온클릭으로 전달할 것이다.
+// HTML 요소 안에 이벤트 리스너를 넣었을 때 이벤트리스너로써 작동한다. 컴포넌트 안에 이벤트리스너를 넣어도 그대로 작동하지않는다.
+    const root = document.getElementById("root");
+
+        //기본 스타일을 갖는 컴포넌트를 하나 갖고, 버튼에 있는 문구만 다르게 설정..?
+    function Btn(props, changeValue) {
+        // console.log(props);
+        return (
+            <button onClick={changeValue} style={{
+                backgroundColor: "tomato",
+                color: "white",
+                padding: "10px 20px",
+                border: 0,
+                borderRadius: 10,
+            }}>
+            {props.btnstyle}
+            </button>
+        )
+    }
+
+    function ConfirmBtn() 
+    {
+        return  <button> Confirm </button>
+    }
+
+    const MemorizedBtn = React.memo(Btn);
+
+    function Container()
+    { 
+        const [value, setValue] = React.useState("save change");
+        
+        const changeValue = () => setValue("Changed");
+
+        return (
+            <div>
+                <MemorizedBtn btnstyle={value} changeval={changeValue} />
+                <MemorizedBtn btnstyle="Continue"/>
+                // <ConfirmBtn />
+            </div>
+        )
+    }
+    ReactDOM.render(<Container />, root);
+</script>
+
+</html>

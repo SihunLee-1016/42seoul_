@@ -140,10 +140,13 @@ void BitcoinExchange::read_input(std::string str) {
   value_str = str.substr(pos + 1, str.length());
 
   separateDate(date_str, tmp, 0);
+  // upper or lower를 쓰면 되겠죠?
+
   if (validate_input_date(tmp) == 1) {
     std::cout << "Error : invalid date => " << date_str << std::endl;
     return;
   }
+  
   value = my_stof(value_str);
 
   if (value < 1 || value > 999) {

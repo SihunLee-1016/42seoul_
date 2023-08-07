@@ -13,3 +13,6 @@ int main(int argc, char** argv) {
     pm.sort_deque();
     return 0;
 }
+
+
+// 벡터 vs 덱 인데.
