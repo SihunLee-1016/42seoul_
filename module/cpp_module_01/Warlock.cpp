@@ -29,10 +29,11 @@ void Warlock::introduce() const {
 
 void Warlock::learnSpell(ASpell *spell_ptr) {
   ASpell *spell = 0;
-  if (spell == spell_ptr) return;
+  if (spell == spell_ptr)
+    return;
+
   if (spell_ptr)
-    arr.insert(std::pair<std::string, ASpell *>(spell_ptr->getName(),
-                                                spell_ptr->clone()));
+    arr.insert(std::pair<std::string, ASpell *>(spell_ptr->getName(), spell_ptr->clone()));
 }
 
 void Warlock::forgetSpell(std::string spell_name) {
@@ -42,6 +43,6 @@ void Warlock::forgetSpell(std::string spell_name) {
 }
 
 void Warlock::launchSpell(std::string spell_name, ATarget const &target_ref) {
-  ASpell *spell = arr[spell_name];
+  ASpell *spell = arr[spell_name]; //02에선 이 로직이 createSpell로.
   if (spell) spell->launch(target_ref);
 }

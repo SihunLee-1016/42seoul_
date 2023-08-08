@@ -31,9 +31,10 @@ void Warlock::forgetSpell(std::string name)
 
 void Warlock::launchSpell(std::string name, ATarget const &atarget_ref)
 {
-    ATarget const *test = 0;
-    if (test == &atarget_ref)
-        return;
+    // ATarget const *test = 0;
+    // if (test == &atarget_ref)
+    //     return;
+    //책에서 값을 찾아서 감.
     ASpell *temp = book.createSpell(name);
     if (temp)
         temp->launch(atarget_ref);

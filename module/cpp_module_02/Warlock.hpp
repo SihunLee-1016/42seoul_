@@ -14,7 +14,7 @@ class Warlock
         Warlock();
         Warlock(Warlock const &other);
         Warlock &operator=(Warlock const &other);
-
+        //스펠북도 가지고있어야함. 01에서 map 으로 저장한 데이터가 여기로간다고 생각.
         SpellBook book;
     public:
         Warlock(std::string const &name, std::string const &title);
